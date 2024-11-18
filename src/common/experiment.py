@@ -73,6 +73,13 @@ class CombinedJob:
     partition_labels: list[str] = field(default_factory=list)
     result_counts: dict[str, int] | None = None
     uuids: list[UUID] = field(default_factory=list)
+    
+@dataclass
+class ScheduledJob:
+    """Data class for scheduled job."""
+    
+    job: CombinedJob    # Probably don't need CircuitJob
+    qpu: int
 
 def jobs_from_experiment(experiment: Experiment) -> list[CircuitJob]:
     """Create a list of CircuitJobs from an Experiment.
@@ -90,7 +97,8 @@ def jobs_from_experiment(experiment: Experiment) -> list[CircuitJob]:
             index=idx,
             instance=circuit,
             n_shots=experiment.n_shots,
-            observable=experiment.observables, # TODO this might need to change for proper observables
+            # TODO this might need to change for proper observables
+            observable=experiment.observables,
             partition_label=experiment.partition_label,
             result_counts=None,
             uuid=experiment.uuid,
