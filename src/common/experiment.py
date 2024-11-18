@@ -36,6 +36,14 @@ class CircuitJob:
 
 
 def job_from_circuit(circuit: QuantumCircuit) -> CircuitJob:
+    """Create a CircuitJob from a QuantumCircuit.
+    
+    Args:
+        circuit (QuantumCircuit): The circuit to create a job from.
+        
+    Returns:
+        CircuitJob: The created CircuitJob.
+    """
     return CircuitJob(
         coefficient=None,
         cregs=len(circuit.cregs),
@@ -67,13 +75,13 @@ class CombinedJob:
     uuids: list[UUID] = field(default_factory=list)
 
 def jobs_from_experiment(experiment: Experiment) -> list[CircuitJob]:
-    """_summary_
-
+    """Create a list of CircuitJobs from an Experiment.
+    
     Args:
-        experiment (Experiment): _description_
-
+        experiment (Experiment): The experiment to create jobs from.
+        
     Returns:
-        list[CircuitJob]: _description_
+        list[CircuitJob]: List of CircuitJobs.
     """
     return [
         CircuitJob(

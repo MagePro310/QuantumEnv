@@ -8,7 +8,7 @@ from src.tools import optimize_circuit_online
 
 
 class Accelerator:
-    """_summary_"""
+    """Wrapper for IBMs backend simulator."""
 
     def __init__(self, backend: IBMQBackend) -> None:
         self.simulator = AerSimulator.from_backend(backend.value())
@@ -17,32 +17,25 @@ class Accelerator:
         
     @property
     def qubits(self) -> int:
-        """_summary_
-
-        Returns:
-            int: _description_
-        """
+        """Get the number of qubits of the accelerator."""
         return self._qubits
 
     @property
     def backend(self) -> IBMQBackend:
-        """_summary_
-        
-        Return:
-            IBMQBackend: _description_
-        """
+        """Get the backend used by the accelerator."""
         return self._backend
     
     
     def run_and_get_counts(self, circuit: QuantumCircuit) -> dict[str, int]:
-        """_summary_
-
+        """Run the quantum circuit on the simulator and get the result counts.
+        
         Args:
-            circuit (QuantumCircuit): _description_
-
+            circuit (QuantumCircuit): The quantum circuit to run.
+        
         Returns:
-            dict[str, int]: _description_
+            dict[str, int]: The result counts from the simulation.
         """
+        
         # TODO check qubit size
         #opt_circuit = optimize_circuit_online(circuit, self._backend) # Have some problems with blocking here
         #result = self.simulator.run(opt_circuit).result()

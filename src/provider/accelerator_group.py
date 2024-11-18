@@ -12,16 +12,26 @@ class AcceleratorGroup:
 
     def __init__(self, accelerators: list[Accelerator]) -> None:
         self.accelerators = accelerators
-        self._qubits = sum(acc.qubits for acc in accelerators)
+        self._qpu_qubits = [acc.qubits for acc in accelerators]
 
     @property
-    def qubits(self) -> int:
-        """_summary_
-
+    def qpus(self) -> list[int]:
+        """Returns the number of qubits for each accelerator in the group.
+        
         Returns:
-            int: _description_
+            list[int]: Number of qubits for each accelerator.
         """
-        return self._qubits
+        return self._qpu_qubits
+            
+            
+    @property
+    def qubits(self) -> int:
+        """Returns the total number of qubits across all accelerators.
+         
+        Returns:
+            int: Total number of qubits.
+        """
+        return sum(self._qpu_qubits)
 
     def run_and_get_counts(self, circuits: list[QuantumCircuit]) -> list[dict[int, int]]:
         """Runs circuits in parallel across accelerators and retrieves counts.
@@ -39,7 +49,7 @@ class AcceleratorGroup:
         return counts
     
     def run_experiments(self, experiments: list[Experiment]) -> list[Experiment]:
-        """_summary_
+        """Runs experiments in parallel across accelerators and retrieves counts.        
         
         Args:
             experiments (List[Experiment]): _description_
@@ -57,6 +67,15 @@ class AcceleratorGroup:
         return results
 
 def _run_func(accs: list[Accelerator], exp: Experiment) -> Experiment:
+    """Runs an experiment on a given accelerator.
+    
+    Args:
+        accs (List[Accelerator]): List of accelerators to run the experiment on.
+        exp (Experiment): Experiment to run.
+        
+    Returns:
+        Experiment: Experiment with results.
+    """
     pool_id = current_process()._identity[0] - 1 # TODO fix somehow
     try:
         exp.result_counts = [
