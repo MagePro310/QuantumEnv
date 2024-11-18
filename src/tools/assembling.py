@@ -2,7 +2,7 @@
 from qiskit import QuantumCircuit, ClassicalRegister, QuantumRegister
 from qiskit.quantum_info import PauliList
 
-from src.common import CircuitJob, CombineJob
+from src.common import CircuitJob, CombinedJob
 
 
 def assemble_circuit(circuits: list[QuantumCircuit]) -> QuantumCircuit:
@@ -37,7 +37,7 @@ def assemble_circuit(circuits: list[QuantumCircuit]) -> QuantumCircuit:
         clbits += circuit.num_clbits
     return composed_circuit
         
-def assemble_job(circuit_jobs: list[CircuitJob]) -> CombineJob:
+def assemble_job(circuit_jobs: list[CircuitJob]) -> CombinedJob:
     """_summary_
 
     Args:
@@ -47,7 +47,7 @@ def assemble_job(circuit_jobs: list[CircuitJob]) -> CombineJob:
         CombinedJob: _description_
     """
     
-    combined_job = CombineJob(n_shots=circuit_jobs[0].n_shots)
+    combined_job = CombinedJob(n_shots=circuit_jobs[0].n_shots)
     circuits = []
     qubit_count = 0
     observable = PauliList("")

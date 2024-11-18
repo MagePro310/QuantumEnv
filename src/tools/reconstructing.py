@@ -5,7 +5,7 @@ from functools import partial
 from circuit_knitting.cutting import reconstruct_expectation_values
 from qiskit.primitives.sampler import SamplerResult
 
-from src.common import Experiment, CircuitJob, CombineJob
+from src.common import Experiment, CircuitJob, CombinedJob
 
 
 def reconstruct_experiments_from_circuits(jobs: list[CircuitJob]) -> list[Experiment]:
@@ -43,7 +43,7 @@ def reconstruct_experiments_from_circuits(jobs: list[CircuitJob]) -> list[Experi
             )
     return experiments
 
-def reconstruct_counts_from_job(job: CombineJob) -> list[CircuitJob]:
+def reconstruct_counts_from_job(job: CombinedJob) -> list[CircuitJob]:
     """_summary_
 
     Args:
@@ -60,19 +60,20 @@ def reconstruct_counts_from_job(job: CombineJob) -> list[CircuitJob]:
         counts = _get_partial_counts(job.result_counts, offset, job.cregs[idx])
         circuit_jobs.append(
             CircuitJob(
-                job.indices[idx],
-                None,
-                job.coefficients[idx],
-                job.n_shots,
-                observable,
-                job.partition_labels[idx],
-                counts,
-                job.uuids[idx],
-                job.cregs[idx],
+                coefficient=job.coefficients[idx],
+                cregs=job.cregs[idx],
+                index=job.indices[idx],
+                instance=None,
+                n_shots=job.n_shots,
+                observable=observable,
+                partition_label=job.partition_lables[idx],
+                result_counts=counts,
+                uuid=job.uuids[idx],
             )
         )
         offset += job.cregs[idx]
     return circuit_jobs
+
         
         
 def _get_partial_counts(
