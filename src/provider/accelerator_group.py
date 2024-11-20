@@ -1,4 +1,4 @@
-""""""
+"""A common interface for multiple accelerators."""
 from itertools import zip_longest
 from multiprocessing import Pool, current_process
 
@@ -9,7 +9,9 @@ from .accelerator import Accelerator
 
 
 class AcceleratorGroup:
-    """Manages a group of quantum accelerators and facilitates parallel execution of circuits."""
+    """
+    Provides a single entrypoints for multiple accelerators.
+    """
 
     def __init__(self, accelerators: list[Accelerator]) -> None:
         self.accelerators = accelerators
@@ -17,31 +19,32 @@ class AcceleratorGroup:
 
     @property
     def qpus(self) -> list[int]:
-        """Returns the number of qubits for each accelerator in the group.
-        
+        """Indicates the number of qubits per qpu.
+
         Returns:
-            list[int]: Number of qubits for each accelerator.
+            list[int]: The number of qubits per qpu.
         """
         return self._qpu_qubits
             
             
     @property
     def qubits(self) -> int:
-        """Returns the total number of qubits across all accelerators.
-         
+        """Total number of qubits.
+
         Returns:
-            int: Total number of qubits.
+            int: The total number of qubits.
         """
         return sum(self._qpu_qubits)
 
     def run_and_get_counts(self, circuits: list[QuantumCircuit]) -> list[dict[int, int]]:
-        """Runs circuits in parallel across accelerators and retrieves counts.
+        """Simple run and get counts simultaneously for all accelerators.
 
+        Only works if the number of circuits is equal to the number of accelerators.
         Args:
-            circuits (List[QuantumCircuit]): Quantum circuits to execute.
+            circuits (list[QuantumCircuit]): The circuits to run.
 
         Returns:
-            dict[int, Dict[int, int]]: Dictionary mapping each circuit index to its result counts.
+            list[dict[int, int]]: A list of result counts, preserving order.
         """
         counts = []
         
@@ -50,21 +53,23 @@ class AcceleratorGroup:
         return counts
     
     def run_jobs(self, jobs: list[ScheduledJob]) -> list[CombinedJob]:
-        """Runs jobs in parallel across accelerators and retrieves counts.
+        """Runs a list of scheduled jobs on their respective accelerators.
 
+        Creates a tuple of jobs to run at the same time onf different qpus.
+        Jobs are run in parallel.
         Args:
-            jobs (list[ScheduledJob]): _description_
+            jobs (list[ScheduledJob]): The jobs to run.
 
         Returns:
-            list[ScheduledJob]: _description_
+            list[ScheduledJob]: The jobs with results inserted.
         """
         jobs_per_qpu = {
             qpu: [job for job in jobs if job.qpu == qpu]
             for qpu, _ in enumerate(self.qpus)
-        }
+        }   # Sort by qpu
         with Pool(processes=len(self.accelerators)) as pool:
             results = []
-            for job in zip_longest(*jobs_per_qpu.values()):
+            for job in zip_longest(*jobs_per_qpu.values()): # Run jobs in parallel
                 result = pool.apply_async(_run_job, [self.accelerators, job])
                 result.append(result)
             results = [result.get() for result in results]
@@ -72,13 +77,16 @@ class AcceleratorGroup:
         return results
 
     def run_experiments(self, experiments: list[Experiment]) -> list[Experiment]:
-        """Runs experiments in parallel across accelerators and retrieves counts.        
-        
+        """Runs all circuits belonging to a list of experiments.
+
+        Just takes the circuits without any consideration.
+        Circuits are run in parallel.
+
         Args:
-            experiments (List[Experiment]): _description_
-        
+            experiments (list[Experiment]): The list of expermimets to run.
+
         Returns:
-            List[Experiment]: _description_
+           list[Experiment]: Experiment with results inserted.
         """
         with Pool(processes=len(self.accelerators)) as pool:
             results = []
@@ -90,35 +98,37 @@ class AcceleratorGroup:
         return results
 
 def _run_func(accs: list[Accelerator], exp: Experiment) -> Experiment:
-    """Runs an experiment on a given accelerator.
-    
+    """Wrapper to run Experiment on a single accelerator.
+
     Args:
-        accs (List[Accelerator]): List of accelerators to run the experiment on.
-        exp (Experiment): Experiment to run.
-        
+        accs (list[Accelerator]): The internal accelerators.
+        exp (Experiment): The experiment to run on this accelerator.
+
     Returns:
-        Experiment: Experiment with results.
+        Experiment: Experiment with results inserted.
+
     """
     pool_id = current_process()._identity[0] - 1 # TODO fix somehow
     try:
         exp.result_counts = [
             accs[pool_id].run_and_get_counts(circuit) for circuit in exp.circuits
         ]
-    except Exception as e:
-        print(e)
+    except Exception as exc:
+        # To make result.get() work deterministically
+        print(exc)
     return exp
 
 def _run_job(
     accs: list[Accelerator], jobs: tuple[CombinedJob | None]
 ) -> CombinedJob | None:
-    """Runs a job on a given accelerator.
-    
+    """Selects a job from a tuple of jobs and runs it on the respective accelerator.
+
     Args:
-        accs (List[Accelerator]): List of accelerators to run the job on.
-        job (CombinedJob): Job to run.
-    
+        accs (list[Accelerator]): the internal accelerators.
+        jobs (tuple[CombinedJob  |  None]): The jobs which are run in parallel.
+
     Returns:
-        CombinedJob: Job with results.
+        CombinedJob | None: Returns the job with results inserted or None if no job was submited.
     """
     pool_id = current_process()._identity[0] - 1  # TODO fix somehow
     job = jobs[pool_id]
@@ -128,6 +138,6 @@ def _run_job(
     try:
         job.result_counts = accs[pool_id].run_and_get_counts(job.instance)
 
-    except Exception as e:
-        print(e)
+    except Exception as exc:
+        print(exc)
     return job
