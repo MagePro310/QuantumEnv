@@ -1,4 +1,4 @@
-""""""
+"""GHZ state circuit generators."""
 from functools import lru_cache
 
 from qiskit import QuantumCircuit
@@ -6,13 +6,14 @@ from qiskit import QuantumCircuit
 @lru_cache
 def create_ghz(num_qubits):
     """
-    Create a GHZ state with the given number of qubits.
-    
+    Generates a n-qubit GHZ state.
+
+    Includes measurement.
     Args:
-        num_qubits (int): The number of qubits in the GHZ state.
-        
+        n_qubits (int): Number of qubits.
+
     Returns:
-        QuantumCircuit: The GHZ state circuit.
+        QuantumCircuit: The quantum circuit object.
     """
     circuit = QuantumCircuit(num_qubits, num_qubits)
     circuit.h(0)
@@ -23,13 +24,14 @@ def create_ghz(num_qubits):
 
 @lru_cache
 def create_quantum_only_ghz(n_qubits: int) -> QuantumCircuit:
-    """_summary_
-    
+    """Generater a n-qubit GHZ state.
+
+    Without measurement.
     Args:
-        n_qubits (int): _description_
-    
+        n_qubits (int): Number of qubits.
+
     Returns:
-        QuantumCircuit: _description_
+        QuantumCircuit: The quantum circuit object.
     """
     circuit = QuantumCircuit(n_qubits)
     circuit.h(0)
