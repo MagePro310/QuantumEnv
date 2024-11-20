@@ -1,4 +1,4 @@
 """Module for Simulation Backends."""
-from .accelerator import Accelerator, IBMQBackend
-from .accelerator_group import AcceleratorGroup
-from .scheduler import Scheduler
+from .accelerator import *
+from .accelerator_group import *
+from .scheduler import *

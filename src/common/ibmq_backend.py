@@ -4,10 +4,10 @@ from enum import Enum
 from qiskit_ibm_runtime.fake_provider import FakeBelemV2, FakeNairobiV2, FakeQuitoV2
 
 class IBMQBackend(Enum):
-    """Enum class for IBMQ backends.
-    
+    """Wraps three common backends from IBMQ.
+
     Args:
-        Enum: Enum class for IBMQ backends.
+        Enum (_type_): Names of the backends.
     """
     
     BELEM = FakeBelemV2

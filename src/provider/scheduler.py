@@ -12,8 +12,8 @@ from src.common import (
 )
 from src.tools import cut_circuit, assemble_job
 
-from accelerator import Accelerator
-from accelerator_group import AcceleratorGroup
+from .accelerator import Accelerator
+from .accelerator_group import AcceleratorGroup
 
 @dataclass
 class Bin:
