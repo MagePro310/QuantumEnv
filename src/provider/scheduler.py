@@ -15,23 +15,17 @@ from src.tools import cut_circuit, assemble_job
 from .accelerator import Accelerator
 from .accelerator_group import AcceleratorGroup
 
+
 @dataclass
 class Bin:
     """Helper to keep track of binning problem."""
-    
+
     capacity: int = 0
     full: bool = False
     index: int = -1
     jobs: list[CircuitJob] = field(default_factory=list)
     qpu: int = -1
-    
-    
-# Some thoughts
-# Preprocess such that every circuit is smaller than the max QPU size
-# And each (sub)circuit is assigned to a hardware
-# 1. cut everything thats to large -> Experiments
-# 2. Put everything that's small into experiment
-# 3. combine circuits that fit into small device
+
 
 class Scheduler:
     """The scheduer is aware of the hardware and schedules circuits accordingly.
@@ -43,14 +37,13 @@ class Scheduler:
             - Make a continuous run function / sumbit new circuits
             - Keep track of current schedule and update it
     """
-    
+
     def __init__(self, accelerators: list[Accelerator]) -> None:
-        """Initialize the Scheduler with a list of accelerators."""
         self.jobs = []
         self.accelerator = AcceleratorGroup(accelerators)
         self.uuids = []
-        
-    def run_circuit(self, circuits: list[QuantumCircuit]) -> list[CombinedJob]:
+
+    def run_circuits(self, circuits: list[QuantumCircuit]) -> list[CombinedJob]:
         """Genreates a schedule and runs it.
 
         Args:
@@ -61,7 +54,7 @@ class Scheduler:
         """
         jobs = self.generate_schedule(circuits)
         return self.accelerator.run_jobs(jobs)
-        
+
     def generate_schedule(self, circuits: list[QuantumCircuit]) -> list[ScheduledJob]:
         """Generater a offlines schedule.
 
@@ -75,7 +68,8 @@ class Scheduler:
 
         Args:
             circuits (list[ScheduledJob]): A list of Jobs ready to run.
-                The jobs are sorted by index (the timestep when to run) and have qpu information attached.
+                The jobs are sorted by index (the timestep when to run)
+                and have qpu information attached.
         """
         jobs = sorted(
             self._convert_to_jobs(circuits),
@@ -89,15 +83,21 @@ class Scheduler:
                 ScheduledJob(job=assemble_job(_bin.jobs), qpu=_bin.qpu)
             )
         return combined_jobs
-    
+
     def _binpacking_to_qpus(self, jobs: list[CircuitJob]) -> list[Bin]:
-        """Combine jobs into qpu sized bins.
-        
+        """Schedule jobs onto qpus.
+
+        Each qpu represents a bin.
+        Since all jobs are asumet to take the same amount of time, the are associated
+        with a timestep (index).
+        k-first fit bin means we keep track of all bins that still have space left.
+        Once a qpu is full, we add a new bin for each qpu at the next timestep.
+        We can't run circuits with one qubit, scheduling doesn't take this into account.
         Args:
-            jobs (list[CircuitJob]): List of jobs to combine.
-            
+            jobs (list[CircuitJob]): The list of jobs to run.
+
         Returns:
-            list[Bin]: List of bins with combined jobs.
+            list[Bin]: All bins with at least one jobs.
         """
         # Use binpacking to combine circuits into qpu sized jobs
         # placeholder for propper scheduling
@@ -105,8 +105,8 @@ class Scheduler:
         # TODO consider number of shots
         # Assumption: beens should be equally loaded and take same amoutn of time
         open_bins = [
-            Bin(index=0, capacity=qpu, qpu=idx)
-            for idx, qpu in enumerate(self.accelerator.qpus)
+            Bin(index=0, capacity=qpu.qubits, qpu=idx)
+            for idx, qpu in enumerate(self.accelerator.accelerators)
         ]
         closed_bins = []
         index = 1
@@ -116,15 +116,15 @@ class Scheduler:
                 if obin.capacity >= job.instance.num_qubits:
                     obin.jobs.append(job)
                     obin.capacity -= job.instance.num_qubits
-                    if obin.capacity <= 0:
+                    if obin.capacity <= 1:
                         obin.full = True
                         closed_bins.append(obin)
                         open_bins.remove(obin)
                     break
             else:
                 new_bins = [
-                    Bin(index=index, capacity=qpu, qpu=idx)
-                    for idx, qpu in enumerate(self.accelerator.qpus)
+                    Bin(index=index, capacity=qpu.qubits, qpu=idx)
+                    for idx, qpu in enumerate(self.accelerator.accelerators)
                 ]
                 index += 1
                 for nbin in new_bins:
@@ -142,7 +142,7 @@ class Scheduler:
             if len(obin.jobs) > 0:
                 closed_bins.append(obin)
         return closed_bins
-    
+
     def _convert_to_jobs(self, circuits: list[QuantumCircuit]) -> list[CircuitJob]:
         """Generates jobs from circuits.
 
@@ -174,8 +174,7 @@ class Scheduler:
                 jobs.append(circuit)
                 self.uuids.append(circuit.uuid)
         return jobs
-        
-        
+
     def _generate_partitions(self, circuit_sizes: list[int]) -> list[list[int]]:
         """Generates partitions for the given circuit sizes.
         Order of the partitions is the same as the order of the circuits.
@@ -192,12 +191,13 @@ class Scheduler:
         # TODO: This is a very naive approach, we should do something smarter
         # for example: look at existing partitions and try to fill up the remaining space
         partitions = []
+        qpu_sizes = [acc.qubits for acc in self.accelerator.accelerators]
         for circuit_size in circuit_sizes:
             if circuit_size > self.accelerator.qubits:
-                partition = self.accelerator.qpus
+                partition = qpu_sizes
                 remaining_size = circuit_size - self.accelerator.qubits
                 while remaining_size > self.accelerator.qubits:
-                    partition += self.accelerator.qpus
+                    partition += qpu_sizes
                     remaining_size -= self.accelerator.qubits
                 if remaining_size == 1:
                     partition[-1] = partition[-1] - 1
@@ -205,13 +205,13 @@ class Scheduler:
                 else:
                     partition.append(self._partition_big_to_small(remaining_size))
                 partitions.append(partition)
-            elif circuit_size > max(self.accelerator.qpus):
+            elif circuit_size > max(qpu_sizes):
                 partition = self._partition_big_to_small(circuit_size)
                 partitions.append(partition)
             else:
                 partitions.append([circuit_size])
         return partitions
-                    
+
     def _partition_big_to_small(self, size: int) -> list[int]:
         """Partitions a circuit into the biggest QPUs first.
 
@@ -222,10 +222,12 @@ class Scheduler:
             list[int]: The partition sizes of the circuit.
         """
         partition = []
-        for qpu in sorted(self.accelerator.qpus, reverse=True):
-            if size >= qpu:
+        for qpu in sorted(
+            self.accelerator.accelerators, key=lambda a: a.qubits, reverse=True
+        ):
+            if size >= qpu.qubits:
                 partition.append(qpu)
-                size -= qpu
+                size -= qpu.qubits
             else:
                 partition.append(size)
                 break

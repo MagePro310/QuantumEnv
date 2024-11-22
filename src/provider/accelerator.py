@@ -1,5 +1,4 @@
 """Wrapper for IBMs backend simulator."""
-
 from qiskit_aer import AerSimulator
 from qiskit import QuantumCircuit
 
@@ -10,7 +9,9 @@ from src.tools import optimize_circuit_online
 class Accelerator:
     """Wraper for a single backend simulator."""
 
-    def __init__(self, backend: IBMQBackend, shot_time: int = 1, reconfiguration_time: int = 0) -> None:
+    def __init__(
+        self, backend: IBMQBackend, shot_time: int = 1, reconfiguration_time: int = 0
+    ) -> None:
         self.simulator = AerSimulator.from_backend(backend.value())
         self._backend = backend
         self._qubits = len(self.simulator.properties().qubits)

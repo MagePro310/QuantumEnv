@@ -60,7 +60,9 @@ class CombinedJob:
     
 @dataclass
 class ScheduledJob:
-    """Data class for scheduled job."""
+    """Data class for scheduled job.
+    Additionally includes which qpu to run on.
+    """
     
     job: CombinedJob    # Probably don't need CircuitJob
     qpu: int            #Depends on scheduler
