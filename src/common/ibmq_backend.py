@@ -10,6 +10,6 @@ class IBMQBackend(Enum):
         Enum (_type_): Names of the backends.
     """
     
-    BELEM = FakeBelemV2()
-    NAIROBI = FakeNairobiV2()
-    QUITO = FakeQuitoV2()
+    BELEM = FakeBelemV2
+    NAIROBI = FakeNairobiV2
+    QUITO = FakeQuitoV2
