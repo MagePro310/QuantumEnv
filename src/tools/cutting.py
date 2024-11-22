@@ -5,43 +5,42 @@ from circuit_knitting.cutting import (
     partition_problem,
     generate_cutting_experiments,
 )
-from circuit_knitting.cutting.qpd import WeightType
-
 from qiskit import QuantumCircuit
 from qiskit.quantum_info import PauliList
 import numpy as np
 
 from src.common import Experiment
 
+
 def cut_circuit(
     circuit: QuantumCircuit,
     partitions: list[int],
     observables: (PauliList | None) = None,
 ) -> tuple[list[Experiment], UUID]:
-    """_summary_
+    """Cut a circuit into multiple subcircuits.
 
     Args:
-        circuit (QuantumCircuit): _description_
-        partitions (List[int]): _description_
-        observables (PauliList  |  None, optional): _description_. Defaults to None.
+        circuit (QuantumCircuit): The circuit to cut
+        partitions (list[int]): The partitions to cut the circuit into (given as a list of qubits)
+        observables (PauliList  |  None, optional): The observables for each qubit. Defaults to None (= Z measurements).
 
     Returns:
-        tist[Experiemt, uuid] _description_
+        tuple[list[Experiment], UUID]: _description_
     """
-    if observables is None:                                                     # If observables is None, set it to Z^N
+    if observables is None:
         observables = PauliList("Z" * circuit.num_qubits)
-    partitions = _generate_partition_labels(partitions)                         # Generate partition labels
-    partitioned_problem = partition_problem(circuit, partitions, observables)   # Partition the problem
-    experiments, coefficients = generate_cutting_experiments(                   # Generate cutting experiments
-        partitioned_problem.subcircuits,                                        # Subcircuits
-        partitioned_problem.subobservables,                                     # Subobservables
-        num_samples=np.inf,                                                     # Number of samples
+    partitions = _generate_partition_labels(partitions)
+    partitioned_problem = partition_problem(circuit, partitions, observables)
+    experiments, coefficients = generate_cutting_experiments(
+        partitioned_problem.subcircuits,
+        partitioned_problem.subobservables,
+        num_samples=np.inf,
     )
-    uuid = uuid4()                                                              # Generate UUID
+    uuid = uuid4()
     return [
         Experiment(
             circuits,
-            coefficients,
+            coefficients,  # split up by order?
             2**12,  # TODO Calculate somehow
             partitioned_problem.subobservables[partition_label],
             partition_label,
@@ -49,9 +48,9 @@ def cut_circuit(
             uuid,
         )
         for partition_label, circuits in experiments.items()
-    ], uuid                                                                     # Return experiments and UUID
+    ], uuid
 
 
 def _generate_partition_labels(partitions: list[int]) -> str:
     # TODO find a smart way to communicate partition information
-    return "".join(str(i) * value for i, value in enumerate(partitions))        # Return partition labels
+    return "".join(str(i) * value for i, value in enumerate(partitions))

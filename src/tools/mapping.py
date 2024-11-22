@@ -5,16 +5,17 @@ from qiskit.transpiler.passes import SabreLayout, SabreSwap
 
 from src.common import IBMQBackend
 
+
 def map_circuit(
-    circuit: QuantumCircuit,
-    backend: IBMQBackend
-    ) -> tuple[QuantumCircuit, PassManager]:
-    """_summary_
-    
-    Arg:
-        circuit (QuantumCircuit): _description_
-        backend (IBMQBackend): _description_
-    Return:
+    circuit: QuantumCircuit, backend: IBMQBackend
+) -> tuple[QuantumCircuit, PassManager]:
+    """Maps a circuit to the layout of the given backend.
+
+    Args:
+        circuit (QuantumCircuit): The circuit to map
+        backend (IBMQBackend): The backend to map to
+
+    Returns:
         tuple[QuantumCircuit, PassManager]: _description_
     """
     target = backend.value().target
