@@ -32,7 +32,7 @@ def test_run_circuits() -> None:
     accelerator_belem = Accelerator(backend_belem)
     backend_quito = IBMQBackend.QUITO
     accelerator_quito = Accelerator(backend_quito)
-    scheduler = Scheduler([backend_belem], [backend_quito])
+    scheduler = Scheduler([accelerator_belem, accelerator_quito])
     circuits = [
         optimize_circuit_offline(circuit, backend_belem) for circuit in circuits
     ]

@@ -21,11 +21,11 @@ def reconstruct_experiments_from_circuits(jobs: list[CircuitJob]) -> list[Experi
     experiments = []
     for uuid in uuids:
         uuid_jobs = list(filter(partial(lambda j, u: j.uuid == u, u=uuid), jobs))
-        partitions = set(job.partition_lable for job in uuid_jobs)
+        partitions = set(job.partition_label for job in uuid_jobs)
         for partition in partitions:
             partition_jobs = sorted(
                 filter(
-                    partial(lambda j, p: j.partition_lable == p, p=partition), uuid_jobs
+                    partial(lambda j, p: j.partition_label == p, p=partition), uuid_jobs
                 ),
                 key=lambda x: x.index,
             )
@@ -69,7 +69,7 @@ def reconstruct_counts_from_job(job: CombinedJob) -> list[CircuitJob]:
                 instance=None,
                 n_shots=job.n_shots,
                 observable=observable,
-                partition_label=job.partition_lables[idx],
+                partition_label=job.partition_labels[idx],
                 result_counts=counts,
                 uuid=job.uuids[idx],
             )

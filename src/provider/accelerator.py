@@ -86,7 +86,7 @@ class Accelerator:
             dict[str, int]: Measurment counts.
         """
         # TODO check qubit size
-        # opt_circuit = optimize_circuit_online(circuit, self._backend)
+        circuit = optimize_circuit_online(circuit, self._backend)
         # TODO For some reason the above line blocks
         result = self.simulator.run(circuit, shots=n_shots).result()
         return result.get_counts(0)
