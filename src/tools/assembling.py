@@ -61,7 +61,7 @@ def assemble_job(circuit_jobs: list[CircuitJob]) -> CombinedJob:
         )
         qubit_count += job.instance.num_qubits
         observable = observable.expand(job.observable)
-        combined_job.partition_labels.append(job.partition_lable)
+        combined_job.partition_labels.append(job.partition_label)
         combined_job.uuids.append(job.uuid)
         combined_job.cregs.append(job.cregs)
     combined_job.instance = assemble_circuit(circuits)
