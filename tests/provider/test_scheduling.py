@@ -33,9 +33,12 @@ def test_run_circuits() -> None:
     backend_quito = IBMQBackend.QUITO
     accelerator_quito = Accelerator(backend_quito)
     scheduler = Scheduler([accelerator_belem, accelerator_quito])
+    
+    circuits = [create_quantum_only_ghz(7), create_ghz(3)]
+    
     circuits = [
         optimize_circuit_offline(circuit, backend_belem) for circuit in circuits
     ]
-    jobs = scheduler.run_circuit(circuits)
+    jobs = scheduler.run_circuits(circuits)
     for job in jobs:
         assert job.result_counts is not None

@@ -41,7 +41,7 @@ def test_reconstruct_counts_from_job() -> None:
         jobs += jobs_from_experiment(experiment)
         
     combined_job = assemble_job([jobs[2], jobs[10]])
-    combined_job.result_counts - accelerator.run_and_get_counts(combined_job.instance)
+    combined_job.result_counts = accelerator.run_and_get_counts(combined_job.instance)
     jobs = reconstruct_counts_from_job(combined_job)
     assert len(jobs[0].result_counts) == 8
     assert len(jobs[1].result_counts) == 16
