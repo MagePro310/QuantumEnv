@@ -40,5 +40,9 @@ def test_run_circuits() -> None:
         optimize_circuit_offline(circuit, backend_belem) for circuit in circuits
     ]
     jobs = scheduler.run_circuits(circuits)
+    print(f"Type of 'jobs': {type(jobs)}")
+
+    
     for job in jobs:
+        print(f"Type of 'job': {type(job)}")
         assert job.result_counts is not None

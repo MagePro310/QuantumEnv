@@ -77,11 +77,12 @@ class AcceleratorGroup:
         }   # Sort by qpu
         with Pool(processes=len(self._accelerators)) as pool:
             results = []
-            for job in zip_longest(*jobs_per_qpu.values()): # Run jobs in parallel
-                result = pool.apply_async(_run_job, [self._accelerators, job])
-                result.append(result)
-            results = [result.get() for result in results]
-        results = [result for result in results if result is not None]
+            for job in zip_longest(*jobs_per_qpu.values(), fillvalue=None): # Run jobs in parallel
+                result = pool.apply_async(_run_job, [self._accelerators, tuple(job)])
+                results.append(result)
+            print(f"1 len(results): {len(results)}")
+            results = [result.get() for result in results if result is not None]  
+            print(f"2 len(results): {len(results)}")
         return results
 
     def run_experiments(self, experiments: list[Experiment]) -> list[Experiment]:
@@ -138,7 +139,13 @@ def _run_job(
     Returns:
         CombinedJob | None: Returns the job with results inserted or None if no job was submited.
     """
-    pool_id = current_process()._identity[0] - 1  # TODO fix somehow
+    print(f"current_process()._identity: {current_process()._identity}")
+    pool_id = current_process()._identity[0] - 3  # TODO fix somehow
+    print(f"Pool ID: {pool_id}")
+    print(f"3 len(jobs): {len(jobs)}")
+    if pool_id >= len(jobs):
+        return None
+    
     job = jobs[pool_id]
     if job is None:
         return None
