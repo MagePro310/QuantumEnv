@@ -51,7 +51,7 @@ def optimize_circuit_online(
     Returns:
         QuantumCircuit: The optimized circuit.
     """
-    pass_manager = generate_preset_pass_manager(3, backend.value()) # 3 is optimization level (??? define to low level)
+    pass_manager = generate_preset_pass_manager(2, backend.value()) # 3 is optimization level (??? define to low level)
     pass_manager.init = None # No initial layout for now
     _, pass_manager.layout = map_circuit(circuit, backend) # Map the circuit to the backend
     

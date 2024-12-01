@@ -3,7 +3,7 @@ from qiskit import QuantumCircuit, transpile
 from qiskit_aer import AerSimulator
 
 from src.common import IBMQBackend
-from src.tools import optimize_circuit_online
+from src.tools import optimize_circuit_online, optimize_circuit_offline
 
 
 class Accelerator:

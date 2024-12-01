@@ -23,7 +23,8 @@ def test_tools() -> None:
     circuit = optimize_circuit_offline(circuit, backend_belem)
     experiments, uuid = cut_circuit(circuit, [3,4])
     experiments = accelerator.run_experiments(experiments)
-    
     exp_vals = reconstruct_expvals(list(filter(lambda x: x.uuid == uuid, experiments)))
     assert len(exp_vals) == 1
     assert exp_vals[0] == approx(0, abs=0.05)
+    
+test_tools()

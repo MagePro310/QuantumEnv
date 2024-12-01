@@ -97,12 +97,18 @@ class AcceleratorGroup:
         Returns:
            list[Experiment]: Experiment with results inserted.
         """
-        with Pool(processes=len(self._accelerators)) as pool:
-            results = []
-            for experiment in experiments:
-                result = pool.apply_async(_run_func, [self._accelerators, experiment])
-                results.append(result)
-            results = [result.get() for result in results]
+        
+        results = []
+        for experiment in experiments:
+            result = _run_func(self._accelerators, experiment)
+            results.append(result)
+        
+        # with Pool(processes=len(self._accelerators)) as pool:
+        #     results = []
+        #     for experiment in experiments:
+        #         result = pool.apply_async(_run_func, [self._accelerators, experiment])
+        #         results.append(result)
+        #     results = [result.get() for result in results]
         
         return results
 
@@ -117,14 +123,15 @@ def _run_func(accs: list[Accelerator], exp: Experiment) -> Experiment:
         Experiment: Experiment with results inserted.
 
     """
-    pool_id = current_process()._identity[0] - 1 # TODO fix somehow
-    try:
+    # pool_id = current_process()._identity[0] - 1 # TODO fix somehow
+    try:         
         exp.result_counts = [
-            accs[pool_id].run_and_get_counts(circuit) for circuit in exp.circuits
+            accs[0].run_and_get_counts(circuit) for circuit in exp.circuits
         ]
     except Exception as exc:
         # To make result.get() work deterministically
         print(exc)
+        
     return exp
 
 def _run_job(
@@ -152,7 +159,6 @@ def _run_job(
     job = job.job
     try:
         job.result_counts = accs[pool_id].run_and_get_counts(job.instance, job.n_shots)
-
     except Exception as exc:
         print(exc)
     return job
