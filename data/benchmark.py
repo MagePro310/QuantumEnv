@@ -2,6 +2,7 @@
 from collections import namedtuple
 from dataclasses import dataclass, field
 from typing import Collection
+import json
 
 from mqt.bench import get_benchmark
 from qiskit import QuantumCircuit
@@ -516,3 +517,8 @@ def _get_simple_setup_times(
     # ]
     # TODO
     return []
+
+if __name__=="__main__":
+    experiment_results = run_experiments(CIRCUITS_PER_BATCH, SETTINGS)
+    with open("benchmark_result.json", "w+", encoding="uft-8") as f:
+        json.dump(experiment_results, f)
