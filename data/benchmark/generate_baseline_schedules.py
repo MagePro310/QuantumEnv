@@ -4,7 +4,7 @@ from qiskit import QuantumCircuit
 from .types import Bin, JobResultInfo, Result
 
 
-def generate_baseline_schedules(
+def generate_baseline_schedule(
     jobs: list[QuantumCircuit],
     accelerators: dict[str, int],
     p_times: list[list[float]],

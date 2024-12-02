@@ -7,7 +7,7 @@ from mqt.bench import get_benchmark
 from qiskit import QuantumCircuit
 import numpy as np
 
-from .generate_baseline_schedules import generate_baseline_schedules
+from .generate_baseline_schedules import generate_baseline_schedule
 
 from .generate_milp_schedules import (
     generate_extended_schedule,
@@ -59,7 +59,7 @@ def run_experiments(
             s_times = _get_setup_times(benchmark, setting, default_value=2**5)
             result = {}
             t_0 = perf_counter()
-            makespan, jobs = generate_baseline_schedules(
+            makespan, jobs = generate_baseline_schedule(
                 benchmark, setting, p_times, s_times
             )
             t_1 = perf_counter()
