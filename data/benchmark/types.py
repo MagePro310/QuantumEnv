@@ -41,6 +41,7 @@ class JobResultInfo:
 
 @dataclass
 class Result:
-    """Helper to keep track of the result of the scheduling."""
+    """Benchmark result for one instance of setting+jobs."""
     makespan: float                                             # makespan of the schedule
     jobs: list[JobResultInfo]                                   # job results
+    time: float
