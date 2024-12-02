@@ -15,6 +15,13 @@ class Bin:
     jobs: list[QuantumCircuit] = field(default_factory=list)    # jobs in the bin
     qpu: int = -1                                               # qpu index
     
+    
+@dataclass
+class JobHelper:
+    """Helper to keep track of job names."""
+    
+    name: str
+    instance: QuantumCircuit
 
 @dataclass
 class LPInstance:
