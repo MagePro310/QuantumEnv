@@ -1,9 +1,10 @@
 """Generate baseline schedules."""
+from collections import defaultdict
+
 import pulp
 from qiskit import QuantumCircuit
 
 from .types import Bin, JobHelper, JobResultInfo
-from .generate_milp_schedules import calculate_makespan
 
 
 def generate_baseline_schedule(
@@ -15,12 +16,21 @@ def generate_baseline_schedule(
     """Generate baseline schedule."""
 
     def find_fitting_bin(job: JobHelper, bins: list[Bin]) -> int | None:
+        """Find a bin that fits the job.
+        
+        Args:
+            job: job to fit
+            bins: list of bins
+            
+        Returns:
+            index of the bin that fits the job
+        """
         for idx, b in enumerate(bins):
             if b.capacity >= job.instance.num_qubits:
                 return idx
         return None
 
-    new_jobs = [JobHelper(str(idx + 1), job) for idx, job in enumerate(jobs)]
+    new_jobs = [JobHelper(str(idx + 1), job) for idx, job in enumerate(jobs)]               
     open_bins = [
         Bin(index=0, capacity=qpu, qpu=idx)
         for idx, qpu in enumerate(accelerators.values())
@@ -68,12 +78,15 @@ def generate_baseline_schedule(
     for _bin in sorted(closed_bins, key=lambda x: x.index):
         # combined_jobs.append(ScheduledJob(job=assemble_job(_bin.jobs), qpu=_bin.qpu))
         for job in _bin.jobs:
+            if job is None or job.instance is None:
+                continue
             combined_jobs.append(
                 JobResultInfo(
                     name=job.name,
                     machine=list(accelerators.keys())[_bin.qpu],
                     start_time=_bin.index,
                     completion_time=-1.0,
+                    capacity=job.instance.num_qubits,
                 )
             )
 
@@ -89,6 +102,19 @@ def _calculate_result_from_baseline(
     base_jobs: list[QuantumCircuit],
     accelerators: dict[str, int],
 ) -> tuple[float, list[JobResultInfo]]:
+    """Calculate makespan and completion times from baseline schedule.
+    
+    Args:
+        jobs: list of jobs
+        process_times: processing times
+        setup_times: setup times
+        base_jobs: base jobs
+        accelerators: accelerators
+        
+    Returns:
+        makespan and completion times
+    """
+    
     lp_jobs = ["0"] + [str(idx + 1) for idx, _ in enumerate(base_jobs)]
     machines = list(accelerators.keys())
     p_times = pulp.makeDict(
@@ -102,4 +128,44 @@ def _calculate_result_from_baseline(
         0,
     )
 
-    return calculate_makespan(jobs, p_times, s_times), jobs
+    return _calculate_makespan(jobs, p_times, s_times), jobs
+
+def _calculate_makespan(
+    jobs: list[JobResultInfo],
+    p_times: defaultdict[str, defaultdict[str, float]],
+    s_times: defaultdict[str, defaultdict[str, defaultdict[str, float]]],
+) -> float:
+    """Calculate makespan from job results.
+    
+    Args:
+        jobs: list of jobs
+        p_times: processing times
+        s_times: setup times
+        
+    Returns:
+        makespan
+    """
+    assigned_machine: defaultdict[str, list[JobResultInfo]] = defaultdict(list)
+    for job in jobs:
+        assigned_machine[job.machine].append(job)
+    makespans = []
+    for machine, assigned_jobs in assigned_machine.items():
+        for job in sorted(assigned_jobs, key=lambda x: x.start_time):
+            # Find the last predecessor that is completed before the job starts
+            # this can technically change the correct predecessor to a wrong one
+            # because completion times are updated in the loop
+            # I'm not sure if copying before the loop corrects this
+            last_completed = max((job for job in assigned_jobs), key=lambda x: x.completion_time)
+            if job.start_time == 0.0:
+                last_completed = JobResultInfo("0", machine, 0.0, 0.0)
+            job.start_time = last_completed.completion_time
+            # calculate p_j + s_ij
+            completion_time = ( # check if this order is correct
+                last_completed.completion_time
+                + p_times[job.name][machine]
+                + s_times[last_completed.name][job.name][machine]
+            )     
+            job.completion_time = completion_time
+        makespans.append(max((job.completion_time for job in assigned_jobs)))
+        
+    return max(makespans)

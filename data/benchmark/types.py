@@ -21,7 +21,7 @@ class JobHelper:
     """Helper to keep track of job names."""
     
     name: str
-    instance: QuantumCircuit
+    instance: QuantumCircuit | None
 
 @dataclass
 class LPInstance:
@@ -34,7 +34,7 @@ class LPInstance:
     z_ikt: dict[str, dict[str, dict[int, pulp.LpVariable]]]     # variables z_ikt: whether job i is assigned to machine k at time t
     c_j: dict[str, pulp.LpVariable]                             # variables c_j: completion time of job j: c_j = s_j + p_j
     s_j: dict[str, pulp.LpVariable]                             # variables s_j: start time of job j: s_j = c_j - p_j
-    
+    instances: list[JobHelper]                                  # job instances 
 
 @dataclass
 class JobResultInfo:
@@ -44,7 +44,7 @@ class JobResultInfo:
     machine: str = ""                                           # machine assigned to the job
     start_time: float = -1.0                                    # start time of the job
     completion_time: float = -1.0                               # completion time of the job
-    
+    capacity: int = 0                                           # capacity of the machine
 
 @dataclass
 class Result:

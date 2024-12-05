@@ -1,11 +1,12 @@
 """Helpers to generate MILP based schedules."""
 from collections import defaultdict
+from copy import deepcopy
 
 import numpy as np
 import pulp
 from qiskit import QuantumCircuit
 
-from .types import JobResultInfo, LPInstance
+from .types import JobResultInfo, LPInstance, JobHelper
 
 
 def set_up_base_lp(
@@ -16,31 +17,31 @@ def set_up_base_lp(
 ) -> LPInstance:
     """Sets up the common LP problem."""
     # Set up input params
-    jobs = ["0"] + [str(idx + 1) for idx, _ in enumerate(base_jobs)]
-    job_capacities = {str(idx + 1): job.num_qubits for idx, job in enumerate(base_jobs)}
-    job_capacities["0"] = 0
-    machines = list(accelerators.keys())
-    machine_capacities = accelerators
+    jobs = ["0"] + [str(idx + 1) for idx, _ in enumerate(base_jobs)]                        # job names: 0, 1, 2, ...
+    job_capacities = {str(idx + 1): job.num_qubits for idx, job in enumerate(base_jobs)}    # job capacities: 1, 2, 3, ...
+    job_capacities["0"] = 0                                                                 # job 0 has no capacity
+    machines = list(accelerators.keys())                                                    # machine names
+    machine_capacities = accelerators                                                       # machine capacities
 
     # set up problem variables
-    x_ik = pulp.LpVariable.dicts("x_ik", (jobs, machines), cat="Binary")
-    z_ikt = pulp.LpVariable.dicts("z_ikt", (jobs, machines, timesteps), cat="Binary")
+    x_ik = pulp.LpVariable.dicts("x_ik", (jobs, machines), cat="Binary")                    # x_ik: whether job i is assigned to machine k
+    z_ikt = pulp.LpVariable.dicts("z_ikt", (jobs, machines, timesteps), cat="Binary")       # z_ikt: whether job i is assigned to machine k at time t    
 
-    c_j = pulp.LpVariable.dicts("c_j", (jobs), 0, cat="Continuous")
-    s_j = pulp.LpVariable.dicts("s_j", (jobs), 0, cat="Continuous")
-    c_max = pulp.LpVariable("makespan", 0, cat="Continuous")
+    c_j = pulp.LpVariable.dicts("c_j", (jobs), 0, cat="Continuous")                         # c_j: completion time of job j: c_j = s_j + p_j
+    s_j = pulp.LpVariable.dicts("s_j", (jobs), 0, cat="Continuous")                         # s_j: start time of job j: s_j = c_j - p_j
+    c_max = pulp.LpVariable("makespan", 0, cat="Continuous")                                # makespan of the schedule 
 
-    problem = pulp.LpProblem("Scheduling", pulp.LpMinimize)
+    problem = pulp.LpProblem("Scheduling", pulp.LpMinimize)                                 # LP problem: LP is a linear programming problem
     # set up problem constraints
-    problem += pulp.lpSum(c_max)  # (obj)
-    problem += c_j["0"] == 0  # (8)
+    problem += pulp.lpSum(c_max)  # (obj)                                                   # (objective) minimize the makespan
+    problem += c_j["0"] == 0  # (8)                                                         # (8) job 0 starts at time 0
     for job in jobs[1:]:
-        problem += c_j[job] <= c_max  # (1)
-        problem += pulp.lpSum(x_ik[job][machine] for machine in machines) == 1  # (3)
-        problem += c_j[job] - s_j[job] + 1 == pulp.lpSum(  # (11)
-            z_ikt[job][machine][timestep]
+        problem += c_j[job] <= c_max  # (1)                                                 # (1) completion time of job j is less than the makespan
+        problem += pulp.lpSum(x_ik[job][machine] for machine in machines) == 1  # (3)       # (3) each job is assigned to exactly one machine
+        problem += c_j[job] - s_j[job] + 1 == pulp.lpSum(  # (11)                           # (11) completion time of job j is equal to start time + process time
+            z_ikt[job][machine][timestep]                                                   
             for timestep in timesteps
-            for machine in machines
+            for machine in machines                                                         
         )
         for machine in machines:
             problem += (  # (12)
@@ -76,6 +77,7 @@ def set_up_base_lp(
         z_ikt=z_ikt,
         c_j=c_j,
         s_j=s_j,
+        instances=[JobHelper("0", None)] + [JobHelper(str(idx + 1), job) for idx, job in enumerate(base_jobs)]
     )
 
 
@@ -85,23 +87,32 @@ def generate_simple_schedule(
     setup_times: list[list[list[float]]],
     big_m: int = 1000,
 ) -> tuple[float, list[JobResultInfo]]:
-    """Generates the simple schedule."""
+    """Generates the simple schedule, which is a simplified version of the MILP.
+    
+    Args:
+        lp_instance: LPInstance: LP instance
+        process_times: list[list[float]]: processing times
+        setup_times: list[list[list[float]]]: setup times
+        big_m: int: big M value
+        
+    Returns:
+        tuple[float, list[JobResultInfo]]: makespan and job results"""
     p_times = pulp.makeDict(
         [lp_instance.jobs[1:], lp_instance.machines],
         process_times,
         0,
-    )
+    )                                                           # processing times
     s_times = pulp.makeDict(
         [lp_instance.jobs[1:], lp_instance.machines],
         _get_simple_setup_times(setup_times),
         0,
-    )
+    )                                                           # setup times
 
     y_ijk = pulp.LpVariable.dicts(
         "y_ijk",
         (lp_instance.jobs, lp_instance.jobs, lp_instance.machines),
         cat="Binary",
-    )
+    )                                                           # y_ijk: whether job i is assigned to machine k at time t
 
     for job in lp_instance.jobs[1:]:
         lp_instance.problem += (  # (4)
@@ -160,7 +171,16 @@ def generate_extended_schedule(
     setup_times: list[list[list[float]]],
     big_m: int = 1000,
 ) -> tuple[float, list[JobResultInfo]]:
-    """Generates the extended schedule."""
+    """Generates the extended schedule.
+    
+    Args:
+        lp_instance: LPInstance: LP instance
+        process_times: list[list[float]]: processing times
+        setup_times: list[list[list[float]]]: setup times
+        big_m: int: big M value
+        
+    Returns:
+        tuple[float, list[JobResultInfo]]: makespan and job results"""
     p_times = pulp.makeDict(
         [lp_instance.jobs[1:], lp_instance.machines],
         process_times,
@@ -288,7 +308,8 @@ def generate_extended_schedule(
                     + d_ijk[job][job_j][machine]
                     - 2
                 )
-    return _solve_lp(lp_instance)
+    _, jobs = _solve_lp(lp_instance)
+    return calculate_makespan(jobs, p_times, s_times), jobs
 
 
 def _solve_lp(lp_instance: LPInstance) -> tuple[float, list[JobResultInfo]]:
@@ -303,7 +324,12 @@ def _solve_lp(lp_instance: LPInstance) -> tuple[float, list[JobResultInfo]]:
 
 
 def _generate_results(lp_instance: LPInstance) -> tuple[float, list[JobResultInfo]]:
-    assigned_jobs = {job: JobResultInfo(name=job) for job in lp_instance.jobs}
+    assigned_jobs = {
+        job.name: JobResultInfo(name=job.name, capacity=job.instance.num_qubits)
+        if job.instance is not None
+        else JobResultInfo(name=job.name)
+        for job in lp_instance.instances
+    }
     for var in lp_instance.problem.variables():
         if var.name.startswith("x_") and var.varValue > 0.0:
             name = var.name.split("_")[2:]
@@ -329,18 +355,24 @@ def calculate_makespan(
         assigned_machines[job.machine].append(job)
     makespans = []
     for machine, assigned_jobs in assigned_machines.items():
+        assigned_jobs_copy = deepcopy(assigned_jobs)
         for job in sorted(assigned_jobs, key=lambda x: x.start_time):
             # Find the last predecessor that is completed before the job starts
             # this can technically change the correct predecessor to a wrong one
             # because completion times are updated in the loop
             # I'm not sure if copying before the loop corrects this
+            
             last_completed = next(
                 iter(
                     sorted(
                         (
                             j
-                            for j in assigned_jobs
-                            if j.completion_time <= job.start_time
+                            for j in assigned_jobs_copy if j.completion_time <= next(
+                                (
+                                    i.start_time for i in assigned_jobs_copy if job.name == i.name
+                                ),
+                                0,
+                            )
                         ),
                         key=lambda x: x.completion_time,
                         reverse=True,
@@ -348,11 +380,22 @@ def calculate_makespan(
                 ),
                 JobResultInfo("0", machine, 0.0, 0.0),
             )
+            # if job is the first job on the machine set start time to 0 and last completed to job 0
+            if job.start_time == 0.0:
+                last_completed = JobResultInfo("0", machine, 0.0, 0.0)
+            job.start_time = next(
+                (
+                    i.completion_time
+                    for i in assigned_jobs
+                    if last_completed.name == i.name
+                ),
+                0.0,
+            )                                               
             # calculate p_j + s_ij
             completion_time = (  # check if this order is correct
                 job.start_time
                 + p_times[job.name][machine]
-                + s_times[job.name][last_completed.name][machine]
+                + s_times[last_completed.name][job.name][machine]
             )
             job.completion_time = completion_time
         makespans.append(max(job.completion_time for job in assigned_jobs))
