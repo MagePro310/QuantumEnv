@@ -8,3 +8,4 @@ from .generate_milp_schedules import (
 )
 
 from .benchmark import run_experiments
+from .processing import process_benchmarks
