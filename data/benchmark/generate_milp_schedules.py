@@ -6,7 +6,7 @@ import numpy as np
 import pulp
 from qiskit import QuantumCircuit
 
-from .types import JobResultInfo, LPInstance, JobHelper
+from .types import JobHelper, JobResultInfo, LPInstance
 
 
 def set_up_base_lp(
@@ -17,31 +17,31 @@ def set_up_base_lp(
 ) -> LPInstance:
     """Sets up the common LP problem."""
     # Set up input params
-    jobs = ["0"] + [str(idx + 1) for idx, _ in enumerate(base_jobs)]                        # job names: 0, 1, 2, ...
-    job_capacities = {str(idx + 1): job.num_qubits for idx, job in enumerate(base_jobs)}    # job capacities: 1, 2, 3, ...
-    job_capacities["0"] = 0                                                                 # job 0 has no capacity
-    machines = list(accelerators.keys())                                                    # machine names
-    machine_capacities = accelerators                                                       # machine capacities
+    jobs = ["0"] + [str(idx + 1) for idx, _ in enumerate(base_jobs)]
+    job_capacities = {str(idx + 1): job.num_qubits for idx, job in enumerate(base_jobs)}
+    job_capacities["0"] = 0
+    machines = list(accelerators.keys())
+    machine_capacities = accelerators
 
     # set up problem variables
-    x_ik = pulp.LpVariable.dicts("x_ik", (jobs, machines), cat="Binary")                    # x_ik: whether job i is assigned to machine k
-    z_ikt = pulp.LpVariable.dicts("z_ikt", (jobs, machines, timesteps), cat="Binary")       # z_ikt: whether job i is assigned to machine k at time t    
+    x_ik = pulp.LpVariable.dicts("x_ik", (jobs, machines), cat="Binary")
+    z_ikt = pulp.LpVariable.dicts("z_ikt", (jobs, machines, timesteps), cat="Binary")
 
-    c_j = pulp.LpVariable.dicts("c_j", (jobs), 0, cat="Continuous")                         # c_j: completion time of job j: c_j = s_j + p_j
-    s_j = pulp.LpVariable.dicts("s_j", (jobs), 0, cat="Continuous")                         # s_j: start time of job j: s_j = c_j - p_j
-    c_max = pulp.LpVariable("makespan", 0, cat="Continuous")                                # makespan of the schedule 
+    c_j = pulp.LpVariable.dicts("c_j", (jobs), 0, cat="Continuous")
+    s_j = pulp.LpVariable.dicts("s_j", (jobs), 0, cat="Continuous")
+    c_max = pulp.LpVariable("makespan", 0, cat="Continuous")
 
-    problem = pulp.LpProblem("Scheduling", pulp.LpMinimize)                                 # LP problem: LP is a linear programming problem
+    problem = pulp.LpProblem("Scheduling", pulp.LpMinimize)
     # set up problem constraints
-    problem += pulp.lpSum(c_max)  # (obj)                                                   # (objective) minimize the makespan
-    problem += c_j["0"] == 0  # (8)                                                         # (8) job 0 starts at time 0
+    problem += pulp.lpSum(c_max)  # (obj)
+    problem += c_j["0"] == 0  # (8)
     for job in jobs[1:]:
-        problem += c_j[job] <= c_max  # (1)                                                 # (1) completion time of job j is less than the makespan
-        problem += pulp.lpSum(x_ik[job][machine] for machine in machines) == 1  # (3)       # (3) each job is assigned to exactly one machine
-        problem += c_j[job] - s_j[job] + 1 == pulp.lpSum(  # (11)                           # (11) completion time of job j is equal to start time + process time
-            z_ikt[job][machine][timestep]                                                   
+        problem += c_j[job] <= c_max  # (1)
+        problem += pulp.lpSum(x_ik[job][machine] for machine in machines) == 1  # (3)
+        problem += c_j[job] - s_j[job] + 1 == pulp.lpSum(  # (11)
+            z_ikt[job][machine][timestep]
             for timestep in timesteps
-            for machine in machines                                                         
+            for machine in machines
         )
         for machine in machines:
             problem += (  # (12)
@@ -77,7 +77,8 @@ def set_up_base_lp(
         z_ikt=z_ikt,
         c_j=c_j,
         s_j=s_j,
-        instances=[JobHelper("0", None)] + [JobHelper(str(idx + 1), job) for idx, job in enumerate(base_jobs)]
+        instances=[JobHelper("0", None)]
+        + [JobHelper(str(idx + 1), job) for idx, job in enumerate(base_jobs)],
     )
 
 
@@ -85,44 +86,20 @@ def generate_simple_schedule(
     lp_instance: LPInstance,
     process_times: list[list[float]],
     setup_times: list[list[list[float]]],
-    big_m: int = 1000,
 ) -> tuple[float, list[JobResultInfo]]:
-    """Generates the simple schedule, which is a simplified version of the MILP.
-    
-    Args:
-        lp_instance: LPInstance: LP instance
-        process_times: list[list[float]]: processing times
-        setup_times: list[list[list[float]]]: setup times
-        big_m: int: big M value
-        
-    Returns:
-        tuple[float, list[JobResultInfo]]: makespan and job results"""
+    """Generates the simple schedule."""
     p_times = pulp.makeDict(
         [lp_instance.jobs[1:], lp_instance.machines],
         process_times,
         0,
-    )                                                           # processing times
+    )
     s_times = pulp.makeDict(
         [lp_instance.jobs[1:], lp_instance.machines],
         _get_simple_setup_times(setup_times),
         0,
-    )                                                           # setup times
-
-    y_ijk = pulp.LpVariable.dicts(
-        "y_ijk",
-        (lp_instance.jobs, lp_instance.jobs, lp_instance.machines),
-        cat="Binary",
-    )                                                           # y_ijk: whether job i is assigned to machine k at time t
+    )
 
     for job in lp_instance.jobs[1:]:
-        lp_instance.problem += (  # (4)
-            pulp.lpSum(
-                y_ijk[job_j][job][machine]
-                for machine in lp_instance.machines
-                for job_j in lp_instance.jobs
-            )
-            >= 1  # each job has a predecessor
-        )
         lp_instance.problem += lp_instance.c_j[job] >= lp_instance.s_j[  # (7)
             job
         ] + pulp.lpSum(
@@ -130,32 +107,6 @@ def generate_simple_schedule(
             * (p_times[job][machine] + s_times[job][machine])
             for machine in lp_instance.machines
         )
-        for machine in lp_instance.machines:
-            lp_instance.problem += (  # predecessor (6)
-                lp_instance.x_ik[job][machine]
-                >= pulp.lpSum(y_ijk[job_j][job][machine] for job_j in lp_instance.jobs)
-                / big_m
-            )
-            lp_instance.problem += (  # successor
-                lp_instance.x_ik[job][machine]
-                >= pulp.lpSum(y_ijk[job][job_j][machine] for job_j in lp_instance.jobs)
-                / big_m
-            )
-            lp_instance.problem += (  # (5)
-                lp_instance.z_ikt[job][machine][0] == y_ijk["0"][job][machine]
-            )
-        for job_j in lp_instance.jobs:
-            lp_instance.problem += (
-                lp_instance.c_j[job_j]
-                + (
-                    pulp.lpSum(
-                        y_ijk[job_j][job][machine] for machine in lp_instance.machines
-                    )
-                    - 1
-                )
-                * big_m
-                <= lp_instance.s_j[job]
-            )
     _, jobs = _solve_lp(lp_instance)
     s_times = pulp.makeDict(
         [lp_instance.jobs, lp_instance.jobs, lp_instance.machines],
@@ -171,16 +122,7 @@ def generate_extended_schedule(
     setup_times: list[list[list[float]]],
     big_m: int = 1000,
 ) -> tuple[float, list[JobResultInfo]]:
-    """Generates the extended schedule.
-    
-    Args:
-        lp_instance: LPInstance: LP instance
-        process_times: list[list[float]]: processing times
-        setup_times: list[list[list[float]]]: setup times
-        big_m: int: big M value
-        
-    Returns:
-        tuple[float, list[JobResultInfo]]: makespan and job results"""
+    """Generates the extended schedule."""
     p_times = pulp.makeDict(
         [lp_instance.jobs[1:], lp_instance.machines],
         process_times,
@@ -361,15 +303,19 @@ def calculate_makespan(
             # this can technically change the correct predecessor to a wrong one
             # because completion times are updated in the loop
             # I'm not sure if copying before the loop corrects this
-            
+
             last_completed = next(
                 iter(
                     sorted(
                         (
                             j
-                            for j in assigned_jobs_copy if j.completion_time <= next(
+                            for j in assigned_jobs_copy
+                            if j.completion_time
+                            <= next(
                                 (
-                                    i.start_time for i in assigned_jobs_copy if job.name == i.name
+                                    i.start_time
+                                    for i in assigned_jobs_copy
+                                    if job.name == i.name
                                 ),
                                 0,
                             )
@@ -380,17 +326,16 @@ def calculate_makespan(
                 ),
                 JobResultInfo("0", machine, 0.0, 0.0),
             )
-            # if job is the first job on the machine set start time to 0 and last completed to job 0
             if job.start_time == 0.0:
                 last_completed = JobResultInfo("0", machine, 0.0, 0.0)
             job.start_time = next(
                 (
-                    i.completion_time
-                    for i in assigned_jobs
-                    if last_completed.name == i.name
+                    j.completion_time
+                    for j in assigned_jobs
+                    if last_completed.name == j.name
                 ),
                 0.0,
-            )                                               
+            )
             # calculate p_j + s_ij
             completion_time = (  # check if this order is correct
                 job.start_time
@@ -409,7 +354,8 @@ def _get_simple_setup_times(
     new_times = [
         list(
             np.max(
-                times[[t not in [0, idx] for t, _ in enumerate(times)]].transpose(), axis=1,
+                times[[t not in [0, idx] for t, _ in enumerate(times)]].transpose(),
+                axis=1,
             )
         )
         for idx, times in enumerate(np.array(setup_times))
