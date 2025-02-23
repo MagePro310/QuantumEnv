@@ -5,7 +5,7 @@ from functools import partial
 from circuit_knitting.cutting import reconstruct_expectation_values
 from qiskit.primitives.sampler import SamplerResult
 
-from src.common import Experiment, CircuitJob, CombinedJob
+from src.common import CircuitJob, CombinedJob, Experiment
 
 
 def reconstruct_experiments_from_circuits(jobs: list[CircuitJob]) -> list[Experiment]:
@@ -43,6 +43,7 @@ def reconstruct_experiments_from_circuits(jobs: list[CircuitJob]) -> list[Experi
             )
     return experiments
 
+
 def reconstruct_counts_from_job(job: CombinedJob) -> list[CircuitJob]:
     """_summary_
 
@@ -58,18 +59,20 @@ def reconstruct_counts_from_job(job: CombinedJob) -> list[CircuitJob]:
         # Get the observable to be measured for this circuit.
         mapping = job.mapping[idx]
         observable = job.observable[0][mapping]
+
         # Get the counts for the results of this circuit.
         counts = _get_partial_counts(job.result_counts, offset, job.cregs[idx])
+
         # Create a new CircuitJob for this circuit.
         circuit_jobs.append(
             CircuitJob(
                 coefficient=job.coefficients[idx],
                 cregs=job.cregs[idx],
                 index=job.indices[idx],
-                instance=None,
+                circuit=None,
                 n_shots=job.n_shots,
                 observable=observable,
-                partition_label=job.partition_labels[idx],
+                partition_label=job.partition_lables[idx],
                 result_counts=counts,
                 uuid=job.uuids[idx],
             )
@@ -77,8 +80,7 @@ def reconstruct_counts_from_job(job: CombinedJob) -> list[CircuitJob]:
         offset += job.cregs[idx]
     return circuit_jobs
 
-        
-        
+
 def _get_partial_counts(
     counts: dict[str, int], offset: int, cregs: int
 ) -> dict[str, int]:
@@ -106,9 +108,6 @@ def reconstruct_expvals(experiments: list[Experiment]) -> list[float]:
     results = {}
     for experiment in experiments:
         quasi_distributions = []
-        if not experiment.result_counts:
-            raise ValueError("Experiment has no result counts.")
-        
         for counts in experiment.result_counts:
             quasi_distribution = {}
             metadata = []

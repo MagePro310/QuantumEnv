@@ -1,4 +1,3 @@
 """Module for runtime components."""
-from .accelerator import *
-from .accelerator_group import *
-from .scheduler import *
+from .accelerator import Accelerator, IBMQBackend
+from .accelerator_group import AcceleratorGroup

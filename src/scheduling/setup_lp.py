@@ -1,29 +1,131 @@
-"""Helpers to generate MILP based schedules."""
-from collections import defaultdict
-from copy import deepcopy
-
+"""Module for setting up the base LP instance."""
+from qiskit import QuantumCircuit
 import numpy as np
 import pulp
-from qiskit import QuantumCircuit
 
-from .types import JobHelper, JobResultInfo, LPInstance
+from src.common import CircuitJob
+from src.provider import Accelerator
+from .types import LPInstance, JobHelper, PTimes, STimes
 
 
 def set_up_base_lp(
+    base_jobs: list[CircuitJob] | list[QuantumCircuit],
+    accelerators: list[Accelerator] | dict[str, int],
+    big_m: int,
+    timesteps: int,
+) -> LPInstance:
+    """Wrapper to set up the base LP instance through one function.
+
+    Generates a base LP instance with the given jobs and accelerators.
+    It contains all the default constraints and variables.
+    Does not contain the constraints regarding the successor relationship.
+
+    Args:
+        base_jobs (list[CircuitJob] | list[QuantumCircuit]): The list of quantum cirucits (jobs).
+        accelerators (list[Accelerator] | dict[str, int]):
+            The list of available accelerators (machines).
+        big_m (int): Metavariable for the LP.
+        timesteps (int): Meta variable for the LP, big enough to cover largest makespan.
+
+    Returns:
+        LPInstance: The LP instance object.
+
+    Raises:
+        NotImplementedError: If the input types are not supported.
+    """
+    if isinstance(accelerators, list):
+        return _set_up_base_lp_exec(base_jobs, accelerators, big_m, timesteps)
+    if isinstance(accelerators, dict):
+        return _set_up_base_lp_info(base_jobs, accelerators, big_m, timesteps)
+
+    raise NotImplementedError
+
+
+def _set_up_base_lp_exec(
+    base_jobs: list[CircuitJob],
+    accelerators: list[Accelerator],
+    big_m: int,
+    timesteps: int,
+) -> LPInstance:
+    """Sets up the base LP instance for use in the provider.
+
+    Generates a base LP instance with the given jobs and accelerators.
+    It contains all the default constraints and variables.
+    Does not contain the constraints regarding the successor relationship.
+
+    Args:
+        base_jobs (list[CircuitJob]): The list of quantum cirucits (jobs).
+        accelerators (list[Accelerator]): The list of available accelerators (machines).
+        big_m (int): Metavariable for the LP.
+        timesteps (int): Meta variable for the LP, big enough to cover largest makespan.
+
+    Returns:
+        LPInstance: The LP instance object.
+    """
+    # Set up input params
+    job_capacities = {
+        str(job.uuid): job.circuit.num_qubits
+        for job in base_jobs
+        if job.circuit is not None
+    }
+    job_capacities = {"0": 0} | job_capacities
+    machine_capacities = {str(qpu.uuid): qpu.qubits for qpu in accelerators}
+
+    lp_instance = _define_lp(
+        job_capacities, machine_capacities, list(range(timesteps)), big_m
+    )
+    lp_instance.named_circuits = [JobHelper("0", None)] + [
+        JobHelper(str(job.uuid), job.circuit)
+        for job in base_jobs
+        if job.circuit is not None
+    ]
+    return lp_instance
+
+
+def _set_up_base_lp_info(
     base_jobs: list[QuantumCircuit],
     accelerators: dict[str, int],
     big_m: int,
-    timesteps: list[int],
+    timesteps: int,
 ) -> LPInstance:
-    """Sets up the common LP problem."""
+    """Sets up the base LP instance for use outside of provider.
+
+    Generates a base LP instance with the given jobs and accelerators.
+    It contains all the default constraints and variables.
+    Does not contain the constraints regarding the successor relationship.
+
+    Args:
+        base_jobs (list[QuantumCircuit]): The list of quantum cirucits (jobs).
+        accelerators (dict[str, int]): The list of available accelerators (machines).
+        big_m (int): Metavariable for the LP.
+        timesteps (int): Meta variable for the LP, big enough to cover largest makespan.
+
+    Returns:
+        LPInstance: The LP instance object.
+    """
     # Set up input params
-    jobs = ["0"] + [str(idx + 1) for idx, _ in enumerate(base_jobs)]
     job_capacities = {str(idx + 1): job.num_qubits for idx, job in enumerate(base_jobs)}
-    job_capacities["0"] = 0
-    machines = list(accelerators.keys())
+    job_capacities = {"0": 0} | job_capacities
+
     machine_capacities = accelerators
 
-    # set up problem variables
+    lp_instance = _define_lp(
+        job_capacities, machine_capacities, list(range(timesteps)), big_m
+    )
+    lp_instance.named_circuits = [JobHelper("0", None)] + [
+        JobHelper(str(idx + 1), job) for idx, job in enumerate(base_jobs)
+    ]
+    return lp_instance
+
+
+def _define_lp(
+    job_capacities: dict[str, int],
+    machine_capacities: dict[str, int],
+    timesteps: list[int],
+    big_m: int,
+) -> LPInstance:
+    jobs = list(job_capacities.keys())
+    machines = list(machine_capacities.keys())
     x_ik = pulp.LpVariable.dicts("x_ik", (jobs, machines), cat="Binary")
     z_ikt = pulp.LpVariable.dicts("z_ikt", (jobs, machines, timesteps), cat="Binary")
 
@@ -77,17 +179,27 @@ def set_up_base_lp(
         z_ikt=z_ikt,
         c_j=c_j,
         s_j=s_j,
-        instances=[JobHelper("0", None)]
-        + [JobHelper(str(idx + 1), job) for idx, job in enumerate(base_jobs)],
+        named_circuits=[],
     )
 
 
-def generate_simple_schedule(
+def set_up_simple_lp(
     lp_instance: LPInstance,
-    process_times: list[list[float]],
-    setup_times: list[list[list[float]]],
-) -> tuple[float, list[JobResultInfo]]:
-    """Generates the simple schedule."""
+    process_times: PTimes,
+    setup_times: STimes,
+) -> LPInstance:
+    """Sets up the LP for the simple scheduling problem.
+
+    Setup times are overestimated, and not depending on the sequence.
+
+    Args:
+        lp_instance (LPInstance): The base LP.
+        process_times (PTimes): Original process times.
+        setup_times (STimes): Original setup times.
+
+    Returns:
+        LPInstance: The updated LP instance.
+    """
     p_times = pulp.makeDict(
         [lp_instance.jobs[1:], lp_instance.machines],
         process_times,
@@ -107,22 +219,48 @@ def generate_simple_schedule(
             * (p_times[job][machine] + s_times[job][machine])
             for machine in lp_instance.machines
         )
-    _, jobs = _solve_lp(lp_instance)
-    s_times = pulp.makeDict(
-        [lp_instance.jobs, lp_instance.jobs, lp_instance.machines],
-        setup_times,
-        0,
-    )
-    return calculate_makespan(jobs, p_times, s_times), jobs
+    return lp_instance
 
 
-def generate_extended_schedule(
+def _get_simple_setup_times(
+    setup_times: STimes,
+) -> list[list[float]]:
+    """Overestimates the actual setup times for the simple LP."""
+    new_times = [
+        list(
+            np.max(
+                times[[t not in [0, idx] for t, _ in enumerate(times)]].transpose(),
+                axis=1,
+            )
+        )
+        for idx, times in enumerate(np.array(setup_times))
+    ]
+    # remove job 0
+    del new_times[0]
+    for times in new_times:
+        del times[0]
+    return new_times
+
+
+def set_up_extended_lp(
     lp_instance: LPInstance,
-    process_times: list[list[float]],
-    setup_times: list[list[list[float]]],
+    process_times: PTimes,
+    setup_times: STimes,
     big_m: int = 1000,
-) -> tuple[float, list[JobResultInfo]]:
-    """Generates the extended schedule."""
+) -> LPInstance:
+    """Sets up the LP for the extended scheduling problem.
+
+    This uses the complex successor relationship.
+
+    Args:
+        lp_instance (LPInstance): The base LP.
+        process_times (PTimes): Original process times.
+        setup_times (STimes): Original setup times.
+        big_m (int, optional): Metavariable for the LP. Defaults to 1000.
+
+    Returns:
+        LPInstance: The updated LP instance.
+    """
     p_times = pulp.makeDict(
         [lp_instance.jobs[1:], lp_instance.machines],
         process_times,
@@ -250,118 +388,4 @@ def generate_extended_schedule(
                     + d_ijk[job][job_j][machine]
                     - 2
                 )
-    _, jobs = _solve_lp(lp_instance)
-    return calculate_makespan(jobs, p_times, s_times), jobs
-
-
-def _solve_lp(lp_instance: LPInstance) -> tuple[float, list[JobResultInfo]]:
-    solver_list = pulp.listSolvers(onlyAvailable=True)
-    gurobi = "GUROBI_CMD"
-    if gurobi in solver_list:
-        solver = pulp.getSolver(gurobi)
-        lp_instance.problem.solve(solver)
-    else:
-        lp_instance.problem.solve()
-    return _generate_results(lp_instance)
-
-
-def _generate_results(lp_instance: LPInstance) -> tuple[float, list[JobResultInfo]]:
-    assigned_jobs = {
-        job.name: JobResultInfo(name=job.name, capacity=job.instance.num_qubits)
-        if job.instance is not None
-        else JobResultInfo(name=job.name)
-        for job in lp_instance.instances
-    }
-    for var in lp_instance.problem.variables():
-        if var.name.startswith("x_") and var.varValue > 0.0:
-            name = var.name.split("_")[2:]
-            assigned_jobs[name[0]].machine = name[1]
-        elif var.name.startswith("s_"):
-            name = var.name.split("_")[2]
-            assigned_jobs[name].start_time = float(var.varValue)
-        elif var.name.startswith("c_"):
-            name = var.name.split("_")[2]
-            assigned_jobs[name[0]].completion_time = float(var.varValue)
-    del assigned_jobs["0"]
-    return lp_instance.problem.objective.value(), list(assigned_jobs.values())
-
-
-def calculate_makespan(
-    jobs: list[JobResultInfo],
-    p_times: defaultdict[str, defaultdict[str, float]],
-    s_times: defaultdict[str, defaultdict[str, defaultdict[str, float]]],
-) -> float:
-    """Calculates the actual makespan from the list of jobs."""
-    assigned_machines: defaultdict[str, list[JobResultInfo]] = defaultdict(list)
-    for job in jobs:
-        assigned_machines[job.machine].append(job)
-    makespans = []
-    for machine, assigned_jobs in assigned_machines.items():
-        assigned_jobs_copy = deepcopy(assigned_jobs)
-        for job in sorted(assigned_jobs, key=lambda x: x.start_time):
-            # Find the last predecessor that is completed before the job starts
-            # this can technically change the correct predecessor to a wrong one
-            # because completion times are updated in the loop
-            # I'm not sure if copying before the loop corrects this
-
-            last_completed = next(
-                iter(
-                    sorted(
-                        (
-                            j
-                            for j in assigned_jobs_copy
-                            if j.completion_time
-                            <= next(
-                                (
-                                    i.start_time
-                                    for i in assigned_jobs_copy
-                                    if job.name == i.name
-                                ),
-                                0,
-                            )
-                        ),
-                        key=lambda x: x.completion_time,
-                        reverse=True,
-                    )
-                ),
-                JobResultInfo("0", machine, 0.0, 0.0),
-            )
-            if job.start_time == 0.0:
-                last_completed = JobResultInfo("0", machine, 0.0, 0.0)
-            job.start_time = next(
-                (
-                    j.completion_time
-                    for j in assigned_jobs
-                    if last_completed.name == j.name
-                ),
-                0.0,
-            )
-            # calculate p_j + s_ij
-            completion_time = (  # check if this order is correct
-                job.start_time
-                + p_times[job.name][machine]
-                + s_times[last_completed.name][job.name][machine]
-            )
-            job.completion_time = completion_time
-        makespans.append(max(job.completion_time for job in assigned_jobs))
-
-    return max(makespans)
-
-
-def _get_simple_setup_times(
-    setup_times: list[list[list[float]]],
-) -> list[list[float]]:
-    new_times = [
-        list(
-            np.max(
-                times[[t not in [0, idx] for t, _ in enumerate(times)]].transpose(),
-                axis=1,
-            )
-        )
-        for idx, times in enumerate(np.array(setup_times))
-    ]
-    # remove job 0
-    del new_times[0]
-    for times in new_times:
-        del times[0]
-    return new_times
+    return lp_instance

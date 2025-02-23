@@ -1,9 +1,11 @@
 """Wrapper for IBMs backend simulator."""
+from uuid import UUID, uuid4
+
 from qiskit import QuantumCircuit, transpile
 from qiskit_aer import AerSimulator
 
 from src.common import IBMQBackend
-from src.tools import optimize_circuit_online, optimize_circuit_offline
+from src.tools import optimize_circuit_online
 
 
 class Accelerator:
@@ -17,8 +19,8 @@ class Accelerator:
         self._qubits = len(self.simulator.properties().qubits)
         self._shot_time = shot_time
         self._reconfiguration_time = reconfiguration_time
-        
-        
+        self._uuid = uuid4()
+
     @staticmethod
     def _time_conversion(
         time: float, unit: str, target_unit: str = "us", dt: float | None = None
@@ -37,9 +39,9 @@ class Accelerator:
         """
         if unit == target_unit:
             return time
-        
+
         units = ["s", "ms", "us", "ns", "ps"]
-        
+
         # target_unit must be a SI unit
         assert target_unit in units
 
@@ -48,11 +50,11 @@ class Accelerator:
             assert dt is not None
             time *= dt
             unit = "s"
-            
+
         target_shift = units.index(target_unit)
         current_shift = units.index(unit)
         required_shift = 3 * (target_shift - current_shift)
-        return time * 10**required_shift   
+        return time * 10**required_shift
 
     def compute_processing_time(self, circuit: QuantumCircuit) -> float:
         """Computes the processing time for the circuit for a single shot.
@@ -66,12 +68,29 @@ class Accelerator:
         # TODO: doing a full hardware-aware compilation just to get the processing
         # time is not efficient. An approximation would be better.
         be = self._backend.value()
-        transpiled_circuit = transpile(
-            circuit, be, scheduling_method="alap"
-        )
+        transpiled_circuit = transpile(circuit, be, scheduling_method="alap")
         return Accelerator._time_conversion(
             transpiled_circuit.duration, transpiled_circuit.unit, dt=be.dt
         )
+
+    def compute_setup_time(
+        self, circuit_from: QuantumCircuit | None, circuit_to: QuantumCircuit | None
+    ) -> float:
+        """Computes the set up time by switching between one circuit to another.
+
+        # TODO curretly only the constant reconfiguration time is returned.
+        Args:
+            circuit_from (QuantumCircuit): Ending circuit.
+            circuit_to (QuantumCircuit): Starting circuit.
+
+        Returns:
+            float: Set up time from circuit_from to circuit_to in µs.
+        """
+        if circuit_from is None:
+            return self._reconfiguration_time
+        if circuit_to is None:
+            return self._reconfiguration_time
+        return self._reconfiguration_time
 
     @property
     def shot_time(self) -> int:
@@ -109,6 +128,15 @@ class Accelerator:
         """
         return self._backend
 
+    @property
+    def uuid(self) -> UUID:
+        """_summary_
+
+        Returns:
+            UUID: _description_
+        """
+        return self._uuid
+
     def run_and_get_counts(
         self, circuit: QuantumCircuit, n_shots: int = 2**10
     ) -> dict[str, int]:
@@ -123,7 +151,7 @@ class Accelerator:
             dict[str, int]: Measurment counts.
         """
         # TODO check qubit size
-        circuit = optimize_circuit_online(circuit, self._backend)
+        # opt_circuit = optimize_circuit_online(circuit, self._backend)
         # TODO For some reason the above line blocks
         result = self.simulator.run(circuit, shots=n_shots).result()
         return result.get_counts(0)

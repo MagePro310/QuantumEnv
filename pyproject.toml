@@ -1,0 +1,40 @@
+[project]
+name = "milq"
+version = "0.1.0"
+description = "A project implementing a minimal scheduler, which is aware of circuit cutting."
+authors = [
+    {name = "Philipp Seitz", email = "philipp.seitz@tum.de"},
+    {name = "Manuel Geiger", email = "manuel.geiger@tum.de"},
+]
+dependencies = [
+    "qiskit>=0.44.1",
+    "networkx>=3.1",
+    "qiskit-aer>=0.12.2",
+    "circuit-knitting-toolbox>=0.4.0",
+    "mqt-qmap>=2.4.0",
+    "numpy>=1.26.0",
+    "pulp>=2.7.0",
+    "pandas>=2.1.1",
+    "mqt-bench>=1.0.5",
+    "matplotlib>=3.8.2",
+]
+requires-python = ">=3.10, <3.12"
+readme = "README.md"
+license = {text = "MIT"}
+classifiers = [
+    "Programming Language :: Python :: 3.10",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+
+[tool.pdm.dev-dependencies]
+dev = [
+    "pytest>=7.4.2",
+    "black>=23.9.1",
+    "pylint>=2.17.5",
+]
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
