@@ -87,7 +87,7 @@ def example_problem(big_m: int, timesteps: int, filename: str = "scheduling"):
     print(_problem.base_jobs)
     print("Job Capacities:")
     print(job_capacities)
-    _, _, lp_instance = generate_schedule(_problem, SchedulerType.BASELINE)
+    _, _, lp_instance = generate_schedule(_problem, SchedulerType.SIMPLE)
     
     
     lp_instance.problem.writeLP(f"{filename}.lp")
