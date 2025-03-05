@@ -45,7 +45,7 @@ def generate_schedule(
         NotImplementedError: Unsupported types.
     """
     if isinstance(problem, InfoProblem):
-        return _generate_schedule_info(problem, schedule_type)
+        return _generate_schedule_info(problem, schedule_type) #Run example_problem.py run this function
     if isinstance(problem, ExecutableProblem):
         return _generate_schedule_exec(problem, schedule_type)
     raise NotImplementedError("Unsupported type")
@@ -66,16 +66,14 @@ def _generate_schedule_info(
         tuple[float, list[JobResultInfo]]: The makespan and the list of jobs with their
             assigned machine and start and completion times.
     """
+    lp_instance = set_up_base_lp(problem.base_jobs, problem.accelerators, problem.big_m, problem.timesteps)
+    
     if schedule_type == SchedulerType.BASELINE:
         jobs = generate_bin_info_schedule(problem.base_jobs, problem.accelerators)
         makespan = calculate_bin_makespan(
             jobs, problem.process_times, problem.setup_times, problem.accelerators
         )
         return makespan, jobs, None
-
-    lp_instance = set_up_base_lp(
-        problem.base_jobs, problem.accelerators, problem.big_m, problem.timesteps
-    )
 
     if schedule_type == SchedulerType.EXTENDED:
         lp_instance = set_up_extended_lp(

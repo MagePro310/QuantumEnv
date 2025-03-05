@@ -22,7 +22,7 @@ class DataclassJSONEncoder(json.JSONEncoder):
 # Define the maximum circuit size
 # MAX_SIZE = 25
 NUM_BATCHES = 1
-CIRCUITS_PER_BATCH = 5
+CIRCUITS_PER_BATCH = 2
 SETTINGS = [
     {"A": 5, "B": 5},
     {"A": 5, "B": 6, "C": 20},

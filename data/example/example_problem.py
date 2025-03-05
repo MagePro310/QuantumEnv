@@ -25,10 +25,10 @@ def _generate_problem(big_m: int, timesteps: int) -> tuple[InfoProblem, dict[str
     # Inputs
     jobs = ["0", "A", "B", "C", "D"]
     job_capacities = {
-        "0": 2,  # dummy job
-        "A": 3,
-        "B": 5,
-        "C": 2,
+        "0": 1,  # dummy job
+        "A": 2,
+        "B": 3,
+        "C": 5,
         "D": 3,
     }
     machines = ["QUITO", "BELEM"]
@@ -59,6 +59,10 @@ def _generate_problem(big_m: int, timesteps: int) -> tuple[InfoProblem, dict[str
         ]
         for job_j in jobs
     ]
+    print("Processing Times:")
+    print(processing_times)
+    print("Setup Times:")
+    print(setup_times)
     del job_capacities["0"]
     return (
         InfoProblem(
@@ -83,10 +87,10 @@ def example_problem(big_m: int, timesteps: int, filename: str = "scheduling"):
         filename (str, optional): Filename for .lp, .json and .pdf. Defaults to "scheduling".
     """
     _problem, job_capacities = _generate_problem(big_m, timesteps)
-    print("Problem:")
-    print(_problem.base_jobs)
-    print("Job Capacities:")
-    print(job_capacities)
+    # print("Problem:")
+    # print(_problem)
+    # print("Job Capacities:")
+    # print(job_capacities)
     _, _, lp_instance = generate_schedule(_problem, SchedulerType.SIMPLE)
     
     

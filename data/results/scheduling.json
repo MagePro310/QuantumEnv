@@ -11,9 +11,9 @@
             "BELEM"
         ],
         "job_capcities": {
-            "A": 3,
-            "B": 5,
-            "C": 2,
+            "A": 2,
+            "B": 3,
+            "C": 5,
             "D": 3
         },
         "machine_capacities": {
@@ -23,20 +23,20 @@
         "timesteps": 64,
         "processing_times": [
             [
-                8,
-                9
-            ],
-            [
-                8,
-                10
-            ],
-            [
-                12,
-                9
+                10,
+                11
             ],
             [
                 7,
+                9
+            ],
+            [
+                10,
                 7
+            ],
+            [
+                10,
+                10
             ],
             [
                 8,
@@ -50,86 +50,20 @@
                     50
                 ],
                 [
-                    8,
-                    7
+                    9,
+                    8
                 ],
                 [
                     10,
                     7
                 ],
                 [
-                    8,
-                    6
-                ],
-                [
-                    8,
-                    9
-                ]
-            ],
-            [
-                [
-                    50,
-                    50
-                ],
-                [
-                    50,
-                    50
-                ],
-                [
-                    7,
-                    10
-                ],
-                [
-                    6,
-                    9
-                ],
-                [
-                    9,
-                    6
-                ]
-            ],
-            [
-                [
-                    50,
-                    50
-                ],
-                [
-                    7,
-                    9
-                ],
-                [
-                    50,
-                    50
-                ],
-                [
-                    8,
-                    7
-                ],
-                [
                     10,
-                    10
-                ]
-            ],
-            [
-                [
-                    50,
-                    50
-                ],
-                [
-                    7,
                     8
                 ],
                 [
                     9,
-                    6
-                ],
-                [
-                    50,
-                    50
-                ],
-                [
-                    7,
-                    9
+                    10
                 ]
             ],
             [
@@ -138,16 +72,82 @@
                     50
                 ],
                 [
-                    8,
-                    10
+                    50,
+                    50
+                ],
+                [
+                    5,
+                    8
                 ],
                 [
                     7,
-                    8
+                    10
                 ],
                 [
                     8,
                     5
+                ]
+            ],
+            [
+                [
+                    50,
+                    50
+                ],
+                [
+                    5,
+                    7
+                ],
+                [
+                    50,
+                    50
+                ],
+                [
+                    9,
+                    8
+                ],
+                [
+                    9,
+                    9
+                ]
+            ],
+            [
+                [
+                    50,
+                    50
+                ],
+                [
+                    8,
+                    9
+                ],
+                [
+                    10,
+                    7
+                ],
+                [
+                    50,
+                    50
+                ],
+                [
+                    9,
+                    11
+                ]
+            ],
+            [
+                [
+                    50,
+                    50
+                ],
+                [
+                    7,
+                    9
+                ],
+                [
+                    6,
+                    7
+                ],
+                [
+                    10,
+                    7
                 ],
                 [
                     50,
@@ -158,22 +158,22 @@
     },
     "variables": {
         "c_j_0": 0.0,
-        "c_j_1": 18.0,
+        "c_j_1": 19.0,
         "c_j_2": 18.0,
-        "c_j_3": 13.0,
-        "c_j_4": 8.0,
-        "s_j_1": 9.0,
-        "s_j_2": 0.0,
-        "s_j_3": 4.0,
-        "s_j_4": 1.0,
+        "c_j_3": 7.0,
+        "c_j_4": 19.0,
+        "s_j_1": 8.0,
+        "s_j_2": 8.0,
+        "s_j_3": 0.0,
+        "s_j_4": 0.0,
         "x_ik_1_BELEM": 1.0,
         "x_ik_1_QUITO": 0.0,
-        "x_ik_2_BELEM": 0.0,
-        "x_ik_2_QUITO": 1.0,
+        "x_ik_2_BELEM": 1.0,
+        "x_ik_2_QUITO": 0.0,
         "x_ik_3_BELEM": 1.0,
         "x_ik_3_QUITO": 0.0,
-        "x_ik_4_BELEM": 1.0,
-        "x_ik_4_QUITO": 0.0,
+        "x_ik_4_BELEM": 0.0,
+        "x_ik_4_QUITO": 1.0,
         "z_ikt_1_BELEM_0": 0.0,
         "z_ikt_1_BELEM_1": 0.0,
         "z_ikt_1_BELEM_10": 1.0,
@@ -185,7 +185,7 @@
         "z_ikt_1_BELEM_16": 1.0,
         "z_ikt_1_BELEM_17": 1.0,
         "z_ikt_1_BELEM_18": 1.0,
-        "z_ikt_1_BELEM_19": 0.0,
+        "z_ikt_1_BELEM_19": 1.0,
         "z_ikt_1_BELEM_2": 0.0,
         "z_ikt_1_BELEM_20": 0.0,
         "z_ikt_1_BELEM_21": 0.0,
@@ -236,7 +236,7 @@
         "z_ikt_1_BELEM_62": 0.0,
         "z_ikt_1_BELEM_63": 0.0,
         "z_ikt_1_BELEM_7": 0.0,
-        "z_ikt_1_BELEM_8": 0.0,
+        "z_ikt_1_BELEM_8": 1.0,
         "z_ikt_1_BELEM_9": 1.0,
         "z_ikt_1_QUITO_0": 0.0,
         "z_ikt_1_QUITO_1": 0.0,
@@ -304,15 +304,15 @@
         "z_ikt_1_QUITO_9": 0.0,
         "z_ikt_2_BELEM_0": 0.0,
         "z_ikt_2_BELEM_1": 0.0,
-        "z_ikt_2_BELEM_10": 0.0,
-        "z_ikt_2_BELEM_11": 0.0,
-        "z_ikt_2_BELEM_12": 0.0,
-        "z_ikt_2_BELEM_13": 0.0,
-        "z_ikt_2_BELEM_14": 0.0,
-        "z_ikt_2_BELEM_15": 0.0,
-        "z_ikt_2_BELEM_16": 0.0,
-        "z_ikt_2_BELEM_17": 0.0,
-        "z_ikt_2_BELEM_18": 0.0,
+        "z_ikt_2_BELEM_10": 1.0,
+        "z_ikt_2_BELEM_11": 1.0,
+        "z_ikt_2_BELEM_12": 1.0,
+        "z_ikt_2_BELEM_13": 1.0,
+        "z_ikt_2_BELEM_14": 1.0,
+        "z_ikt_2_BELEM_15": 1.0,
+        "z_ikt_2_BELEM_16": 1.0,
+        "z_ikt_2_BELEM_17": 1.0,
+        "z_ikt_2_BELEM_18": 1.0,
         "z_ikt_2_BELEM_19": 0.0,
         "z_ikt_2_BELEM_2": 0.0,
         "z_ikt_2_BELEM_20": 0.0,
@@ -364,21 +364,21 @@
         "z_ikt_2_BELEM_62": 0.0,
         "z_ikt_2_BELEM_63": 0.0,
         "z_ikt_2_BELEM_7": 0.0,
-        "z_ikt_2_BELEM_8": 0.0,
-        "z_ikt_2_BELEM_9": 0.0,
-        "z_ikt_2_QUITO_0": 1.0,
-        "z_ikt_2_QUITO_1": 1.0,
-        "z_ikt_2_QUITO_10": 1.0,
-        "z_ikt_2_QUITO_11": 1.0,
-        "z_ikt_2_QUITO_12": 1.0,
-        "z_ikt_2_QUITO_13": 1.0,
-        "z_ikt_2_QUITO_14": 1.0,
-        "z_ikt_2_QUITO_15": 1.0,
-        "z_ikt_2_QUITO_16": 1.0,
-        "z_ikt_2_QUITO_17": 1.0,
-        "z_ikt_2_QUITO_18": 1.0,
+        "z_ikt_2_BELEM_8": 1.0,
+        "z_ikt_2_BELEM_9": 1.0,
+        "z_ikt_2_QUITO_0": 0.0,
+        "z_ikt_2_QUITO_1": 0.0,
+        "z_ikt_2_QUITO_10": 0.0,
+        "z_ikt_2_QUITO_11": 0.0,
+        "z_ikt_2_QUITO_12": 0.0,
+        "z_ikt_2_QUITO_13": 0.0,
+        "z_ikt_2_QUITO_14": 0.0,
+        "z_ikt_2_QUITO_15": 0.0,
+        "z_ikt_2_QUITO_16": 0.0,
+        "z_ikt_2_QUITO_17": 0.0,
+        "z_ikt_2_QUITO_18": 0.0,
         "z_ikt_2_QUITO_19": 0.0,
-        "z_ikt_2_QUITO_2": 1.0,
+        "z_ikt_2_QUITO_2": 0.0,
         "z_ikt_2_QUITO_20": 0.0,
         "z_ikt_2_QUITO_21": 0.0,
         "z_ikt_2_QUITO_22": 0.0,
@@ -389,7 +389,7 @@
         "z_ikt_2_QUITO_27": 0.0,
         "z_ikt_2_QUITO_28": 0.0,
         "z_ikt_2_QUITO_29": 0.0,
-        "z_ikt_2_QUITO_3": 1.0,
+        "z_ikt_2_QUITO_3": 0.0,
         "z_ikt_2_QUITO_30": 0.0,
         "z_ikt_2_QUITO_31": 0.0,
         "z_ikt_2_QUITO_32": 0.0,
@@ -400,7 +400,7 @@
         "z_ikt_2_QUITO_37": 0.0,
         "z_ikt_2_QUITO_38": 0.0,
         "z_ikt_2_QUITO_39": 0.0,
-        "z_ikt_2_QUITO_4": 1.0,
+        "z_ikt_2_QUITO_4": 0.0,
         "z_ikt_2_QUITO_40": 0.0,
         "z_ikt_2_QUITO_41": 0.0,
         "z_ikt_2_QUITO_42": 0.0,
@@ -411,7 +411,7 @@
         "z_ikt_2_QUITO_47": 0.0,
         "z_ikt_2_QUITO_48": 0.0,
         "z_ikt_2_QUITO_49": 0.0,
-        "z_ikt_2_QUITO_5": 1.0,
+        "z_ikt_2_QUITO_5": 0.0,
         "z_ikt_2_QUITO_50": 0.0,
         "z_ikt_2_QUITO_51": 0.0,
         "z_ikt_2_QUITO_52": 0.0,
@@ -422,27 +422,27 @@
         "z_ikt_2_QUITO_57": 0.0,
         "z_ikt_2_QUITO_58": 0.0,
         "z_ikt_2_QUITO_59": 0.0,
-        "z_ikt_2_QUITO_6": 1.0,
+        "z_ikt_2_QUITO_6": 0.0,
         "z_ikt_2_QUITO_60": 0.0,
         "z_ikt_2_QUITO_61": 0.0,
         "z_ikt_2_QUITO_62": 0.0,
         "z_ikt_2_QUITO_63": 0.0,
-        "z_ikt_2_QUITO_7": 1.0,
-        "z_ikt_2_QUITO_8": 1.0,
-        "z_ikt_2_QUITO_9": 1.0,
-        "z_ikt_3_BELEM_0": 0.0,
-        "z_ikt_3_BELEM_1": 0.0,
-        "z_ikt_3_BELEM_10": 1.0,
-        "z_ikt_3_BELEM_11": 1.0,
-        "z_ikt_3_BELEM_12": 1.0,
-        "z_ikt_3_BELEM_13": 1.0,
+        "z_ikt_2_QUITO_7": 0.0,
+        "z_ikt_2_QUITO_8": 0.0,
+        "z_ikt_2_QUITO_9": 0.0,
+        "z_ikt_3_BELEM_0": 1.0,
+        "z_ikt_3_BELEM_1": 1.0,
+        "z_ikt_3_BELEM_10": 0.0,
+        "z_ikt_3_BELEM_11": 0.0,
+        "z_ikt_3_BELEM_12": 0.0,
+        "z_ikt_3_BELEM_13": 0.0,
         "z_ikt_3_BELEM_14": 0.0,
         "z_ikt_3_BELEM_15": 0.0,
         "z_ikt_3_BELEM_16": 0.0,
         "z_ikt_3_BELEM_17": 0.0,
         "z_ikt_3_BELEM_18": 0.0,
         "z_ikt_3_BELEM_19": 0.0,
-        "z_ikt_3_BELEM_2": 0.0,
+        "z_ikt_3_BELEM_2": 1.0,
         "z_ikt_3_BELEM_20": 0.0,
         "z_ikt_3_BELEM_21": 0.0,
         "z_ikt_3_BELEM_22": 0.0,
@@ -453,7 +453,7 @@
         "z_ikt_3_BELEM_27": 0.0,
         "z_ikt_3_BELEM_28": 0.0,
         "z_ikt_3_BELEM_29": 0.0,
-        "z_ikt_3_BELEM_3": 0.0,
+        "z_ikt_3_BELEM_3": 1.0,
         "z_ikt_3_BELEM_30": 0.0,
         "z_ikt_3_BELEM_31": 0.0,
         "z_ikt_3_BELEM_32": 0.0,
@@ -492,8 +492,8 @@
         "z_ikt_3_BELEM_62": 0.0,
         "z_ikt_3_BELEM_63": 0.0,
         "z_ikt_3_BELEM_7": 1.0,
-        "z_ikt_3_BELEM_8": 1.0,
-        "z_ikt_3_BELEM_9": 1.0,
+        "z_ikt_3_BELEM_8": 0.0,
+        "z_ikt_3_BELEM_9": 0.0,
         "z_ikt_3_QUITO_0": 0.0,
         "z_ikt_3_QUITO_1": 0.0,
         "z_ikt_3_QUITO_10": 0.0,
@@ -559,7 +559,7 @@
         "z_ikt_3_QUITO_8": 0.0,
         "z_ikt_3_QUITO_9": 0.0,
         "z_ikt_4_BELEM_0": 0.0,
-        "z_ikt_4_BELEM_1": 1.0,
+        "z_ikt_4_BELEM_1": 0.0,
         "z_ikt_4_BELEM_10": 0.0,
         "z_ikt_4_BELEM_11": 0.0,
         "z_ikt_4_BELEM_12": 0.0,
@@ -570,7 +570,7 @@
         "z_ikt_4_BELEM_17": 0.0,
         "z_ikt_4_BELEM_18": 0.0,
         "z_ikt_4_BELEM_19": 0.0,
-        "z_ikt_4_BELEM_2": 1.0,
+        "z_ikt_4_BELEM_2": 0.0,
         "z_ikt_4_BELEM_20": 0.0,
         "z_ikt_4_BELEM_21": 0.0,
         "z_ikt_4_BELEM_22": 0.0,
@@ -581,7 +581,7 @@
         "z_ikt_4_BELEM_27": 0.0,
         "z_ikt_4_BELEM_28": 0.0,
         "z_ikt_4_BELEM_29": 0.0,
-        "z_ikt_4_BELEM_3": 1.0,
+        "z_ikt_4_BELEM_3": 0.0,
         "z_ikt_4_BELEM_30": 0.0,
         "z_ikt_4_BELEM_31": 0.0,
         "z_ikt_4_BELEM_32": 0.0,
@@ -592,7 +592,7 @@
         "z_ikt_4_BELEM_37": 0.0,
         "z_ikt_4_BELEM_38": 0.0,
         "z_ikt_4_BELEM_39": 0.0,
-        "z_ikt_4_BELEM_4": 1.0,
+        "z_ikt_4_BELEM_4": 0.0,
         "z_ikt_4_BELEM_40": 0.0,
         "z_ikt_4_BELEM_41": 0.0,
         "z_ikt_4_BELEM_42": 0.0,
@@ -603,7 +603,7 @@
         "z_ikt_4_BELEM_47": 0.0,
         "z_ikt_4_BELEM_48": 0.0,
         "z_ikt_4_BELEM_49": 0.0,
-        "z_ikt_4_BELEM_5": 1.0,
+        "z_ikt_4_BELEM_5": 0.0,
         "z_ikt_4_BELEM_50": 0.0,
         "z_ikt_4_BELEM_51": 0.0,
         "z_ikt_4_BELEM_52": 0.0,
@@ -614,27 +614,27 @@
         "z_ikt_4_BELEM_57": 0.0,
         "z_ikt_4_BELEM_58": 0.0,
         "z_ikt_4_BELEM_59": 0.0,
-        "z_ikt_4_BELEM_6": 1.0,
+        "z_ikt_4_BELEM_6": 0.0,
         "z_ikt_4_BELEM_60": 0.0,
         "z_ikt_4_BELEM_61": 0.0,
         "z_ikt_4_BELEM_62": 0.0,
         "z_ikt_4_BELEM_63": 0.0,
-        "z_ikt_4_BELEM_7": 1.0,
-        "z_ikt_4_BELEM_8": 1.0,
+        "z_ikt_4_BELEM_7": 0.0,
+        "z_ikt_4_BELEM_8": 0.0,
         "z_ikt_4_BELEM_9": 0.0,
-        "z_ikt_4_QUITO_0": 0.0,
-        "z_ikt_4_QUITO_1": 0.0,
-        "z_ikt_4_QUITO_10": 0.0,
-        "z_ikt_4_QUITO_11": 0.0,
-        "z_ikt_4_QUITO_12": 0.0,
-        "z_ikt_4_QUITO_13": 0.0,
-        "z_ikt_4_QUITO_14": 0.0,
-        "z_ikt_4_QUITO_15": 0.0,
-        "z_ikt_4_QUITO_16": 0.0,
-        "z_ikt_4_QUITO_17": 0.0,
-        "z_ikt_4_QUITO_18": 0.0,
-        "z_ikt_4_QUITO_19": 0.0,
-        "z_ikt_4_QUITO_2": 0.0,
+        "z_ikt_4_QUITO_0": 1.0,
+        "z_ikt_4_QUITO_1": 1.0,
+        "z_ikt_4_QUITO_10": 1.0,
+        "z_ikt_4_QUITO_11": 1.0,
+        "z_ikt_4_QUITO_12": 1.0,
+        "z_ikt_4_QUITO_13": 1.0,
+        "z_ikt_4_QUITO_14": 1.0,
+        "z_ikt_4_QUITO_15": 1.0,
+        "z_ikt_4_QUITO_16": 1.0,
+        "z_ikt_4_QUITO_17": 1.0,
+        "z_ikt_4_QUITO_18": 1.0,
+        "z_ikt_4_QUITO_19": 1.0,
+        "z_ikt_4_QUITO_2": 1.0,
         "z_ikt_4_QUITO_20": 0.0,
         "z_ikt_4_QUITO_21": 0.0,
         "z_ikt_4_QUITO_22": 0.0,
@@ -645,7 +645,7 @@
         "z_ikt_4_QUITO_27": 0.0,
         "z_ikt_4_QUITO_28": 0.0,
         "z_ikt_4_QUITO_29": 0.0,
-        "z_ikt_4_QUITO_3": 0.0,
+        "z_ikt_4_QUITO_3": 1.0,
         "z_ikt_4_QUITO_30": 0.0,
         "z_ikt_4_QUITO_31": 0.0,
         "z_ikt_4_QUITO_32": 0.0,
@@ -656,7 +656,7 @@
         "z_ikt_4_QUITO_37": 0.0,
         "z_ikt_4_QUITO_38": 0.0,
         "z_ikt_4_QUITO_39": 0.0,
-        "z_ikt_4_QUITO_4": 0.0,
+        "z_ikt_4_QUITO_4": 1.0,
         "z_ikt_4_QUITO_40": 0.0,
         "z_ikt_4_QUITO_41": 0.0,
         "z_ikt_4_QUITO_42": 0.0,
@@ -667,7 +667,7 @@
         "z_ikt_4_QUITO_47": 0.0,
         "z_ikt_4_QUITO_48": 0.0,
         "z_ikt_4_QUITO_49": 0.0,
-        "z_ikt_4_QUITO_5": 0.0,
+        "z_ikt_4_QUITO_5": 1.0,
         "z_ikt_4_QUITO_50": 0.0,
         "z_ikt_4_QUITO_51": 0.0,
         "z_ikt_4_QUITO_52": 0.0,
@@ -678,13 +678,13 @@
         "z_ikt_4_QUITO_57": 0.0,
         "z_ikt_4_QUITO_58": 0.0,
         "z_ikt_4_QUITO_59": 0.0,
-        "z_ikt_4_QUITO_6": 0.0,
+        "z_ikt_4_QUITO_6": 1.0,
         "z_ikt_4_QUITO_60": 0.0,
         "z_ikt_4_QUITO_61": 0.0,
         "z_ikt_4_QUITO_62": 0.0,
         "z_ikt_4_QUITO_63": 0.0,
-        "z_ikt_4_QUITO_7": 0.0,
-        "z_ikt_4_QUITO_8": 0.0,
-        "z_ikt_4_QUITO_9": 0.0
+        "z_ikt_4_QUITO_7": 1.0,
+        "z_ikt_4_QUITO_8": 1.0,
+        "z_ikt_4_QUITO_9": 1.0
     }
 }
