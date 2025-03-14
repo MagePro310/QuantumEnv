@@ -183,6 +183,9 @@ def _define_lp(
             ) * timestep + big_m * (
                 1 - pulp.lpSum(z_ikt[job][machine][timestep] for machine in machines)
             )
+            
+            
+    # Ràng buộc về sức chứa của máy tại mỗi timestep
     for timestep in timesteps:
         for machine in machines:
             problem += (  # (Constraint 11)
@@ -192,6 +195,21 @@ def _define_lp(
                 )
                 <= machine_capacities[machine]
             )
+
+    # for machine in machines:
+    #     for i in jobs[1:]:
+    #         for j in jobs[1:]:
+    #             if i == j:
+    #                 continue
+    #             delta_var = pulp.LpVariable(f"delta_{i}_{j}_{machine}", cat="Binary")
+    #             # Nếu cả hai job i và j được gán cho máy 'machine' (x_ik[i][machine] = 1 và x_ik[j][machine] = 1)
+    #             # thì nếu delta_var = 1 => s_j[j] >= c_j[i]
+    #             problem += s_j[j] >= c_j[i] - big_m*(1 - delta_var) - big_m*(2 - x_ik[i][machine] - x_ik[j][machine])
+    #             # Nếu delta_var = 0, ta ép s_j[i] và s_j[j] phải gần bằng nhau (chạy đồng batch)
+    #             problem += s_j[i] - s_j[j] <= big_m*delta_var + 0.001
+    #             problem += s_j[j] - s_j[i] <= big_m*(1 - delta_var) + 0.001          
+            
+            
     return LPInstance(
         problem=problem,
         jobs=jobs,
@@ -300,7 +318,7 @@ def set_up_extended_lp(
         "y_ijk",
         (lp_instance.jobs, lp_instance.jobs, lp_instance.machines),
         cat="Binary",
-    )
+    )   # y: Job i runs on machine k and job j runs on machine k
     a_ij = pulp.LpVariable.dicts(
         "a_ij", (lp_instance.jobs, lp_instance.jobs), cat="Binary"
     )  # a: Job i ends before job j starts

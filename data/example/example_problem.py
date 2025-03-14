@@ -23,13 +23,11 @@ def _calculate_example_setup_times(job_i, job_j_, machine_k) -> float:
 
 def _generate_problem(big_m: int, timesteps: int) -> tuple[InfoProblem, dict[str, int]]:
     # Inputs
-    jobs = ["0", "A", "B", "C", "D"]
+    jobs = ["0", "A", "B"]
     job_capacities = {
-        "0": 1,  # dummy job
+        "0": 2,  # dummy job
         "A": 2,
         "B": 3,
-        "C": 5,
-        "D": 3,
     }
     machines = ["QUITO", "BELEM"]
     machine_capacities = {"QUITO": 5, "BELEM": 5}
@@ -91,7 +89,7 @@ def example_problem(big_m: int, timesteps: int, filename: str = "scheduling"):
     # print(_problem)
     # print("Job Capacities:")
     # print(job_capacities)
-    _, _, lp_instance = generate_schedule(_problem, SchedulerType.SIMPLE)
+    _, _, lp_instance = generate_schedule(_problem, SchedulerType.EXTENDED)
     
     
     lp_instance.problem.writeLP(f"{filename}.lp")

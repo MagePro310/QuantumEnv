@@ -78,7 +78,7 @@ def extract_executable_schedule(
     Returns:
         list[ScheduledJob]: _description_
     """
-    assigned_jobs = _extract_gurobi_results(lp_instance, _second_name_func)
+    assigned_jobs = _extract_gurobi_results(lp_instance, _second_name_func)     # This function extracts the results from the LP solver
     return _generate_schedule_from_lp(assigned_jobs, jobs, accelerators)
 
 
