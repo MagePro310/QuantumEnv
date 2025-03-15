@@ -1,0 +1,4 @@
+{'job': 'A', 'qubits': 2, 'machine': 'BELEM', 'capacity': 5, 'start': 16.0, 'end': 16.0, 'duration': 1.0}
+{'job': 'B', 'qubits': 3, 'machine': 'BELEM', 'capacity': 5, 'start': 0.0, 'end': 9.0, 'duration': 10.0}
+{'job': 'C', 'qubits': 5, 'machine': 'QUITO', 'capacity': 5, 'start': 0.0, 'end': 19.0, 'duration': 20.0}
+{'job': 'D', 'qubits': 3, 'machine': 'BELEM', 'capacity': 5, 'start': 10.0, 'end': 19.0, 'duration': 10.0}

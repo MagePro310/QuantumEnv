@@ -100,10 +100,9 @@ def _generate_schedule_info(
         lp_instance, jobs, problem.process_times, problem.setup_times
     )
 
-
-
-
-
+    print("Makespan: ", type(makespan))
+    print("Jobs: ", type(jobs))
+    print("LP Instance: ", type(lp_instance))
     return makespan, jobs, lp_instance
 
 

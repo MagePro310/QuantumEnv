@@ -41,55 +41,53 @@ def _read_solution_file(solution_file: str) -> pd.DataFrame:
     variables = data["variables"]
 
     # Lấy danh sách công việc và máy
-    jobs = params.get("jobs", [])
-    machines = params.get("machines", [])
-    job_capacities = params.get("job_capcities", {})
-    machine_capacities = params.get("machine_capacities", {})
+    jobs = params.get("jobs", []) # Ex output: array ['A', 'B']
+    machines = params.get("machines", []) # Ex output: array ['QUITO', 'BELEM']
+    job_capacities = params.get("job_capcities", {}) # Ex output: array  {'A': 2, 'B': 3}
+    machine_capacities = params.get("machine_capacities", {}) # Ex output: {'QUITO': 5, 'BELEM': 5}
 
     rows_list = []
     
-    for job in jobs:
-        # Tìm thời gian bắt đầu và kết thúc từ `variables`
-        start_key = f"s_j_{jobs.index(job) + 1}"  # Vì job có index từ 1
-        end_key = f"c_j_{jobs.index(job) + 1}"
+    for job_index, job in enumerate(jobs, start=1):
+        assigned_machine = None
 
-        start = variables.get(start_key, None)
-        end = variables.get(end_key, None)
+        # Tìm máy được gán cho job từ biến x_ik
+        for machine in machines:
+            x_var = f"x_ik_{job_index}_{machine}"
+            if variables.get(x_var, 0) == 1.0:
+                assigned_machine = machine
+                break  # Một job chỉ chạy trên một máy, tìm thấy là dừng
+
+        if assigned_machine is None:
+            raise ValueError(f"Error: No machine assigned for job {job}.")
+
+        # Lấy thời điểm bắt đầu (s_j) và kết thúc (c_j)
+        start = variables.get(f"s_j_{job_index}", None)
+        end = variables.get(f"c_j_{job_index}", None)
 
         if start is None or end is None:
-            print(f"Warning: Missing start or end time for job {job}. Skipping...")
-            continue
+            raise ValueError(f"Error: Start or end time not found for job {job}.")
 
-        duration = end - start
+        duration = end - start + 1  # Thời gian thực hiện
 
-        # Xác định máy được gán từ `variables`
-        assigned_machine = None
-        for machine in machines:
-            machine_key = f"x_ik_{jobs.index(job) + 1}_{machine}"
-            if variables.get(machine_key, 0) >= 0.5:
-                assigned_machine = machine
-                break
         
-        if assigned_machine is None:
-            print(f"Warning: No machine assigned for job {job}. Skipping...")
-            continue
-
-        capacity = machine_capacities.get(assigned_machine, None)
-
         # Thêm dữ liệu vào danh sách
         rows_list.append({
             "job": job,
             "qubits": job_capacities.get(job, None),
             "machine": assigned_machine,
-            "capacity": capacity,
+            "capacity": machine_capacities.get(assigned_machine, None),
             "start": start,
             "end": end,
             "duration": duration,
         })
 
-    # Chuyển đổi danh sách thành DataFrame
+    # Chuyển danh sách thành DataFrame
     df = pd.DataFrame(rows_list)
-
+    # Save rows_list to a file
+    with open('job_data.txt', 'w') as f:
+        for item in rows_list:
+            f.write("%s\n" % item)
     return df
 
 
@@ -188,3 +186,5 @@ if __name__ == "__main__":
     args = parser.parse_args()
     print(args)
     generate_schedule_plot(args.solution, args.pdf)
+    #Save data of the plot to a file
+
