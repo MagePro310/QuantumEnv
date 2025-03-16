@@ -6,7 +6,7 @@ from src.provider import Accelerator
 
 from .bin_schedule import (
     generate_bin_info_schedule,
-    generate_bin_executable_schedule,
+    # generate_bin_executable_schedule,
 )
 from .calculate_makespan import calculate_makespan, calculate_bin_makespan
 from .extract_schedule import extract_info_schedule, extract_executable_schedule
@@ -148,40 +148,40 @@ def _generate_schedule_info(
 #     )
 
 
-def _get_setup_times(
-    base_jobs: list[CircuitJob], accelerators: list[Accelerator]
-) -> STimes:
-    job_0 = CircuitJob(
-        coefficient=None,
-        cregs=0,
-        index=0,
-        circuit=None,
-        n_shots=0,
-        observable="",
-        partition_label="",
-        result_counts=None,
-        uuid=uuid4(),
-    )
-    return [
-        [
-            [
-                50.0
-                if job_i.circuit is None or job_j.circuit is None
-                else qpu.compute_setup_time(job_i.circuit, job_j.circuit)
-                for qpu in accelerators
-            ]
-            for job_i in [job_0] + base_jobs
-        ]
-        for job_j in [job_0] + base_jobs
-    ]
+# def _get_setup_times(
+#     base_jobs: list[CircuitJob], accelerators: list[Accelerator]
+# ) -> STimes:
+#     job_0 = CircuitJob(
+#         coefficient=None,
+#         cregs=0,
+#         index=0,
+#         circuit=None,
+#         n_shots=0,
+#         observable="",
+#         partition_label="",
+#         result_counts=None,
+#         uuid=uuid4(),
+#     )
+#     return [
+#         [
+#             [
+#                 50.0
+#                 if job_i.circuit is None or job_j.circuit is None
+#                 else qpu.compute_setup_time(job_i.circuit, job_j.circuit)
+#                 for qpu in accelerators
+#             ]
+#             for job_i in [job_0] + base_jobs
+#         ]
+#         for job_j in [job_0] + base_jobs
+#     ]
 
 
-def _get_processing_times(
-    base_jobs: list[CircuitJob],
-    accelerators: list[Accelerator],
-) -> PTimes:
-    return [[0.0 for _ in accelerators]] + [
-        [qpu.compute_processing_time(job.circuit) for qpu in accelerators]
-        for job in base_jobs
-        if job.circuit is not None
-    ]
+# def _get_processing_times(
+#     base_jobs: list[CircuitJob],
+#     accelerators: list[Accelerator],
+# ) -> PTimes:
+#     return [[0.0 for _ in accelerators]] + [
+#         [qpu.compute_processing_time(job.circuit) for qpu in accelerators]
+#         for job in base_jobs
+#         if job.circuit is not None
+#     ]

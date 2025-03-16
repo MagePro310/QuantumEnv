@@ -98,6 +98,12 @@ def run_experiments(
             with Timer() as t2:
                 makespan, jobs, _ = generate_schedule(problem, SchedulerType.EXTENDED)
             result["extended"] = Result(makespan, jobs, t2.elapsed)
+            
+            
+            # To add another algorithm to the scheduler
+            # with Timer() as t3:
+            #     makespan, jobs, _ = generate_schedule(problem, SchedulerType.SomeOtherAlgorithm)
+            # result["SomeOtherAlgorithm"] = Result(makespan, jobs, t3.elapsed)
 
             # Store results
             benchmark_results.append(

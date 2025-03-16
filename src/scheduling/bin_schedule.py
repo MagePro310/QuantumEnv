@@ -60,36 +60,36 @@ def generate_bin_info_schedule(
     return combined_jobs
 
 
-def generate_bin_executable_schedule(
-    jobs: list[CircuitJob], accelerators: list[Accelerator]
-) -> list[ScheduledJob]:
-    """Schedule jobs onto qpus.
+# def generate_bin_executable_schedule(
+#     jobs: list[CircuitJob], accelerators: list[Accelerator]
+# ) -> list[ScheduledJob]:
+#     """Schedule jobs onto qpus.
 
-    Each qpu represents a bin.
-    Since all jobs are asumed to take the same amount of time, they are associated
-    with a timestep (index).
-    k-first fit bin means we keep track of all bins that still have space left.
-    Once a qpu is full, we add a new bin for all qpus at the next timestep.
-    We can't run circuits with one qubit, scheduling doesn't take this into account.
+#     Each qpu represents a bin.
+#     Since all jobs are asumed to take the same amount of time, they are associated
+#     with a timestep (index).
+#     k-first fit bin means we keep track of all bins that still have space left.
+#     Once a qpu is full, we add a new bin for all qpus at the next timestep.
+#     We can't run circuits with one qubit, scheduling doesn't take this into account.
 
-    Args:
-        jobs (list[CircuitJob]): The list of jobs to run.
-        accelerators (list[Accelerator]): The list of available accelerators.
+#     Args:
+#         jobs (list[CircuitJob]): The list of jobs to run.
+#         accelerators (list[Accelerator]): The list of available accelerators.
 
-    Returns:
-        list[ScheduledJob]: A list of Jobs scheduled to accelerators.
-    """
-    # Use binpacking to combine circuits into qpu sized jobs
-    # placeholder for propper scheduling
-    # TODO set a flag when an experiment is done
-    # TODO consider number of shots
-    # Assumption: bins should be equally loaded and take same amount of time
-    closed_bins = _do_bin_pack(jobs, [qpu.qubits for qpu in accelerators])
-    # Build combined jobs from bins
-    combined_jobs = []
-    for _bin in sorted(closed_bins, key=lambda x: x.index):
-        combined_jobs.append(ScheduledJob(job=assemble_job(_bin.jobs), qpu=_bin.qpu))
-    return combined_jobs
+#     Returns:
+#         list[ScheduledJob]: A list of Jobs scheduled to accelerators.
+#     """
+#     # Use binpacking to combine circuits into qpu sized jobs
+#     # placeholder for propper scheduling
+#     # TODO set a flag when an experiment is done
+#     # TODO consider number of shots
+#     # Assumption: bins should be equally loaded and take same amount of time
+#     closed_bins = _do_bin_pack(jobs, [qpu.qubits for qpu in accelerators])
+#     # Build combined jobs from bins
+#     combined_jobs = []
+#     for _bin in sorted(closed_bins, key=lambda x: x.index):
+#         combined_jobs.append(ScheduledJob(job=assemble_job(_bin.jobs), qpu=_bin.qpu))
+#     return combined_jobs
 
 
 def _do_bin_pack(

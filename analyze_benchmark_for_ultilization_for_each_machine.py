@@ -20,7 +20,7 @@ def read_dataframe_from_txt(file_path: str) -> pd.DataFrame:
         raise ValueError(f"Error: File '{file_path}' chứa dữ liệu không hợp lệ.")
 
 def plot_machine_qubit_utilization(df: pd.DataFrame, output_file="machine_utilization_plot.pdf"):
-    """Vẽ đồ thị đường mô tả tỷ lệ sử dụng qubit của từng máy theo thời gian (%) với đơn vị time step đúng."""
+    """Vẽ đồ thị đường mô tả tỷ lệ sử dụng qubit của từng máy theo thời gian (%) với đơn vị time step."""
     if df.empty:
         raise ValueError("Error: DataFrame is empty.")
 
