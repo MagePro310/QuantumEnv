@@ -78,17 +78,17 @@ Benchmark = list[  # TODO should we move this?
 ]
 
 
-@dataclass
-class ExecutableProblem:
-    """Defines an executable problem.
+# @dataclass
+# class ExecutableProblem:
+#     """Defines an executable problem.
 
-    This calculates setup and process times based on the accelerators.
-    """
+#     This calculates setup and process times based on the accelerators.
+#     """
 
-    base_jobs: list[CircuitJob]
-    accelerators: list[Accelerator]
-    big_m: int
-    timesteps: int
+#     base_jobs: list[CircuitJob]
+#     accelerators: list[Accelerator]
+#     big_m: int
+#     timesteps: int
 
 
 @dataclass

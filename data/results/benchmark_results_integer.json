@@ -11,41 +11,41 @@
             "makespan": 2.0,
             "jobs": [
               {
-                "name": "cf31b7e1-6dc2-4dd6-9ced-f114b640446a",
-                "machine": "A",
-                "start_time": 0.0,
-                "completion_time": 2.0,
-                "capacity": 2
-              },
-              {
-                "name": "2be471ce-85cd-40c0-90c1-46e2057e3b13",
+                "name": "80d3b9b7-157e-4713-922f-98e4b1604439",
                 "machine": "A",
                 "start_time": 0.0,
                 "completion_time": 1.0,
                 "capacity": 3
+              },
+              {
+                "name": "7f949cfc-3855-4e8a-a98b-249af17beb5c",
+                "machine": "B",
+                "start_time": 0.0,
+                "completion_time": 2.0,
+                "capacity": 4
               }
             ],
-            "time": 0.008325858994794544
+            "time": 0.00810505200206535
           },
           "simple": {
             "makespan": 2.0,
             "jobs": [
               {
                 "name": "1",
-                "machine": "B",
-                "start_time": 0.0,
-                "completion_time": 2.0,
-                "capacity": 2
-              },
-              {
-                "name": "2",
                 "machine": "A",
                 "start_time": 0.0,
                 "completion_time": 1.0,
                 "capacity": 3
+              },
+              {
+                "name": "2",
+                "machine": "B",
+                "start_time": 0.0,
+                "completion_time": 2.0,
+                "capacity": 4
               }
             ],
-            "time": 0.3573606970021501
+            "time": 0.22281006700359285
           },
           "extended": {
             "makespan": 2.0,
@@ -54,18 +54,18 @@
                 "name": "1",
                 "machine": "A",
                 "start_time": 0.0,
-                "completion_time": 2.0,
-                "capacity": 2
+                "completion_time": 1.0,
+                "capacity": 3
               },
               {
                 "name": "2",
-                "machine": "A",
+                "machine": "B",
                 "start_time": 0.0,
-                "completion_time": 1.0,
-                "capacity": 3
+                "completion_time": 2.0,
+                "capacity": 4
               }
             ],
-            "time": 0.4073345309952856
+            "time": 0.2747500850018696
           }
         },
         "s_times": [
@@ -104,7 +104,7 @@
             ],
             [
               0,
-              0
+              1
             ],
             [
               32,
@@ -114,11 +114,11 @@
         ],
         "p_times": [
           [
-            2,
+            1,
             2
           ],
           [
-            1,
+            4,
             2
           ]
         ]
@@ -135,64 +135,64 @@
       {
         "results": {
           "baseline": {
-            "makespan": 6.0,
+            "makespan": 18.0,
             "jobs": [
               {
-                "name": "2dec0f38-ee8e-4a32-afc5-87517b45faf6",
-                "machine": "A",
-                "start_time": 0.0,
-                "completion_time": 6.0,
-                "capacity": 4
-              },
-              {
-                "name": "0c569e15-3554-4919-bd6a-ef8e1aac17af",
+                "name": "d949bd44-1752-4587-9c96-73c576995d99",
                 "machine": "C",
                 "start_time": 0.0,
-                "completion_time": 2.0,
-                "capacity": 10
+                "completion_time": 5.0,
+                "capacity": 8
+              },
+              {
+                "name": "75bb4395-aef1-4d11-aa1c-12a289bfe573",
+                "machine": "C",
+                "start_time": 5.0,
+                "completion_time": 18.0,
+                "capacity": 20
               }
             ],
-            "time": 0.010666439004126005
+            "time": 0.012126108005759306
           },
           "simple": {
-            "makespan": 5.0,
+            "makespan": 18.0,
             "jobs": [
               {
                 "name": "1",
                 "machine": "C",
-                "start_time": 0.0,
-                "completion_time": 5.0,
-                "capacity": 10
+                "start_time": 10.0,
+                "completion_time": 18.0,
+                "capacity": 8
               },
               {
                 "name": "2",
-                "machine": "B",
+                "machine": "C",
                 "start_time": 0.0,
-                "completion_time": 2.0,
-                "capacity": 4
+                "completion_time": 10.0,
+                "capacity": 20
               }
             ],
-            "time": 1.5594630279956618
+            "time": 26.218921965002664
           },
           "extended": {
-            "makespan": 5.0,
+            "makespan": 18.0,
             "jobs": [
               {
                 "name": "1",
                 "machine": "C",
                 "start_time": 0.0,
                 "completion_time": 5.0,
-                "capacity": 10
+                "capacity": 8
               },
               {
                 "name": "2",
-                "machine": "B",
-                "start_time": 0.0,
-                "completion_time": 2.0,
-                "capacity": 4
+                "machine": "C",
+                "start_time": 5.0,
+                "completion_time": 18.0,
+                "capacity": 20
               }
             ],
-            "time": 0.7040283149981406
+            "time": 2.691186095995363
           }
         },
         "s_times": [
@@ -225,9 +225,9 @@
               32
             ],
             [
-              1,
-              2,
-              1
+              4,
+              4,
+              3
             ]
           ],
           [
@@ -237,9 +237,9 @@
               32
             ],
             [
-              2,
-              1,
-              2
+              4,
+              3,
+              3
             ],
             [
               32,
@@ -250,14 +250,14 @@
         ],
         "p_times": [
           [
-            6,
             5,
+            4,
             5
           ],
           [
-            3,
-            2,
-            2
+            10,
+            10,
+            10
           ]
         ]
       }

@@ -13,7 +13,7 @@ from .extract_schedule import extract_info_schedule, extract_executable_schedule
 from .setup_lp import set_up_base_lp, set_up_extended_lp, set_up_simple_lp
 from .solve_lp import solve_lp
 from .types import (
-    ExecutableProblem,
+    # ExecutableProblem,
     InfoProblem,
     JobResultInfo,
     LPInstance,
@@ -24,7 +24,7 @@ from .types import (
 
 
 def generate_schedule(
-    problem: InfoProblem | ExecutableProblem,
+    problem: InfoProblem, #| ExecutableProblem,
     schedule_type: SchedulerType,
 ) -> tuple[float, list[JobResultInfo], LPInstance | None] | list[ScheduledJob]:
     """Generates the schedule for the given problem and schedule type.
@@ -68,7 +68,7 @@ def _generate_schedule_info(
     """
     # Syntax to add another algorithm to the scheduler
     # if schedule_type == SchedulerType.SomeOtherAlgorithm:
-
+    #    return makespan, jobs
 
     
     # This is for linear programming
