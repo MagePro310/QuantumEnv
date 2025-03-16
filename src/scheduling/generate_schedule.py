@@ -12,16 +12,22 @@ from .calculate_makespan import calculate_makespan, calculate_bin_makespan
 from .extract_schedule import extract_info_schedule, extract_executable_schedule
 from .setup_lp import set_up_base_lp, set_up_extended_lp, set_up_simple_lp
 from .solve_lp import solve_lp
+# from .types import (
+#     # ExecutableProblem,
+#     InfoProblem,
+#     JobResultInfo,
+#     LPInstance,
+#     PTimes,
+#     SchedulerType,
+#     STimes,
+# )
 from .types import (
     # ExecutableProblem,
     InfoProblem,
     JobResultInfo,
     LPInstance,
-    PTimes,
     SchedulerType,
-    STimes,
 )
-
 
 def generate_schedule(
     problem: InfoProblem, #| ExecutableProblem,
@@ -44,7 +50,8 @@ def generate_schedule(
     Raises:
         NotImplementedError: Unsupported types.
     """
-    if isinstance(problem, InfoProblem):
+        
+    if schedule_type == SchedulerType.BASELINE or schedule_type == SchedulerType.EXTENDED or schedule_type == SchedulerType.SIMPLE:
         return _generate_schedule_info(problem, schedule_type) #Run example_problem.py run this function
     # if isinstance(problem, ExecutableProblem):
     #     return _generate_schedule_exec(problem, schedule_type)
