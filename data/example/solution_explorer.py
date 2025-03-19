@@ -84,6 +84,7 @@ def _read_solution_file(solution_file: str) -> pd.DataFrame:
 
     # Chuyển danh sách thành DataFrame
     df = pd.DataFrame(rows_list)
+    # print(df)
     # Save rows_list to a file
     with open('job_data.txt', 'w') as f:
         for item in rows_list:
@@ -151,10 +152,12 @@ def generate_schedule_plot(solution_file: str, pdf_name: str | None = None):
     plt.xlabel("Time")
     plt.grid(axis="x", which="major")
     plt.grid(axis="x", which="minor", alpha=0.4)
-    legend_labels = [
-        f"{machine} ({capacity})"
-        for machine, capacity in zip(df["machine"], df["capacity"])
-    ]
+
+    # Set legend
+    legend_labels = []
+    for machine in color_mapping.keys():
+        legend_labels.append(f"{machine} ({df['capacity'][df['machine'] == machine].values[0]})")
+    
     plt.legend(handles=patches, labels=legend_labels)
 
     if pdf_name:
