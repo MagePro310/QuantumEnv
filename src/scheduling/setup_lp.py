@@ -126,45 +126,48 @@ def _define_lp(
 ) -> LPInstance:
     jobs = list(job_capacities.keys())
     machines = list(machine_capacities.keys())
-    x_ik = pulp.LpVariable.dicts("x_ik", (jobs, machines), cat="Binary")
-    z_ikt = pulp.LpVariable.dicts("z_ikt", (jobs, machines, timesteps), cat="Binary")
+    x_ik = pulp.LpVariable.dicts("x_ik", (jobs, machines), cat="Binary")                # Binary variable indicating whether job job is assigned to machine
+    z_ikt = pulp.LpVariable.dicts("z_ikt", (jobs, machines, timesteps), cat="Binary")   # Binary variable indicating whether job job is assigned to machine at timestep t
 
-    c_j = pulp.LpVariable.dicts("c_j", (jobs), 0, cat="Continuous")
-    s_j = pulp.LpVariable.dicts("s_j", (jobs), 0, cat="Continuous")
-    c_max = pulp.LpVariable("makespan", 0, cat="Continuous")
+    c_j = pulp.LpVariable.dicts("c_j", (jobs), 0, cat="Continuous")                     # Completion time of job
+    s_j = pulp.LpVariable.dicts("s_j", (jobs), 0, cat="Continuous")                     # Start time of job
+    c_max = pulp.LpVariable("makespan", 0, cat="Continuous")                            # Makespan of the schedule
 
     problem = pulp.LpProblem("Scheduling", pulp.LpMinimize)
     # set up problem constraints
-    problem += pulp.lpSum(c_max)  # (obj)
-    problem += c_j["0"] == 0  # (8)
+    problem += pulp.lpSum(c_max)                                                        # (OBJ)
+    problem += c_j["0"] == 0                                                            # (C2)
     for job in jobs[1:]:
-        problem += c_j[job] <= c_max  # (1)
-        problem += pulp.lpSum(x_ik[job][machine] for machine in machines) == 1  # (3)
-        problem += c_j[job] - s_j[job] + 1 == pulp.lpSum(  # (11)
+        problem += c_j[job] <= c_max                                                    # (C1)
+        problem += pulp.lpSum(x_ik[job][machine] for machine in machines) == 1          # (C3)
+        problem += c_j[job] - s_j[job] + 1 == pulp.lpSum(                               # (C7)
             z_ikt[job][machine][timestep]
             for timestep in timesteps
             for machine in machines
         )
         for machine in machines:
-            problem += (  # (12)
+            problem += (                                                                 # (C8)
                 pulp.lpSum(z_ikt[job][machine][timestep] for timestep in timesteps)
                 <= x_ik[job][machine] * big_m
             )
 
         for timestep in timesteps:
-            problem += (  # (13)
+            problem += (                                                                # (C9)
                 pulp.lpSum(z_ikt[job][machine][timestep] for machine in machines)
                 * timestep
                 <= c_j[job]
             )
-            problem += s_j[job] <= pulp.lpSum(  # (14)
+            problem += (
+                pulp.lpSum(z_ikt[job][machine][timestep] for machine in machines) <= 1  # (C4)
+            )
+            problem += s_j[job] <= pulp.lpSum(                                          # (C10)
                 z_ikt[job][machine][timestep] for machine in machines
             ) * timestep + big_m * (
                 1 - pulp.lpSum(z_ikt[job][machine][timestep] for machine in machines)
             )
     for timestep in timesteps:
         for machine in machines:
-            problem += (  # (15)
+            problem += (                                                                # (C11)
                 pulp.lpSum(
                     z_ikt[job][machine][timestep] * job_capacities[job]
                     for job in jobs[1:]
@@ -212,7 +215,7 @@ def set_up_simple_lp(
     )
 
     for job in lp_instance.jobs[1:]:
-        lp_instance.problem += lp_instance.c_j[job] >= lp_instance.s_j[  # (7)
+        lp_instance.problem += lp_instance.c_j[job] >= lp_instance.s_j[                     #(C5)
             job
         ] + pulp.lpSum(
             lp_instance.x_ik[job][machine]
@@ -295,15 +298,15 @@ def set_up_extended_lp(
     )
 
     for job in lp_instance.jobs[1:]:
-        lp_instance.problem += (  # (4)
-            pulp.lpSum(
+        lp_instance.problem += (                                                        # 
+            pulp.lpSum(                                 # (Constraint 12)
                 y_ijk[job_j][job][machine]
                 for machine in lp_instance.machines
                 for job_j in lp_instance.jobs
             )
             >= 1  # each job has a predecessor
         )
-        lp_instance.problem += lp_instance.c_j[job] >= lp_instance.s_j[  # (7)
+        lp_instance.problem += lp_instance.c_j[job] >= lp_instance.s_j[  # (Constrait 5)
             job
         ] + pulp.lpSum(
             lp_instance.x_ik[job][machine] * p_times[job][machine]
@@ -314,21 +317,21 @@ def set_up_extended_lp(
             for job_j in lp_instance.jobs
         )
         for machine in lp_instance.machines:
-            lp_instance.problem += (  # predecessor (6)
+            lp_instance.problem += (  # prec                         # (Constraint 13)
                 lp_instance.x_ik[job][machine]
                 >= pulp.lpSum(y_ijk[job_j][job][machine] for job_j in lp_instance.jobs)
                 / big_m
             )
-            lp_instance.problem += (  # successor
+            lp_instance.problem += (  # Sucesssor                         # (Constraint 14)
                 lp_instance.x_ik[job][machine]
                 >= pulp.lpSum(y_ijk[job][job_j][machine] for job_j in lp_instance.jobs)
                 / big_m
             )
-            lp_instance.problem += (  # (5)
+            lp_instance.problem += (                                                                # (Constraint 15)
                 lp_instance.z_ikt[job][machine][0] == y_ijk["0"][job][machine]
             )
         for job_j in lp_instance.jobs:
-            lp_instance.problem += (
+            lp_instance.problem += (                                                            # (Constraint 6)
                 lp_instance.c_j[job_j]
                 + (
                     pulp.lpSum(
@@ -349,20 +352,20 @@ def set_up_extended_lp(
                 continue
             lp_instance.problem += (
                 a_ij[job][job_j]
-                >= (lp_instance.s_j[job_j] - lp_instance.c_j[job]) / big_m
+                >= (lp_instance.s_j[job_j] - lp_instance.c_j[job]) / big_m          # (Constraint 16)
             )
             lp_instance.problem += (
                 b_ij[job][job_j]
-                >= (lp_instance.c_j[job_j] - lp_instance.c_j[job]) / big_m
+                >= (lp_instance.c_j[job_j] - lp_instance.c_j[job]) / big_m          # (Constraint 17)
             )
             for machine in lp_instance.machines:
-                lp_instance.problem += (
+                lp_instance.problem += (                                # (Constraint 18)
                     d_ijk[job][job_j][machine]
                     >= lp_instance.x_ik[job][machine]
                     + lp_instance.x_ik[job_j][machine]
                     - 1
                 )
-                for job_l in lp_instance.jobs[1:]:
+                for job_l in lp_instance.jobs[1:]:                      # (Constraint 19)
                     lp_instance.problem += (
                         e_ijlk[job][job_j][job_l][machine]
                         >= b_ij[job][job_l]
@@ -375,7 +378,7 @@ def set_up_extended_lp(
     for job in lp_instance.jobs[1:]:
         for job_j in lp_instance.jobs[1:]:
             for machine in lp_instance.machines:
-                lp_instance.problem += (
+                lp_instance.problem += (                            # (Constraint 20)
                     y_ijk[job][job_j][machine]
                     >= a_ij[job][job_j]
                     + (

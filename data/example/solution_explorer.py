@@ -153,10 +153,14 @@ def generate_schedule_plot(solution_file: str, pdf_name: str | None = None):
     plt.xlabel("Time")
     plt.grid(axis="x", which="major")
     plt.grid(axis="x", which="minor", alpha=0.4)
+
+    legend_labels = list(color_mapping.keys())
+    # Print the legend labels with name and capacity
     legend_labels = [
-        f"{machine} ({capacity})"
-        for machine, capacity in zip(df["machine"], df["capacity"])
+        f"{label} ({df[df['machine'] == label]['capacity'].iloc[0]})"
+        for label in legend_labels
     ]
+    
     plt.legend(handles=patches, labels=legend_labels)
 
     if pdf_name:
