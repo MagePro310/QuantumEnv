@@ -1,0 +1,5 @@
+{'job': 'A', 'qubits': 2, 'machine': 'QUITO', 'capacity': 5, 'start': 9.0, 'end': 23.0, 'duration': 14.0}
+{'job': 'B', 'qubits': 3, 'machine': 'QUITO', 'capacity': 5, 'start': 0.0, 'end': 8.0, 'duration': 8.0}
+{'job': 'C', 'qubits': 5, 'machine': 'BELEM', 'capacity': 5, 'start': 12.0, 'end': 21.0, 'duration': 9.0}
+{'job': 'D', 'qubits': 2, 'machine': 'QUITO', 'capacity': 5, 'start': 0.0, 'end': 7.0, 'duration': 7.0}
+{'job': 'E', 'qubits': 3, 'machine': 'QUITO', 'capacity': 5, 'start': 9.0, 'end': 23.0, 'duration': 14.0}

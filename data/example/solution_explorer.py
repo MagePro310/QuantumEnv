@@ -89,7 +89,10 @@ def _read_solution_file(solution_file: str) -> pd.DataFrame:
 
     # Chuyển đổi danh sách thành DataFrame
     df = pd.DataFrame(rows_list)
-
+    # Save rows_list to a file
+    with open('job_data.txt', 'w') as f:
+        for item in rows_list:
+            f.write("%s\n" % item)
     return df
 
 
