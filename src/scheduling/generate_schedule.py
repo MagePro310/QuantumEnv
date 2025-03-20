@@ -76,7 +76,11 @@ def _generate_schedule_info(
     lp_instance = set_up_base_lp(
         problem.base_jobs, problem.accelerators, problem.big_m, problem.timesteps
     )
-
+    # show jobs 
+    print("Jobs:")
+    for job in problem.base_jobs:
+        print(job.num_qubits)
+    
     if schedule_type == SchedulerType.EXTENDED:
         lp_instance = set_up_extended_lp(
             lp_instance=lp_instance,

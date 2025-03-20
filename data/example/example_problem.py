@@ -23,13 +23,14 @@ def _calculate_example_setup_times(job_i, job_j_, machine_k) -> float:
 
 def _generate_problem(big_m: int, timesteps: int) -> tuple[InfoProblem, dict[str, int]]:
     # Inputs
-    jobs = ["0", "A", "B", "C", "D"]
+    jobs = ["0", "A", "B", "C", "D", "E"]
     job_capacities = {
         "0": 0,  # dummy job
         "A": 2,
         "B": 3,
         "C": 5,
         "D": 2,
+        "E": 3,
     }
     machines = ["QUITO", "BELEM"]
     machine_capacities = {"QUITO": 5, "BELEM": 5}
@@ -60,6 +61,12 @@ def _generate_problem(big_m: int, timesteps: int) -> tuple[InfoProblem, dict[str
         for job_j in jobs
     ]
     del job_capacities["0"]
+    # Print the processing and setup times
+    for i in range(len(jobs)):
+        print(f"Processing times for {jobs[i]}: {processing_times[i]}")
+    for i in range(len(jobs)):
+        for j in range(len(jobs)):
+            print(f"Setup times for {jobs[i]} and {jobs[j]}: {setup_times[i][j]}")
     return (
         InfoProblem(
             base_jobs=[QuantumCircuit(cap) for cap in job_capacities.values()],

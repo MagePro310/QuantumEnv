@@ -125,6 +125,8 @@ def _define_lp(
     big_m: int,
 ) -> LPInstance:
     jobs = list(job_capacities.keys())
+    print("Jobs in define_lp:")
+    print(jobs)
     machines = list(machine_capacities.keys())
     x_ik = pulp.LpVariable.dicts("x_ik", (jobs, machines), cat="Binary")                # Binary variable indicating whether job job is assigned to machine
     z_ikt = pulp.LpVariable.dicts("z_ikt", (jobs, machines, timesteps), cat="Binary")   # Binary variable indicating whether job job is assigned to machine at timestep t
@@ -140,6 +142,7 @@ def _define_lp(
     for job in jobs[1:]:
         problem += c_j[job] <= c_max                                                    # (C1)
         problem += pulp.lpSum(x_ik[job][machine] for machine in machines) == 1          # (C3)
+        
         problem += c_j[job] - s_j[job] + 1 == pulp.lpSum(                               # (C7)
             z_ikt[job][machine][timestep]
             for timestep in timesteps
@@ -174,6 +177,10 @@ def _define_lp(
                 )
                 <= machine_capacities[machine]
             )
+    # Print job in LPInstance
+    print("Jobs in define_lp:")
+    for job in jobs:
+        print(job_capacities[job])
     return LPInstance(
         problem=problem,
         jobs=jobs,
@@ -264,16 +271,37 @@ def set_up_extended_lp(
     Returns:
         LPInstance: The updated LP instance.
     """
+    # List of jobs
+    # Compare lenght job with machines
+    # Print the jobs
+    print("Jobs in set_up_extended_lp:")
+    for job in lp_instance.jobs:
+        print(job)
+    # Print the machines
+    print("Machines in set_up_extended_lp:")
+    for machine in lp_instance.machines:
+        print(machine)
+    # Print the process times
+    print("Process times:")
+    print(process_times)
     p_times = pulp.makeDict(
         [lp_instance.jobs[1:], lp_instance.machines],
-        process_times,
+        process_times[1:],
         0,
     )
+    # Print the process times
+    print("Process times:")
+    print(p_times)
     s_times = pulp.makeDict(
         [lp_instance.jobs, lp_instance.jobs, lp_instance.machines],
         setup_times,
         0,
     )
+    # Print the setup times
+    for job_i in lp_instance.jobs:
+        for job_j in lp_instance.jobs:
+            for machine in lp_instance.machines:
+                print(f"Setup time for job {job_i} on job {job_j} on machine {machine}: {s_times[job_i][job_j][machine]}")
     # decision variables
     y_ijk = pulp.LpVariable.dicts(
         "y_ijk",
@@ -330,6 +358,7 @@ def set_up_extended_lp(
             lp_instance.problem += (                                                                # (Constraint 15)
                 lp_instance.z_ikt[job][machine][0] == y_ijk["0"][job][machine]
             )
+                                                                 
         for job_j in lp_instance.jobs:
             lp_instance.problem += (                                                            # (Constraint 6)
                 lp_instance.c_j[job_j]
