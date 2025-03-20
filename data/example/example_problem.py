@@ -30,7 +30,7 @@ def _generate_problem(big_m: int, timesteps: int) -> tuple[InfoProblem, dict[str
         "B": 3,
         "C": 5,
         "D": 2,
-        "E": 3,
+        "E": 3
     }
     machines = ["QUITO", "BELEM"]
     machine_capacities = {"QUITO": 5, "BELEM": 5}

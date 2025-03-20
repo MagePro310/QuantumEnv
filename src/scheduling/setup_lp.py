@@ -212,7 +212,7 @@ def set_up_simple_lp(
     """
     p_times = pulp.makeDict(
         [lp_instance.jobs[1:], lp_instance.machines],
-        process_times,
+        process_times[1:],
         0,
     )
     s_times = pulp.makeDict(

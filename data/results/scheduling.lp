@@ -455,198 +455,141 @@ _C402: s_j_4 + 970 z_ikt_4_BELEM_30 + 970 z_ikt_4_QUITO_30 <= 1000
 _C403: - c_j_4 + 31 z_ikt_4_BELEM_31 + 31 z_ikt_4_QUITO_31 <= 0
 _C404: z_ikt_4_BELEM_31 + z_ikt_4_QUITO_31 <= 1
 _C405: s_j_4 + 969 z_ikt_4_BELEM_31 + 969 z_ikt_4_QUITO_31 <= 1000
-_C406: 2 z_ikt_1_QUITO_0 + 3 z_ikt_2_QUITO_0 + 5 z_ikt_3_QUITO_0
- + 2 z_ikt_4_QUITO_0 <= 5
-_C407: 2 z_ikt_1_BELEM_0 + 3 z_ikt_2_BELEM_0 + 5 z_ikt_3_BELEM_0
- + 2 z_ikt_4_BELEM_0 <= 5
-_C408: 2 z_ikt_1_QUITO_1 + 3 z_ikt_2_QUITO_1 + 5 z_ikt_3_QUITO_1
- + 2 z_ikt_4_QUITO_1 <= 5
-_C409: 2 z_ikt_1_BELEM_1 + 3 z_ikt_2_BELEM_1 + 5 z_ikt_3_BELEM_1
- + 2 z_ikt_4_BELEM_1 <= 5
+_C406: c_j_5 - makespan <= 0
+_C407: x_ik_5_BELEM + x_ik_5_QUITO = 1
+_C408: c_j_5 - s_j_5 - z_ikt_5_BELEM_0 - z_ikt_5_BELEM_1 - z_ikt_5_BELEM_10
+ - z_ikt_5_BELEM_11 - z_ikt_5_BELEM_12 - z_ikt_5_BELEM_13 - z_ikt_5_BELEM_14
+ - z_ikt_5_BELEM_15 - z_ikt_5_BELEM_16 - z_ikt_5_BELEM_17 - z_ikt_5_BELEM_18
+ - z_ikt_5_BELEM_19 - z_ikt_5_BELEM_2 - z_ikt_5_BELEM_20 - z_ikt_5_BELEM_21
+ - z_ikt_5_BELEM_22 - z_ikt_5_BELEM_23 - z_ikt_5_BELEM_24 - z_ikt_5_BELEM_25
+ - z_ikt_5_BELEM_26 - z_ikt_5_BELEM_27 - z_ikt_5_BELEM_28 - z_ikt_5_BELEM_29
+ - z_ikt_5_BELEM_3 - z_ikt_5_BELEM_30 - z_ikt_5_BELEM_31 - z_ikt_5_BELEM_4
+ - z_ikt_5_BELEM_5 - z_ikt_5_BELEM_6 - z_ikt_5_BELEM_7 - z_ikt_5_BELEM_8
+ - z_ikt_5_BELEM_9 - z_ikt_5_QUITO_0 - z_ikt_5_QUITO_1 - z_ikt_5_QUITO_10
+ - z_ikt_5_QUITO_11 - z_ikt_5_QUITO_12 - z_ikt_5_QUITO_13 - z_ikt_5_QUITO_14
+ - z_ikt_5_QUITO_15 - z_ikt_5_QUITO_16 - z_ikt_5_QUITO_17 - z_ikt_5_QUITO_18
+ - z_ikt_5_QUITO_19 - z_ikt_5_QUITO_2 - z_ikt_5_QUITO_20 - z_ikt_5_QUITO_21
+ - z_ikt_5_QUITO_22 - z_ikt_5_QUITO_23 - z_ikt_5_QUITO_24 - z_ikt_5_QUITO_25
+ - z_ikt_5_QUITO_26 - z_ikt_5_QUITO_27 - z_ikt_5_QUITO_28 - z_ikt_5_QUITO_29
+ - z_ikt_5_QUITO_3 - z_ikt_5_QUITO_30 - z_ikt_5_QUITO_31 - z_ikt_5_QUITO_4
+ - z_ikt_5_QUITO_5 - z_ikt_5_QUITO_6 - z_ikt_5_QUITO_7 - z_ikt_5_QUITO_8
+ - z_ikt_5_QUITO_9 = -1
+_C409: - 1000 x_ik_5_QUITO + z_ikt_5_QUITO_0 + z_ikt_5_QUITO_1
+ + z_ikt_5_QUITO_10 + z_ikt_5_QUITO_11 + z_ikt_5_QUITO_12 + z_ikt_5_QUITO_13
+ + z_ikt_5_QUITO_14 + z_ikt_5_QUITO_15 + z_ikt_5_QUITO_16 + z_ikt_5_QUITO_17
+ + z_ikt_5_QUITO_18 + z_ikt_5_QUITO_19 + z_ikt_5_QUITO_2 + z_ikt_5_QUITO_20
+ + z_ikt_5_QUITO_21 + z_ikt_5_QUITO_22 + z_ikt_5_QUITO_23 + z_ikt_5_QUITO_24
+ + z_ikt_5_QUITO_25 + z_ikt_5_QUITO_26 + z_ikt_5_QUITO_27 + z_ikt_5_QUITO_28
+ + z_ikt_5_QUITO_29 + z_ikt_5_QUITO_3 + z_ikt_5_QUITO_30 + z_ikt_5_QUITO_31
+ + z_ikt_5_QUITO_4 + z_ikt_5_QUITO_5 + z_ikt_5_QUITO_6 + z_ikt_5_QUITO_7
+ + z_ikt_5_QUITO_8 + z_ikt_5_QUITO_9 <= 0
 _C41: z_ikt_1_BELEM_11 + z_ikt_1_QUITO_11 <= 1
-_C410: 2 z_ikt_1_QUITO_2 + 3 z_ikt_2_QUITO_2 + 5 z_ikt_3_QUITO_2
- + 2 z_ikt_4_QUITO_2 <= 5
-_C411: 2 z_ikt_1_BELEM_2 + 3 z_ikt_2_BELEM_2 + 5 z_ikt_3_BELEM_2
- + 2 z_ikt_4_BELEM_2 <= 5
-_C412: 2 z_ikt_1_QUITO_3 + 3 z_ikt_2_QUITO_3 + 5 z_ikt_3_QUITO_3
- + 2 z_ikt_4_QUITO_3 <= 5
-_C413: 2 z_ikt_1_BELEM_3 + 3 z_ikt_2_BELEM_3 + 5 z_ikt_3_BELEM_3
- + 2 z_ikt_4_BELEM_3 <= 5
-_C414: 2 z_ikt_1_QUITO_4 + 3 z_ikt_2_QUITO_4 + 5 z_ikt_3_QUITO_4
- + 2 z_ikt_4_QUITO_4 <= 5
-_C415: 2 z_ikt_1_BELEM_4 + 3 z_ikt_2_BELEM_4 + 5 z_ikt_3_BELEM_4
- + 2 z_ikt_4_BELEM_4 <= 5
-_C416: 2 z_ikt_1_QUITO_5 + 3 z_ikt_2_QUITO_5 + 5 z_ikt_3_QUITO_5
- + 2 z_ikt_4_QUITO_5 <= 5
-_C417: 2 z_ikt_1_BELEM_5 + 3 z_ikt_2_BELEM_5 + 5 z_ikt_3_BELEM_5
- + 2 z_ikt_4_BELEM_5 <= 5
-_C418: 2 z_ikt_1_QUITO_6 + 3 z_ikt_2_QUITO_6 + 5 z_ikt_3_QUITO_6
- + 2 z_ikt_4_QUITO_6 <= 5
-_C419: 2 z_ikt_1_BELEM_6 + 3 z_ikt_2_BELEM_6 + 5 z_ikt_3_BELEM_6
- + 2 z_ikt_4_BELEM_6 <= 5
+_C410: - 1000 x_ik_5_BELEM + z_ikt_5_BELEM_0 + z_ikt_5_BELEM_1
+ + z_ikt_5_BELEM_10 + z_ikt_5_BELEM_11 + z_ikt_5_BELEM_12 + z_ikt_5_BELEM_13
+ + z_ikt_5_BELEM_14 + z_ikt_5_BELEM_15 + z_ikt_5_BELEM_16 + z_ikt_5_BELEM_17
+ + z_ikt_5_BELEM_18 + z_ikt_5_BELEM_19 + z_ikt_5_BELEM_2 + z_ikt_5_BELEM_20
+ + z_ikt_5_BELEM_21 + z_ikt_5_BELEM_22 + z_ikt_5_BELEM_23 + z_ikt_5_BELEM_24
+ + z_ikt_5_BELEM_25 + z_ikt_5_BELEM_26 + z_ikt_5_BELEM_27 + z_ikt_5_BELEM_28
+ + z_ikt_5_BELEM_29 + z_ikt_5_BELEM_3 + z_ikt_5_BELEM_30 + z_ikt_5_BELEM_31
+ + z_ikt_5_BELEM_4 + z_ikt_5_BELEM_5 + z_ikt_5_BELEM_6 + z_ikt_5_BELEM_7
+ + z_ikt_5_BELEM_8 + z_ikt_5_BELEM_9 <= 0
+_C411: - c_j_5 <= 0
+_C412: z_ikt_5_BELEM_0 + z_ikt_5_QUITO_0 <= 1
+_C413: s_j_5 + 1000 z_ikt_5_BELEM_0 + 1000 z_ikt_5_QUITO_0 <= 1000
+_C414: - c_j_5 + z_ikt_5_BELEM_1 + z_ikt_5_QUITO_1 <= 0
+_C415: z_ikt_5_BELEM_1 + z_ikt_5_QUITO_1 <= 1
+_C416: s_j_5 + 999 z_ikt_5_BELEM_1 + 999 z_ikt_5_QUITO_1 <= 1000
+_C417: - c_j_5 + 2 z_ikt_5_BELEM_2 + 2 z_ikt_5_QUITO_2 <= 0
+_C418: z_ikt_5_BELEM_2 + z_ikt_5_QUITO_2 <= 1
+_C419: s_j_5 + 998 z_ikt_5_BELEM_2 + 998 z_ikt_5_QUITO_2 <= 1000
 _C42: s_j_1 + 989 z_ikt_1_BELEM_11 + 989 z_ikt_1_QUITO_11 <= 1000
-_C420: 2 z_ikt_1_QUITO_7 + 3 z_ikt_2_QUITO_7 + 5 z_ikt_3_QUITO_7
- + 2 z_ikt_4_QUITO_7 <= 5
-_C421: 2 z_ikt_1_BELEM_7 + 3 z_ikt_2_BELEM_7 + 5 z_ikt_3_BELEM_7
- + 2 z_ikt_4_BELEM_7 <= 5
-_C422: 2 z_ikt_1_QUITO_8 + 3 z_ikt_2_QUITO_8 + 5 z_ikt_3_QUITO_8
- + 2 z_ikt_4_QUITO_8 <= 5
-_C423: 2 z_ikt_1_BELEM_8 + 3 z_ikt_2_BELEM_8 + 5 z_ikt_3_BELEM_8
- + 2 z_ikt_4_BELEM_8 <= 5
-_C424: 2 z_ikt_1_QUITO_9 + 3 z_ikt_2_QUITO_9 + 5 z_ikt_3_QUITO_9
- + 2 z_ikt_4_QUITO_9 <= 5
-_C425: 2 z_ikt_1_BELEM_9 + 3 z_ikt_2_BELEM_9 + 5 z_ikt_3_BELEM_9
- + 2 z_ikt_4_BELEM_9 <= 5
-_C426: 2 z_ikt_1_QUITO_10 + 3 z_ikt_2_QUITO_10 + 5 z_ikt_3_QUITO_10
- + 2 z_ikt_4_QUITO_10 <= 5
-_C427: 2 z_ikt_1_BELEM_10 + 3 z_ikt_2_BELEM_10 + 5 z_ikt_3_BELEM_10
- + 2 z_ikt_4_BELEM_10 <= 5
-_C428: 2 z_ikt_1_QUITO_11 + 3 z_ikt_2_QUITO_11 + 5 z_ikt_3_QUITO_11
- + 2 z_ikt_4_QUITO_11 <= 5
-_C429: 2 z_ikt_1_BELEM_11 + 3 z_ikt_2_BELEM_11 + 5 z_ikt_3_BELEM_11
- + 2 z_ikt_4_BELEM_11 <= 5
+_C420: - c_j_5 + 3 z_ikt_5_BELEM_3 + 3 z_ikt_5_QUITO_3 <= 0
+_C421: z_ikt_5_BELEM_3 + z_ikt_5_QUITO_3 <= 1
+_C422: s_j_5 + 997 z_ikt_5_BELEM_3 + 997 z_ikt_5_QUITO_3 <= 1000
+_C423: - c_j_5 + 4 z_ikt_5_BELEM_4 + 4 z_ikt_5_QUITO_4 <= 0
+_C424: z_ikt_5_BELEM_4 + z_ikt_5_QUITO_4 <= 1
+_C425: s_j_5 + 996 z_ikt_5_BELEM_4 + 996 z_ikt_5_QUITO_4 <= 1000
+_C426: - c_j_5 + 5 z_ikt_5_BELEM_5 + 5 z_ikt_5_QUITO_5 <= 0
+_C427: z_ikt_5_BELEM_5 + z_ikt_5_QUITO_5 <= 1
+_C428: s_j_5 + 995 z_ikt_5_BELEM_5 + 995 z_ikt_5_QUITO_5 <= 1000
+_C429: - c_j_5 + 6 z_ikt_5_BELEM_6 + 6 z_ikt_5_QUITO_6 <= 0
 _C43: - c_j_1 + 12 z_ikt_1_BELEM_12 + 12 z_ikt_1_QUITO_12 <= 0
-_C430: 2 z_ikt_1_QUITO_12 + 3 z_ikt_2_QUITO_12 + 5 z_ikt_3_QUITO_12
- + 2 z_ikt_4_QUITO_12 <= 5
-_C431: 2 z_ikt_1_BELEM_12 + 3 z_ikt_2_BELEM_12 + 5 z_ikt_3_BELEM_12
- + 2 z_ikt_4_BELEM_12 <= 5
-_C432: 2 z_ikt_1_QUITO_13 + 3 z_ikt_2_QUITO_13 + 5 z_ikt_3_QUITO_13
- + 2 z_ikt_4_QUITO_13 <= 5
-_C433: 2 z_ikt_1_BELEM_13 + 3 z_ikt_2_BELEM_13 + 5 z_ikt_3_BELEM_13
- + 2 z_ikt_4_BELEM_13 <= 5
-_C434: 2 z_ikt_1_QUITO_14 + 3 z_ikt_2_QUITO_14 + 5 z_ikt_3_QUITO_14
- + 2 z_ikt_4_QUITO_14 <= 5
-_C435: 2 z_ikt_1_BELEM_14 + 3 z_ikt_2_BELEM_14 + 5 z_ikt_3_BELEM_14
- + 2 z_ikt_4_BELEM_14 <= 5
-_C436: 2 z_ikt_1_QUITO_15 + 3 z_ikt_2_QUITO_15 + 5 z_ikt_3_QUITO_15
- + 2 z_ikt_4_QUITO_15 <= 5
-_C437: 2 z_ikt_1_BELEM_15 + 3 z_ikt_2_BELEM_15 + 5 z_ikt_3_BELEM_15
- + 2 z_ikt_4_BELEM_15 <= 5
-_C438: 2 z_ikt_1_QUITO_16 + 3 z_ikt_2_QUITO_16 + 5 z_ikt_3_QUITO_16
- + 2 z_ikt_4_QUITO_16 <= 5
-_C439: 2 z_ikt_1_BELEM_16 + 3 z_ikt_2_BELEM_16 + 5 z_ikt_3_BELEM_16
- + 2 z_ikt_4_BELEM_16 <= 5
+_C430: z_ikt_5_BELEM_6 + z_ikt_5_QUITO_6 <= 1
+_C431: s_j_5 + 994 z_ikt_5_BELEM_6 + 994 z_ikt_5_QUITO_6 <= 1000
+_C432: - c_j_5 + 7 z_ikt_5_BELEM_7 + 7 z_ikt_5_QUITO_7 <= 0
+_C433: z_ikt_5_BELEM_7 + z_ikt_5_QUITO_7 <= 1
+_C434: s_j_5 + 993 z_ikt_5_BELEM_7 + 993 z_ikt_5_QUITO_7 <= 1000
+_C435: - c_j_5 + 8 z_ikt_5_BELEM_8 + 8 z_ikt_5_QUITO_8 <= 0
+_C436: z_ikt_5_BELEM_8 + z_ikt_5_QUITO_8 <= 1
+_C437: s_j_5 + 992 z_ikt_5_BELEM_8 + 992 z_ikt_5_QUITO_8 <= 1000
+_C438: - c_j_5 + 9 z_ikt_5_BELEM_9 + 9 z_ikt_5_QUITO_9 <= 0
+_C439: z_ikt_5_BELEM_9 + z_ikt_5_QUITO_9 <= 1
 _C44: z_ikt_1_BELEM_12 + z_ikt_1_QUITO_12 <= 1
-_C440: 2 z_ikt_1_QUITO_17 + 3 z_ikt_2_QUITO_17 + 5 z_ikt_3_QUITO_17
- + 2 z_ikt_4_QUITO_17 <= 5
-_C441: 2 z_ikt_1_BELEM_17 + 3 z_ikt_2_BELEM_17 + 5 z_ikt_3_BELEM_17
- + 2 z_ikt_4_BELEM_17 <= 5
-_C442: 2 z_ikt_1_QUITO_18 + 3 z_ikt_2_QUITO_18 + 5 z_ikt_3_QUITO_18
- + 2 z_ikt_4_QUITO_18 <= 5
-_C443: 2 z_ikt_1_BELEM_18 + 3 z_ikt_2_BELEM_18 + 5 z_ikt_3_BELEM_18
- + 2 z_ikt_4_BELEM_18 <= 5
-_C444: 2 z_ikt_1_QUITO_19 + 3 z_ikt_2_QUITO_19 + 5 z_ikt_3_QUITO_19
- + 2 z_ikt_4_QUITO_19 <= 5
-_C445: 2 z_ikt_1_BELEM_19 + 3 z_ikt_2_BELEM_19 + 5 z_ikt_3_BELEM_19
- + 2 z_ikt_4_BELEM_19 <= 5
-_C446: 2 z_ikt_1_QUITO_20 + 3 z_ikt_2_QUITO_20 + 5 z_ikt_3_QUITO_20
- + 2 z_ikt_4_QUITO_20 <= 5
-_C447: 2 z_ikt_1_BELEM_20 + 3 z_ikt_2_BELEM_20 + 5 z_ikt_3_BELEM_20
- + 2 z_ikt_4_BELEM_20 <= 5
-_C448: 2 z_ikt_1_QUITO_21 + 3 z_ikt_2_QUITO_21 + 5 z_ikt_3_QUITO_21
- + 2 z_ikt_4_QUITO_21 <= 5
-_C449: 2 z_ikt_1_BELEM_21 + 3 z_ikt_2_BELEM_21 + 5 z_ikt_3_BELEM_21
- + 2 z_ikt_4_BELEM_21 <= 5
+_C440: s_j_5 + 991 z_ikt_5_BELEM_9 + 991 z_ikt_5_QUITO_9 <= 1000
+_C441: - c_j_5 + 10 z_ikt_5_BELEM_10 + 10 z_ikt_5_QUITO_10 <= 0
+_C442: z_ikt_5_BELEM_10 + z_ikt_5_QUITO_10 <= 1
+_C443: s_j_5 + 990 z_ikt_5_BELEM_10 + 990 z_ikt_5_QUITO_10 <= 1000
+_C444: - c_j_5 + 11 z_ikt_5_BELEM_11 + 11 z_ikt_5_QUITO_11 <= 0
+_C445: z_ikt_5_BELEM_11 + z_ikt_5_QUITO_11 <= 1
+_C446: s_j_5 + 989 z_ikt_5_BELEM_11 + 989 z_ikt_5_QUITO_11 <= 1000
+_C447: - c_j_5 + 12 z_ikt_5_BELEM_12 + 12 z_ikt_5_QUITO_12 <= 0
+_C448: z_ikt_5_BELEM_12 + z_ikt_5_QUITO_12 <= 1
+_C449: s_j_5 + 988 z_ikt_5_BELEM_12 + 988 z_ikt_5_QUITO_12 <= 1000
 _C45: s_j_1 + 988 z_ikt_1_BELEM_12 + 988 z_ikt_1_QUITO_12 <= 1000
-_C450: 2 z_ikt_1_QUITO_22 + 3 z_ikt_2_QUITO_22 + 5 z_ikt_3_QUITO_22
- + 2 z_ikt_4_QUITO_22 <= 5
-_C451: 2 z_ikt_1_BELEM_22 + 3 z_ikt_2_BELEM_22 + 5 z_ikt_3_BELEM_22
- + 2 z_ikt_4_BELEM_22 <= 5
-_C452: 2 z_ikt_1_QUITO_23 + 3 z_ikt_2_QUITO_23 + 5 z_ikt_3_QUITO_23
- + 2 z_ikt_4_QUITO_23 <= 5
-_C453: 2 z_ikt_1_BELEM_23 + 3 z_ikt_2_BELEM_23 + 5 z_ikt_3_BELEM_23
- + 2 z_ikt_4_BELEM_23 <= 5
-_C454: 2 z_ikt_1_QUITO_24 + 3 z_ikt_2_QUITO_24 + 5 z_ikt_3_QUITO_24
- + 2 z_ikt_4_QUITO_24 <= 5
-_C455: 2 z_ikt_1_BELEM_24 + 3 z_ikt_2_BELEM_24 + 5 z_ikt_3_BELEM_24
- + 2 z_ikt_4_BELEM_24 <= 5
-_C456: 2 z_ikt_1_QUITO_25 + 3 z_ikt_2_QUITO_25 + 5 z_ikt_3_QUITO_25
- + 2 z_ikt_4_QUITO_25 <= 5
-_C457: 2 z_ikt_1_BELEM_25 + 3 z_ikt_2_BELEM_25 + 5 z_ikt_3_BELEM_25
- + 2 z_ikt_4_BELEM_25 <= 5
-_C458: 2 z_ikt_1_QUITO_26 + 3 z_ikt_2_QUITO_26 + 5 z_ikt_3_QUITO_26
- + 2 z_ikt_4_QUITO_26 <= 5
-_C459: 2 z_ikt_1_BELEM_26 + 3 z_ikt_2_BELEM_26 + 5 z_ikt_3_BELEM_26
- + 2 z_ikt_4_BELEM_26 <= 5
+_C450: - c_j_5 + 13 z_ikt_5_BELEM_13 + 13 z_ikt_5_QUITO_13 <= 0
+_C451: z_ikt_5_BELEM_13 + z_ikt_5_QUITO_13 <= 1
+_C452: s_j_5 + 987 z_ikt_5_BELEM_13 + 987 z_ikt_5_QUITO_13 <= 1000
+_C453: - c_j_5 + 14 z_ikt_5_BELEM_14 + 14 z_ikt_5_QUITO_14 <= 0
+_C454: z_ikt_5_BELEM_14 + z_ikt_5_QUITO_14 <= 1
+_C455: s_j_5 + 986 z_ikt_5_BELEM_14 + 986 z_ikt_5_QUITO_14 <= 1000
+_C456: - c_j_5 + 15 z_ikt_5_BELEM_15 + 15 z_ikt_5_QUITO_15 <= 0
+_C457: z_ikt_5_BELEM_15 + z_ikt_5_QUITO_15 <= 1
+_C458: s_j_5 + 985 z_ikt_5_BELEM_15 + 985 z_ikt_5_QUITO_15 <= 1000
+_C459: - c_j_5 + 16 z_ikt_5_BELEM_16 + 16 z_ikt_5_QUITO_16 <= 0
 _C46: - c_j_1 + 13 z_ikt_1_BELEM_13 + 13 z_ikt_1_QUITO_13 <= 0
-_C460: 2 z_ikt_1_QUITO_27 + 3 z_ikt_2_QUITO_27 + 5 z_ikt_3_QUITO_27
- + 2 z_ikt_4_QUITO_27 <= 5
-_C461: 2 z_ikt_1_BELEM_27 + 3 z_ikt_2_BELEM_27 + 5 z_ikt_3_BELEM_27
- + 2 z_ikt_4_BELEM_27 <= 5
-_C462: 2 z_ikt_1_QUITO_28 + 3 z_ikt_2_QUITO_28 + 5 z_ikt_3_QUITO_28
- + 2 z_ikt_4_QUITO_28 <= 5
-_C463: 2 z_ikt_1_BELEM_28 + 3 z_ikt_2_BELEM_28 + 5 z_ikt_3_BELEM_28
- + 2 z_ikt_4_BELEM_28 <= 5
-_C464: 2 z_ikt_1_QUITO_29 + 3 z_ikt_2_QUITO_29 + 5 z_ikt_3_QUITO_29
- + 2 z_ikt_4_QUITO_29 <= 5
-_C465: 2 z_ikt_1_BELEM_29 + 3 z_ikt_2_BELEM_29 + 5 z_ikt_3_BELEM_29
- + 2 z_ikt_4_BELEM_29 <= 5
-_C466: 2 z_ikt_1_QUITO_30 + 3 z_ikt_2_QUITO_30 + 5 z_ikt_3_QUITO_30
- + 2 z_ikt_4_QUITO_30 <= 5
-_C467: 2 z_ikt_1_BELEM_30 + 3 z_ikt_2_BELEM_30 + 5 z_ikt_3_BELEM_30
- + 2 z_ikt_4_BELEM_30 <= 5
-_C468: 2 z_ikt_1_QUITO_31 + 3 z_ikt_2_QUITO_31 + 5 z_ikt_3_QUITO_31
- + 2 z_ikt_4_QUITO_31 <= 5
-_C469: 2 z_ikt_1_BELEM_31 + 3 z_ikt_2_BELEM_31 + 5 z_ikt_3_BELEM_31
- + 2 z_ikt_4_BELEM_31 <= 5
+_C460: z_ikt_5_BELEM_16 + z_ikt_5_QUITO_16 <= 1
+_C461: s_j_5 + 984 z_ikt_5_BELEM_16 + 984 z_ikt_5_QUITO_16 <= 1000
+_C462: - c_j_5 + 17 z_ikt_5_BELEM_17 + 17 z_ikt_5_QUITO_17 <= 0
+_C463: z_ikt_5_BELEM_17 + z_ikt_5_QUITO_17 <= 1
+_C464: s_j_5 + 983 z_ikt_5_BELEM_17 + 983 z_ikt_5_QUITO_17 <= 1000
+_C465: - c_j_5 + 18 z_ikt_5_BELEM_18 + 18 z_ikt_5_QUITO_18 <= 0
+_C466: z_ikt_5_BELEM_18 + z_ikt_5_QUITO_18 <= 1
+_C467: s_j_5 + 982 z_ikt_5_BELEM_18 + 982 z_ikt_5_QUITO_18 <= 1000
+_C468: - c_j_5 + 19 z_ikt_5_BELEM_19 + 19 z_ikt_5_QUITO_19 <= 0
+_C469: z_ikt_5_BELEM_19 + z_ikt_5_QUITO_19 <= 1
 _C47: z_ikt_1_BELEM_13 + z_ikt_1_QUITO_13 <= 1
-_C470: y_ijk_0_1_BELEM + y_ijk_0_1_QUITO + y_ijk_1_1_BELEM + y_ijk_1_1_QUITO
- + y_ijk_2_1_BELEM + y_ijk_2_1_QUITO + y_ijk_3_1_BELEM + y_ijk_3_1_QUITO
- + y_ijk_4_1_BELEM + y_ijk_4_1_QUITO >= 1
-_C471: c_j_1 - s_j_1 - 9 x_ik_1_BELEM - 8 x_ik_1_QUITO - 50 y_ijk_1_1_BELEM
- - 50 y_ijk_1_1_QUITO - 6 y_ijk_2_1_BELEM - 8 y_ijk_2_1_QUITO
- - 10 y_ijk_3_1_BELEM - 7 y_ijk_3_1_QUITO - 6 y_ijk_4_1_BELEM
- - 7 y_ijk_4_1_QUITO >= 0
-_C472: x_ik_1_QUITO - 0.001 y_ijk_0_1_QUITO - 0.001 y_ijk_1_1_QUITO
- - 0.001 y_ijk_2_1_QUITO - 0.001 y_ijk_3_1_QUITO - 0.001 y_ijk_4_1_QUITO >= 0
-_C473: x_ik_1_QUITO - 0.001 y_ijk_1_0_QUITO - 0.001 y_ijk_1_1_QUITO
- - 0.001 y_ijk_1_2_QUITO - 0.001 y_ijk_1_3_QUITO - 0.001 y_ijk_1_4_QUITO >= 0
-_C474: - y_ijk_0_1_QUITO + z_ikt_1_QUITO_0 = 0
-_C475: x_ik_1_BELEM - 0.001 y_ijk_0_1_BELEM - 0.001 y_ijk_1_1_BELEM
- - 0.001 y_ijk_2_1_BELEM - 0.001 y_ijk_3_1_BELEM - 0.001 y_ijk_4_1_BELEM >= 0
-_C476: x_ik_1_BELEM - 0.001 y_ijk_1_0_BELEM - 0.001 y_ijk_1_1_BELEM
- - 0.001 y_ijk_1_2_BELEM - 0.001 y_ijk_1_3_BELEM - 0.001 y_ijk_1_4_BELEM >= 0
-_C477: - y_ijk_0_1_BELEM + z_ikt_1_BELEM_0 = 0
-_C478: c_j_0 - s_j_1 + 1000 y_ijk_0_1_BELEM + 1000 y_ijk_0_1_QUITO <= 1000
-_C479: c_j_1 - s_j_1 + 1000 y_ijk_1_1_BELEM + 1000 y_ijk_1_1_QUITO <= 1000
+_C470: s_j_5 + 981 z_ikt_5_BELEM_19 + 981 z_ikt_5_QUITO_19 <= 1000
+_C471: - c_j_5 + 20 z_ikt_5_BELEM_20 + 20 z_ikt_5_QUITO_20 <= 0
+_C472: z_ikt_5_BELEM_20 + z_ikt_5_QUITO_20 <= 1
+_C473: s_j_5 + 980 z_ikt_5_BELEM_20 + 980 z_ikt_5_QUITO_20 <= 1000
+_C474: - c_j_5 + 21 z_ikt_5_BELEM_21 + 21 z_ikt_5_QUITO_21 <= 0
+_C475: z_ikt_5_BELEM_21 + z_ikt_5_QUITO_21 <= 1
+_C476: s_j_5 + 979 z_ikt_5_BELEM_21 + 979 z_ikt_5_QUITO_21 <= 1000
+_C477: - c_j_5 + 22 z_ikt_5_BELEM_22 + 22 z_ikt_5_QUITO_22 <= 0
+_C478: z_ikt_5_BELEM_22 + z_ikt_5_QUITO_22 <= 1
+_C479: s_j_5 + 978 z_ikt_5_BELEM_22 + 978 z_ikt_5_QUITO_22 <= 1000
 _C48: s_j_1 + 987 z_ikt_1_BELEM_13 + 987 z_ikt_1_QUITO_13 <= 1000
-_C480: c_j_2 - s_j_1 + 1000 y_ijk_2_1_BELEM + 1000 y_ijk_2_1_QUITO <= 1000
-_C481: c_j_3 - s_j_1 + 1000 y_ijk_3_1_BELEM + 1000 y_ijk_3_1_QUITO <= 1000
-_C482: c_j_4 - s_j_1 + 1000 y_ijk_4_1_BELEM + 1000 y_ijk_4_1_QUITO <= 1000
-_C483: y_ijk_0_2_BELEM + y_ijk_0_2_QUITO + y_ijk_1_2_BELEM + y_ijk_1_2_QUITO
- + y_ijk_2_2_BELEM + y_ijk_2_2_QUITO + y_ijk_3_2_BELEM + y_ijk_3_2_QUITO
- + y_ijk_4_2_BELEM + y_ijk_4_2_QUITO >= 1
-_C484: c_j_2 - s_j_2 - 10 x_ik_2_BELEM - 8 x_ik_2_QUITO - 9 y_ijk_1_2_BELEM
- - 7 y_ijk_1_2_QUITO - 50 y_ijk_2_2_BELEM - 50 y_ijk_2_2_QUITO
- - 7 y_ijk_3_2_BELEM - 10 y_ijk_3_2_QUITO - 8 y_ijk_4_2_BELEM
- - 8 y_ijk_4_2_QUITO >= 0
-_C485: x_ik_2_QUITO - 0.001 y_ijk_0_2_QUITO - 0.001 y_ijk_1_2_QUITO
- - 0.001 y_ijk_2_2_QUITO - 0.001 y_ijk_3_2_QUITO - 0.001 y_ijk_4_2_QUITO >= 0
-_C486: x_ik_2_QUITO - 0.001 y_ijk_2_0_QUITO - 0.001 y_ijk_2_1_QUITO
- - 0.001 y_ijk_2_2_QUITO - 0.001 y_ijk_2_3_QUITO - 0.001 y_ijk_2_4_QUITO >= 0
-_C487: - y_ijk_0_2_QUITO + z_ikt_2_QUITO_0 = 0
-_C488: x_ik_2_BELEM - 0.001 y_ijk_0_2_BELEM - 0.001 y_ijk_1_2_BELEM
- - 0.001 y_ijk_2_2_BELEM - 0.001 y_ijk_3_2_BELEM - 0.001 y_ijk_4_2_BELEM >= 0
-_C489: x_ik_2_BELEM - 0.001 y_ijk_2_0_BELEM - 0.001 y_ijk_2_1_BELEM
- - 0.001 y_ijk_2_2_BELEM - 0.001 y_ijk_2_3_BELEM - 0.001 y_ijk_2_4_BELEM >= 0
+_C480: - c_j_5 + 23 z_ikt_5_BELEM_23 + 23 z_ikt_5_QUITO_23 <= 0
+_C481: z_ikt_5_BELEM_23 + z_ikt_5_QUITO_23 <= 1
+_C482: s_j_5 + 977 z_ikt_5_BELEM_23 + 977 z_ikt_5_QUITO_23 <= 1000
+_C483: - c_j_5 + 24 z_ikt_5_BELEM_24 + 24 z_ikt_5_QUITO_24 <= 0
+_C484: z_ikt_5_BELEM_24 + z_ikt_5_QUITO_24 <= 1
+_C485: s_j_5 + 976 z_ikt_5_BELEM_24 + 976 z_ikt_5_QUITO_24 <= 1000
+_C486: - c_j_5 + 25 z_ikt_5_BELEM_25 + 25 z_ikt_5_QUITO_25 <= 0
+_C487: z_ikt_5_BELEM_25 + z_ikt_5_QUITO_25 <= 1
+_C488: s_j_5 + 975 z_ikt_5_BELEM_25 + 975 z_ikt_5_QUITO_25 <= 1000
+_C489: - c_j_5 + 26 z_ikt_5_BELEM_26 + 26 z_ikt_5_QUITO_26 <= 0
 _C49: - c_j_1 + 14 z_ikt_1_BELEM_14 + 14 z_ikt_1_QUITO_14 <= 0
-_C490: - y_ijk_0_2_BELEM + z_ikt_2_BELEM_0 = 0
-_C491: c_j_0 - s_j_2 + 1000 y_ijk_0_2_BELEM + 1000 y_ijk_0_2_QUITO <= 1000
-_C492: c_j_1 - s_j_2 + 1000 y_ijk_1_2_BELEM + 1000 y_ijk_1_2_QUITO <= 1000
-_C493: c_j_2 - s_j_2 + 1000 y_ijk_2_2_BELEM + 1000 y_ijk_2_2_QUITO <= 1000
-_C494: c_j_3 - s_j_2 + 1000 y_ijk_3_2_BELEM + 1000 y_ijk_3_2_QUITO <= 1000
-_C495: c_j_4 - s_j_2 + 1000 y_ijk_4_2_BELEM + 1000 y_ijk_4_2_QUITO <= 1000
-_C496: y_ijk_0_3_BELEM + y_ijk_0_3_QUITO + y_ijk_1_3_BELEM + y_ijk_1_3_QUITO
- + y_ijk_2_3_BELEM + y_ijk_2_3_QUITO + y_ijk_3_3_BELEM + y_ijk_3_3_QUITO
- + y_ijk_4_3_BELEM + y_ijk_4_3_QUITO >= 1
-_C497: c_j_3 - s_j_3 - 9 x_ik_3_BELEM - 12 x_ik_3_QUITO - 8 y_ijk_1_3_BELEM
- - 9 y_ijk_1_3_QUITO - 11 y_ijk_2_3_BELEM - 10 y_ijk_2_3_QUITO
- - 50 y_ijk_3_3_BELEM - 50 y_ijk_3_3_QUITO - 9 y_ijk_4_3_BELEM
- - 8 y_ijk_4_3_QUITO >= 0
-_C498: x_ik_3_QUITO - 0.001 y_ijk_0_3_QUITO - 0.001 y_ijk_1_3_QUITO
- - 0.001 y_ijk_2_3_QUITO - 0.001 y_ijk_3_3_QUITO - 0.001 y_ijk_4_3_QUITO >= 0
-_C499: x_ik_3_QUITO - 0.001 y_ijk_3_0_QUITO - 0.001 y_ijk_3_1_QUITO
- - 0.001 y_ijk_3_2_QUITO - 0.001 y_ijk_3_3_QUITO - 0.001 y_ijk_3_4_QUITO >= 0
+_C490: z_ikt_5_BELEM_26 + z_ikt_5_QUITO_26 <= 1
+_C491: s_j_5 + 974 z_ikt_5_BELEM_26 + 974 z_ikt_5_QUITO_26 <= 1000
+_C492: - c_j_5 + 27 z_ikt_5_BELEM_27 + 27 z_ikt_5_QUITO_27 <= 0
+_C493: z_ikt_5_BELEM_27 + z_ikt_5_QUITO_27 <= 1
+_C494: s_j_5 + 973 z_ikt_5_BELEM_27 + 973 z_ikt_5_QUITO_27 <= 1000
+_C495: - c_j_5 + 28 z_ikt_5_BELEM_28 + 28 z_ikt_5_QUITO_28 <= 0
+_C496: z_ikt_5_BELEM_28 + z_ikt_5_QUITO_28 <= 1
+_C497: s_j_5 + 972 z_ikt_5_BELEM_28 + 972 z_ikt_5_QUITO_28 <= 1000
+_C498: - c_j_5 + 29 z_ikt_5_BELEM_29 + 29 z_ikt_5_QUITO_29 <= 0
+_C499: z_ikt_5_BELEM_29 + z_ikt_5_QUITO_29 <= 1
 _C5: - 1000 x_ik_1_QUITO + z_ikt_1_QUITO_0 + z_ikt_1_QUITO_1
  + z_ikt_1_QUITO_10 + z_ikt_1_QUITO_11 + z_ikt_1_QUITO_12 + z_ikt_1_QUITO_13
  + z_ikt_1_QUITO_14 + z_ikt_1_QUITO_15 + z_ikt_1_QUITO_16 + z_ikt_1_QUITO_17
@@ -657,162 +600,155 @@ _C5: - 1000 x_ik_1_QUITO + z_ikt_1_QUITO_0 + z_ikt_1_QUITO_1
  + z_ikt_1_QUITO_4 + z_ikt_1_QUITO_5 + z_ikt_1_QUITO_6 + z_ikt_1_QUITO_7
  + z_ikt_1_QUITO_8 + z_ikt_1_QUITO_9 <= 0
 _C50: z_ikt_1_BELEM_14 + z_ikt_1_QUITO_14 <= 1
-_C500: - y_ijk_0_3_QUITO + z_ikt_3_QUITO_0 = 0
-_C501: x_ik_3_BELEM - 0.001 y_ijk_0_3_BELEM - 0.001 y_ijk_1_3_BELEM
- - 0.001 y_ijk_2_3_BELEM - 0.001 y_ijk_3_3_BELEM - 0.001 y_ijk_4_3_BELEM >= 0
-_C502: x_ik_3_BELEM - 0.001 y_ijk_3_0_BELEM - 0.001 y_ijk_3_1_BELEM
- - 0.001 y_ijk_3_2_BELEM - 0.001 y_ijk_3_3_BELEM - 0.001 y_ijk_3_4_BELEM >= 0
-_C503: - y_ijk_0_3_BELEM + z_ikt_3_BELEM_0 = 0
-_C504: c_j_0 - s_j_3 + 1000 y_ijk_0_3_BELEM + 1000 y_ijk_0_3_QUITO <= 1000
-_C505: c_j_1 - s_j_3 + 1000 y_ijk_1_3_BELEM + 1000 y_ijk_1_3_QUITO <= 1000
-_C506: c_j_2 - s_j_3 + 1000 y_ijk_2_3_BELEM + 1000 y_ijk_2_3_QUITO <= 1000
-_C507: c_j_3 - s_j_3 + 1000 y_ijk_3_3_BELEM + 1000 y_ijk_3_3_QUITO <= 1000
-_C508: c_j_4 - s_j_3 + 1000 y_ijk_4_3_BELEM + 1000 y_ijk_4_3_QUITO <= 1000
-_C509: y_ijk_0_4_BELEM + y_ijk_0_4_QUITO + y_ijk_1_4_BELEM + y_ijk_1_4_QUITO
- + y_ijk_2_4_BELEM + y_ijk_2_4_QUITO + y_ijk_3_4_BELEM + y_ijk_3_4_QUITO
- + y_ijk_4_4_BELEM + y_ijk_4_4_QUITO >= 1
+_C500: s_j_5 + 971 z_ikt_5_BELEM_29 + 971 z_ikt_5_QUITO_29 <= 1000
+_C501: - c_j_5 + 30 z_ikt_5_BELEM_30 + 30 z_ikt_5_QUITO_30 <= 0
+_C502: z_ikt_5_BELEM_30 + z_ikt_5_QUITO_30 <= 1
+_C503: s_j_5 + 970 z_ikt_5_BELEM_30 + 970 z_ikt_5_QUITO_30 <= 1000
+_C504: - c_j_5 + 31 z_ikt_5_BELEM_31 + 31 z_ikt_5_QUITO_31 <= 0
+_C505: z_ikt_5_BELEM_31 + z_ikt_5_QUITO_31 <= 1
+_C506: s_j_5 + 969 z_ikt_5_BELEM_31 + 969 z_ikt_5_QUITO_31 <= 1000
+_C507: 2 z_ikt_1_QUITO_0 + 3 z_ikt_2_QUITO_0 + 5 z_ikt_3_QUITO_0
+ + 2 z_ikt_4_QUITO_0 + 3 z_ikt_5_QUITO_0 <= 5
+_C508: 2 z_ikt_1_BELEM_0 + 3 z_ikt_2_BELEM_0 + 5 z_ikt_3_BELEM_0
+ + 2 z_ikt_4_BELEM_0 + 3 z_ikt_5_BELEM_0 <= 5
+_C509: 2 z_ikt_1_QUITO_1 + 3 z_ikt_2_QUITO_1 + 5 z_ikt_3_QUITO_1
+ + 2 z_ikt_4_QUITO_1 + 3 z_ikt_5_QUITO_1 <= 5
 _C51: s_j_1 + 986 z_ikt_1_BELEM_14 + 986 z_ikt_1_QUITO_14 <= 1000
-_C510: c_j_4 - s_j_4 - 7 x_ik_4_BELEM - 7 x_ik_4_QUITO - 6 y_ijk_1_4_BELEM
- - 9 y_ijk_1_4_QUITO - 8 y_ijk_2_4_BELEM - 5 y_ijk_2_4_QUITO
- - 8 y_ijk_3_4_BELEM - 6 y_ijk_3_4_QUITO - 50 y_ijk_4_4_BELEM
- - 50 y_ijk_4_4_QUITO >= 0
-_C511: x_ik_4_QUITO - 0.001 y_ijk_0_4_QUITO - 0.001 y_ijk_1_4_QUITO
- - 0.001 y_ijk_2_4_QUITO - 0.001 y_ijk_3_4_QUITO - 0.001 y_ijk_4_4_QUITO >= 0
-_C512: x_ik_4_QUITO - 0.001 y_ijk_4_0_QUITO - 0.001 y_ijk_4_1_QUITO
- - 0.001 y_ijk_4_2_QUITO - 0.001 y_ijk_4_3_QUITO - 0.001 y_ijk_4_4_QUITO >= 0
-_C513: - y_ijk_0_4_QUITO + z_ikt_4_QUITO_0 = 0
-_C514: x_ik_4_BELEM - 0.001 y_ijk_0_4_BELEM - 0.001 y_ijk_1_4_BELEM
- - 0.001 y_ijk_2_4_BELEM - 0.001 y_ijk_3_4_BELEM - 0.001 y_ijk_4_4_BELEM >= 0
-_C515: x_ik_4_BELEM - 0.001 y_ijk_4_0_BELEM - 0.001 y_ijk_4_1_BELEM
- - 0.001 y_ijk_4_2_BELEM - 0.001 y_ijk_4_3_BELEM - 0.001 y_ijk_4_4_BELEM >= 0
-_C516: - y_ijk_0_4_BELEM + z_ikt_4_BELEM_0 = 0
-_C517: c_j_0 - s_j_4 + 1000 y_ijk_0_4_BELEM + 1000 y_ijk_0_4_QUITO <= 1000
-_C518: c_j_1 - s_j_4 + 1000 y_ijk_1_4_BELEM + 1000 y_ijk_1_4_QUITO <= 1000
-_C519: c_j_2 - s_j_4 + 1000 y_ijk_2_4_BELEM + 1000 y_ijk_2_4_QUITO <= 1000
+_C510: 2 z_ikt_1_BELEM_1 + 3 z_ikt_2_BELEM_1 + 5 z_ikt_3_BELEM_1
+ + 2 z_ikt_4_BELEM_1 + 3 z_ikt_5_BELEM_1 <= 5
+_C511: 2 z_ikt_1_QUITO_2 + 3 z_ikt_2_QUITO_2 + 5 z_ikt_3_QUITO_2
+ + 2 z_ikt_4_QUITO_2 + 3 z_ikt_5_QUITO_2 <= 5
+_C512: 2 z_ikt_1_BELEM_2 + 3 z_ikt_2_BELEM_2 + 5 z_ikt_3_BELEM_2
+ + 2 z_ikt_4_BELEM_2 + 3 z_ikt_5_BELEM_2 <= 5
+_C513: 2 z_ikt_1_QUITO_3 + 3 z_ikt_2_QUITO_3 + 5 z_ikt_3_QUITO_3
+ + 2 z_ikt_4_QUITO_3 + 3 z_ikt_5_QUITO_3 <= 5
+_C514: 2 z_ikt_1_BELEM_3 + 3 z_ikt_2_BELEM_3 + 5 z_ikt_3_BELEM_3
+ + 2 z_ikt_4_BELEM_3 + 3 z_ikt_5_BELEM_3 <= 5
+_C515: 2 z_ikt_1_QUITO_4 + 3 z_ikt_2_QUITO_4 + 5 z_ikt_3_QUITO_4
+ + 2 z_ikt_4_QUITO_4 + 3 z_ikt_5_QUITO_4 <= 5
+_C516: 2 z_ikt_1_BELEM_4 + 3 z_ikt_2_BELEM_4 + 5 z_ikt_3_BELEM_4
+ + 2 z_ikt_4_BELEM_4 + 3 z_ikt_5_BELEM_4 <= 5
+_C517: 2 z_ikt_1_QUITO_5 + 3 z_ikt_2_QUITO_5 + 5 z_ikt_3_QUITO_5
+ + 2 z_ikt_4_QUITO_5 + 3 z_ikt_5_QUITO_5 <= 5
+_C518: 2 z_ikt_1_BELEM_5 + 3 z_ikt_2_BELEM_5 + 5 z_ikt_3_BELEM_5
+ + 2 z_ikt_4_BELEM_5 + 3 z_ikt_5_BELEM_5 <= 5
+_C519: 2 z_ikt_1_QUITO_6 + 3 z_ikt_2_QUITO_6 + 5 z_ikt_3_QUITO_6
+ + 2 z_ikt_4_QUITO_6 + 3 z_ikt_5_QUITO_6 <= 5
 _C52: - c_j_1 + 15 z_ikt_1_BELEM_15 + 15 z_ikt_1_QUITO_15 <= 0
-_C520: c_j_3 - s_j_4 + 1000 y_ijk_3_4_BELEM + 1000 y_ijk_3_4_QUITO <= 1000
-_C521: c_j_4 - s_j_4 + 1000 y_ijk_4_4_BELEM + 1000 y_ijk_4_4_QUITO <= 1000
-_C522: a_ij_1_1 = 0
-_C523: b_ij_1_1 = 0
-_C524: a_ij_1_2 + 0.001 c_j_1 - 0.001 s_j_2 >= 0
-_C525: b_ij_1_2 + 0.001 c_j_1 - 0.001 c_j_2 >= 0
-_C526: d_ijk_1_2_QUITO - x_ik_1_QUITO - x_ik_2_QUITO >= -1
-_C527: - a_ij_1_2 - b_ij_1_1 - d_ijk_1_1_QUITO - d_ijk_1_2_QUITO
- + e_ijlk_1_2_1_QUITO >= -3
-_C528: - a_ij_2_2 - b_ij_1_2 - 2 d_ijk_1_2_QUITO + e_ijlk_1_2_2_QUITO >= -3
-_C529: - a_ij_3_2 - b_ij_1_3 - d_ijk_1_2_QUITO - d_ijk_1_3_QUITO
- + e_ijlk_1_2_3_QUITO >= -3
+_C520: 2 z_ikt_1_BELEM_6 + 3 z_ikt_2_BELEM_6 + 5 z_ikt_3_BELEM_6
+ + 2 z_ikt_4_BELEM_6 + 3 z_ikt_5_BELEM_6 <= 5
+_C521: 2 z_ikt_1_QUITO_7 + 3 z_ikt_2_QUITO_7 + 5 z_ikt_3_QUITO_7
+ + 2 z_ikt_4_QUITO_7 + 3 z_ikt_5_QUITO_7 <= 5
+_C522: 2 z_ikt_1_BELEM_7 + 3 z_ikt_2_BELEM_7 + 5 z_ikt_3_BELEM_7
+ + 2 z_ikt_4_BELEM_7 + 3 z_ikt_5_BELEM_7 <= 5
+_C523: 2 z_ikt_1_QUITO_8 + 3 z_ikt_2_QUITO_8 + 5 z_ikt_3_QUITO_8
+ + 2 z_ikt_4_QUITO_8 + 3 z_ikt_5_QUITO_8 <= 5
+_C524: 2 z_ikt_1_BELEM_8 + 3 z_ikt_2_BELEM_8 + 5 z_ikt_3_BELEM_8
+ + 2 z_ikt_4_BELEM_8 + 3 z_ikt_5_BELEM_8 <= 5
+_C525: 2 z_ikt_1_QUITO_9 + 3 z_ikt_2_QUITO_9 + 5 z_ikt_3_QUITO_9
+ + 2 z_ikt_4_QUITO_9 + 3 z_ikt_5_QUITO_9 <= 5
+_C526: 2 z_ikt_1_BELEM_9 + 3 z_ikt_2_BELEM_9 + 5 z_ikt_3_BELEM_9
+ + 2 z_ikt_4_BELEM_9 + 3 z_ikt_5_BELEM_9 <= 5
+_C527: 2 z_ikt_1_QUITO_10 + 3 z_ikt_2_QUITO_10 + 5 z_ikt_3_QUITO_10
+ + 2 z_ikt_4_QUITO_10 + 3 z_ikt_5_QUITO_10 <= 5
+_C528: 2 z_ikt_1_BELEM_10 + 3 z_ikt_2_BELEM_10 + 5 z_ikt_3_BELEM_10
+ + 2 z_ikt_4_BELEM_10 + 3 z_ikt_5_BELEM_10 <= 5
+_C529: 2 z_ikt_1_QUITO_11 + 3 z_ikt_2_QUITO_11 + 5 z_ikt_3_QUITO_11
+ + 2 z_ikt_4_QUITO_11 + 3 z_ikt_5_QUITO_11 <= 5
 _C53: z_ikt_1_BELEM_15 + z_ikt_1_QUITO_15 <= 1
-_C530: - a_ij_4_2 - b_ij_1_4 - d_ijk_1_2_QUITO - d_ijk_1_4_QUITO
- + e_ijlk_1_2_4_QUITO >= -3
-_C531: d_ijk_1_2_BELEM - x_ik_1_BELEM - x_ik_2_BELEM >= -1
-_C532: - a_ij_1_2 - b_ij_1_1 - d_ijk_1_1_BELEM - d_ijk_1_2_BELEM
- + e_ijlk_1_2_1_BELEM >= -3
-_C533: - a_ij_2_2 - b_ij_1_2 - 2 d_ijk_1_2_BELEM + e_ijlk_1_2_2_BELEM >= -3
-_C534: - a_ij_3_2 - b_ij_1_3 - d_ijk_1_2_BELEM - d_ijk_1_3_BELEM
- + e_ijlk_1_2_3_BELEM >= -3
-_C535: - a_ij_4_2 - b_ij_1_4 - d_ijk_1_2_BELEM - d_ijk_1_4_BELEM
- + e_ijlk_1_2_4_BELEM >= -3
-_C536: a_ij_1_3 + 0.001 c_j_1 - 0.001 s_j_3 >= 0
-_C537: b_ij_1_3 + 0.001 c_j_1 - 0.001 c_j_3 >= 0
-_C538: d_ijk_1_3_QUITO - x_ik_1_QUITO - x_ik_3_QUITO >= -1
-_C539: - a_ij_1_3 - b_ij_1_1 - d_ijk_1_1_QUITO - d_ijk_1_3_QUITO
- + e_ijlk_1_3_1_QUITO >= -3
+_C530: 2 z_ikt_1_BELEM_11 + 3 z_ikt_2_BELEM_11 + 5 z_ikt_3_BELEM_11
+ + 2 z_ikt_4_BELEM_11 + 3 z_ikt_5_BELEM_11 <= 5
+_C531: 2 z_ikt_1_QUITO_12 + 3 z_ikt_2_QUITO_12 + 5 z_ikt_3_QUITO_12
+ + 2 z_ikt_4_QUITO_12 + 3 z_ikt_5_QUITO_12 <= 5
+_C532: 2 z_ikt_1_BELEM_12 + 3 z_ikt_2_BELEM_12 + 5 z_ikt_3_BELEM_12
+ + 2 z_ikt_4_BELEM_12 + 3 z_ikt_5_BELEM_12 <= 5
+_C533: 2 z_ikt_1_QUITO_13 + 3 z_ikt_2_QUITO_13 + 5 z_ikt_3_QUITO_13
+ + 2 z_ikt_4_QUITO_13 + 3 z_ikt_5_QUITO_13 <= 5
+_C534: 2 z_ikt_1_BELEM_13 + 3 z_ikt_2_BELEM_13 + 5 z_ikt_3_BELEM_13
+ + 2 z_ikt_4_BELEM_13 + 3 z_ikt_5_BELEM_13 <= 5
+_C535: 2 z_ikt_1_QUITO_14 + 3 z_ikt_2_QUITO_14 + 5 z_ikt_3_QUITO_14
+ + 2 z_ikt_4_QUITO_14 + 3 z_ikt_5_QUITO_14 <= 5
+_C536: 2 z_ikt_1_BELEM_14 + 3 z_ikt_2_BELEM_14 + 5 z_ikt_3_BELEM_14
+ + 2 z_ikt_4_BELEM_14 + 3 z_ikt_5_BELEM_14 <= 5
+_C537: 2 z_ikt_1_QUITO_15 + 3 z_ikt_2_QUITO_15 + 5 z_ikt_3_QUITO_15
+ + 2 z_ikt_4_QUITO_15 + 3 z_ikt_5_QUITO_15 <= 5
+_C538: 2 z_ikt_1_BELEM_15 + 3 z_ikt_2_BELEM_15 + 5 z_ikt_3_BELEM_15
+ + 2 z_ikt_4_BELEM_15 + 3 z_ikt_5_BELEM_15 <= 5
+_C539: 2 z_ikt_1_QUITO_16 + 3 z_ikt_2_QUITO_16 + 5 z_ikt_3_QUITO_16
+ + 2 z_ikt_4_QUITO_16 + 3 z_ikt_5_QUITO_16 <= 5
 _C54: s_j_1 + 985 z_ikt_1_BELEM_15 + 985 z_ikt_1_QUITO_15 <= 1000
-_C540: - a_ij_2_3 - b_ij_1_2 - d_ijk_1_2_QUITO - d_ijk_1_3_QUITO
- + e_ijlk_1_3_2_QUITO >= -3
-_C541: - a_ij_3_3 - b_ij_1_3 - 2 d_ijk_1_3_QUITO + e_ijlk_1_3_3_QUITO >= -3
-_C542: - a_ij_4_3 - b_ij_1_4 - d_ijk_1_3_QUITO - d_ijk_1_4_QUITO
- + e_ijlk_1_3_4_QUITO >= -3
-_C543: d_ijk_1_3_BELEM - x_ik_1_BELEM - x_ik_3_BELEM >= -1
-_C544: - a_ij_1_3 - b_ij_1_1 - d_ijk_1_1_BELEM - d_ijk_1_3_BELEM
- + e_ijlk_1_3_1_BELEM >= -3
-_C545: - a_ij_2_3 - b_ij_1_2 - d_ijk_1_2_BELEM - d_ijk_1_3_BELEM
- + e_ijlk_1_3_2_BELEM >= -3
-_C546: - a_ij_3_3 - b_ij_1_3 - 2 d_ijk_1_3_BELEM + e_ijlk_1_3_3_BELEM >= -3
-_C547: - a_ij_4_3 - b_ij_1_4 - d_ijk_1_3_BELEM - d_ijk_1_4_BELEM
- + e_ijlk_1_3_4_BELEM >= -3
-_C548: a_ij_1_4 + 0.001 c_j_1 - 0.001 s_j_4 >= 0
-_C549: b_ij_1_4 + 0.001 c_j_1 - 0.001 c_j_4 >= 0
+_C540: 2 z_ikt_1_BELEM_16 + 3 z_ikt_2_BELEM_16 + 5 z_ikt_3_BELEM_16
+ + 2 z_ikt_4_BELEM_16 + 3 z_ikt_5_BELEM_16 <= 5
+_C541: 2 z_ikt_1_QUITO_17 + 3 z_ikt_2_QUITO_17 + 5 z_ikt_3_QUITO_17
+ + 2 z_ikt_4_QUITO_17 + 3 z_ikt_5_QUITO_17 <= 5
+_C542: 2 z_ikt_1_BELEM_17 + 3 z_ikt_2_BELEM_17 + 5 z_ikt_3_BELEM_17
+ + 2 z_ikt_4_BELEM_17 + 3 z_ikt_5_BELEM_17 <= 5
+_C543: 2 z_ikt_1_QUITO_18 + 3 z_ikt_2_QUITO_18 + 5 z_ikt_3_QUITO_18
+ + 2 z_ikt_4_QUITO_18 + 3 z_ikt_5_QUITO_18 <= 5
+_C544: 2 z_ikt_1_BELEM_18 + 3 z_ikt_2_BELEM_18 + 5 z_ikt_3_BELEM_18
+ + 2 z_ikt_4_BELEM_18 + 3 z_ikt_5_BELEM_18 <= 5
+_C545: 2 z_ikt_1_QUITO_19 + 3 z_ikt_2_QUITO_19 + 5 z_ikt_3_QUITO_19
+ + 2 z_ikt_4_QUITO_19 + 3 z_ikt_5_QUITO_19 <= 5
+_C546: 2 z_ikt_1_BELEM_19 + 3 z_ikt_2_BELEM_19 + 5 z_ikt_3_BELEM_19
+ + 2 z_ikt_4_BELEM_19 + 3 z_ikt_5_BELEM_19 <= 5
+_C547: 2 z_ikt_1_QUITO_20 + 3 z_ikt_2_QUITO_20 + 5 z_ikt_3_QUITO_20
+ + 2 z_ikt_4_QUITO_20 + 3 z_ikt_5_QUITO_20 <= 5
+_C548: 2 z_ikt_1_BELEM_20 + 3 z_ikt_2_BELEM_20 + 5 z_ikt_3_BELEM_20
+ + 2 z_ikt_4_BELEM_20 + 3 z_ikt_5_BELEM_20 <= 5
+_C549: 2 z_ikt_1_QUITO_21 + 3 z_ikt_2_QUITO_21 + 5 z_ikt_3_QUITO_21
+ + 2 z_ikt_4_QUITO_21 + 3 z_ikt_5_QUITO_21 <= 5
 _C55: - c_j_1 + 16 z_ikt_1_BELEM_16 + 16 z_ikt_1_QUITO_16 <= 0
-_C550: d_ijk_1_4_QUITO - x_ik_1_QUITO - x_ik_4_QUITO >= -1
-_C551: - a_ij_1_4 - b_ij_1_1 - d_ijk_1_1_QUITO - d_ijk_1_4_QUITO
- + e_ijlk_1_4_1_QUITO >= -3
-_C552: - a_ij_2_4 - b_ij_1_2 - d_ijk_1_2_QUITO - d_ijk_1_4_QUITO
- + e_ijlk_1_4_2_QUITO >= -3
-_C553: - a_ij_3_4 - b_ij_1_3 - d_ijk_1_3_QUITO - d_ijk_1_4_QUITO
- + e_ijlk_1_4_3_QUITO >= -3
-_C554: - a_ij_4_4 - b_ij_1_4 - 2 d_ijk_1_4_QUITO + e_ijlk_1_4_4_QUITO >= -3
-_C555: d_ijk_1_4_BELEM - x_ik_1_BELEM - x_ik_4_BELEM >= -1
-_C556: - a_ij_1_4 - b_ij_1_1 - d_ijk_1_1_BELEM - d_ijk_1_4_BELEM
- + e_ijlk_1_4_1_BELEM >= -3
-_C557: - a_ij_2_4 - b_ij_1_2 - d_ijk_1_2_BELEM - d_ijk_1_4_BELEM
- + e_ijlk_1_4_2_BELEM >= -3
-_C558: - a_ij_3_4 - b_ij_1_3 - d_ijk_1_3_BELEM - d_ijk_1_4_BELEM
- + e_ijlk_1_4_3_BELEM >= -3
-_C559: - a_ij_4_4 - b_ij_1_4 - 2 d_ijk_1_4_BELEM + e_ijlk_1_4_4_BELEM >= -3
+_C550: 2 z_ikt_1_BELEM_21 + 3 z_ikt_2_BELEM_21 + 5 z_ikt_3_BELEM_21
+ + 2 z_ikt_4_BELEM_21 + 3 z_ikt_5_BELEM_21 <= 5
+_C551: 2 z_ikt_1_QUITO_22 + 3 z_ikt_2_QUITO_22 + 5 z_ikt_3_QUITO_22
+ + 2 z_ikt_4_QUITO_22 + 3 z_ikt_5_QUITO_22 <= 5
+_C552: 2 z_ikt_1_BELEM_22 + 3 z_ikt_2_BELEM_22 + 5 z_ikt_3_BELEM_22
+ + 2 z_ikt_4_BELEM_22 + 3 z_ikt_5_BELEM_22 <= 5
+_C553: 2 z_ikt_1_QUITO_23 + 3 z_ikt_2_QUITO_23 + 5 z_ikt_3_QUITO_23
+ + 2 z_ikt_4_QUITO_23 + 3 z_ikt_5_QUITO_23 <= 5
+_C554: 2 z_ikt_1_BELEM_23 + 3 z_ikt_2_BELEM_23 + 5 z_ikt_3_BELEM_23
+ + 2 z_ikt_4_BELEM_23 + 3 z_ikt_5_BELEM_23 <= 5
+_C555: 2 z_ikt_1_QUITO_24 + 3 z_ikt_2_QUITO_24 + 5 z_ikt_3_QUITO_24
+ + 2 z_ikt_4_QUITO_24 + 3 z_ikt_5_QUITO_24 <= 5
+_C556: 2 z_ikt_1_BELEM_24 + 3 z_ikt_2_BELEM_24 + 5 z_ikt_3_BELEM_24
+ + 2 z_ikt_4_BELEM_24 + 3 z_ikt_5_BELEM_24 <= 5
+_C557: 2 z_ikt_1_QUITO_25 + 3 z_ikt_2_QUITO_25 + 5 z_ikt_3_QUITO_25
+ + 2 z_ikt_4_QUITO_25 + 3 z_ikt_5_QUITO_25 <= 5
+_C558: 2 z_ikt_1_BELEM_25 + 3 z_ikt_2_BELEM_25 + 5 z_ikt_3_BELEM_25
+ + 2 z_ikt_4_BELEM_25 + 3 z_ikt_5_BELEM_25 <= 5
+_C559: 2 z_ikt_1_QUITO_26 + 3 z_ikt_2_QUITO_26 + 5 z_ikt_3_QUITO_26
+ + 2 z_ikt_4_QUITO_26 + 3 z_ikt_5_QUITO_26 <= 5
 _C56: z_ikt_1_BELEM_16 + z_ikt_1_QUITO_16 <= 1
-_C560: a_ij_2_1 + 0.001 c_j_2 - 0.001 s_j_1 >= 0
-_C561: b_ij_2_1 - 0.001 c_j_1 + 0.001 c_j_2 >= 0
-_C562: d_ijk_2_1_QUITO - x_ik_1_QUITO - x_ik_2_QUITO >= -1
-_C563: - a_ij_1_1 - b_ij_2_1 - 2 d_ijk_2_1_QUITO + e_ijlk_2_1_1_QUITO >= -3
-_C564: - a_ij_2_1 - b_ij_2_2 - d_ijk_2_1_QUITO - d_ijk_2_2_QUITO
- + e_ijlk_2_1_2_QUITO >= -3
-_C565: - a_ij_3_1 - b_ij_2_3 - d_ijk_2_1_QUITO - d_ijk_2_3_QUITO
- + e_ijlk_2_1_3_QUITO >= -3
-_C566: - a_ij_4_1 - b_ij_2_4 - d_ijk_2_1_QUITO - d_ijk_2_4_QUITO
- + e_ijlk_2_1_4_QUITO >= -3
-_C567: d_ijk_2_1_BELEM - x_ik_1_BELEM - x_ik_2_BELEM >= -1
-_C568: - a_ij_1_1 - b_ij_2_1 - 2 d_ijk_2_1_BELEM + e_ijlk_2_1_1_BELEM >= -3
-_C569: - a_ij_2_1 - b_ij_2_2 - d_ijk_2_1_BELEM - d_ijk_2_2_BELEM
- + e_ijlk_2_1_2_BELEM >= -3
+_C560: 2 z_ikt_1_BELEM_26 + 3 z_ikt_2_BELEM_26 + 5 z_ikt_3_BELEM_26
+ + 2 z_ikt_4_BELEM_26 + 3 z_ikt_5_BELEM_26 <= 5
+_C561: 2 z_ikt_1_QUITO_27 + 3 z_ikt_2_QUITO_27 + 5 z_ikt_3_QUITO_27
+ + 2 z_ikt_4_QUITO_27 + 3 z_ikt_5_QUITO_27 <= 5
+_C562: 2 z_ikt_1_BELEM_27 + 3 z_ikt_2_BELEM_27 + 5 z_ikt_3_BELEM_27
+ + 2 z_ikt_4_BELEM_27 + 3 z_ikt_5_BELEM_27 <= 5
+_C563: 2 z_ikt_1_QUITO_28 + 3 z_ikt_2_QUITO_28 + 5 z_ikt_3_QUITO_28
+ + 2 z_ikt_4_QUITO_28 + 3 z_ikt_5_QUITO_28 <= 5
+_C564: 2 z_ikt_1_BELEM_28 + 3 z_ikt_2_BELEM_28 + 5 z_ikt_3_BELEM_28
+ + 2 z_ikt_4_BELEM_28 + 3 z_ikt_5_BELEM_28 <= 5
+_C565: 2 z_ikt_1_QUITO_29 + 3 z_ikt_2_QUITO_29 + 5 z_ikt_3_QUITO_29
+ + 2 z_ikt_4_QUITO_29 + 3 z_ikt_5_QUITO_29 <= 5
+_C566: 2 z_ikt_1_BELEM_29 + 3 z_ikt_2_BELEM_29 + 5 z_ikt_3_BELEM_29
+ + 2 z_ikt_4_BELEM_29 + 3 z_ikt_5_BELEM_29 <= 5
+_C567: 2 z_ikt_1_QUITO_30 + 3 z_ikt_2_QUITO_30 + 5 z_ikt_3_QUITO_30
+ + 2 z_ikt_4_QUITO_30 + 3 z_ikt_5_QUITO_30 <= 5
+_C568: 2 z_ikt_1_BELEM_30 + 3 z_ikt_2_BELEM_30 + 5 z_ikt_3_BELEM_30
+ + 2 z_ikt_4_BELEM_30 + 3 z_ikt_5_BELEM_30 <= 5
+_C569: 2 z_ikt_1_QUITO_31 + 3 z_ikt_2_QUITO_31 + 5 z_ikt_3_QUITO_31
+ + 2 z_ikt_4_QUITO_31 + 3 z_ikt_5_QUITO_31 <= 5
 _C57: s_j_1 + 984 z_ikt_1_BELEM_16 + 984 z_ikt_1_QUITO_16 <= 1000
-_C570: - a_ij_3_1 - b_ij_2_3 - d_ijk_2_1_BELEM - d_ijk_2_3_BELEM
- + e_ijlk_2_1_3_BELEM >= -3
-_C571: - a_ij_4_1 - b_ij_2_4 - d_ijk_2_1_BELEM - d_ijk_2_4_BELEM
- + e_ijlk_2_1_4_BELEM >= -3
-_C572: a_ij_2_2 = 0
-_C573: b_ij_2_2 = 0
-_C574: a_ij_2_3 + 0.001 c_j_2 - 0.001 s_j_3 >= 0
-_C575: b_ij_2_3 + 0.001 c_j_2 - 0.001 c_j_3 >= 0
-_C576: d_ijk_2_3_QUITO - x_ik_2_QUITO - x_ik_3_QUITO >= -1
-_C577: - a_ij_1_3 - b_ij_2_1 - d_ijk_2_1_QUITO - d_ijk_2_3_QUITO
- + e_ijlk_2_3_1_QUITO >= -3
-_C578: - a_ij_2_3 - b_ij_2_2 - d_ijk_2_2_QUITO - d_ijk_2_3_QUITO
- + e_ijlk_2_3_2_QUITO >= -3
-_C579: - a_ij_3_3 - b_ij_2_3 - 2 d_ijk_2_3_QUITO + e_ijlk_2_3_3_QUITO >= -3
+_C570: 2 z_ikt_1_BELEM_31 + 3 z_ikt_2_BELEM_31 + 5 z_ikt_3_BELEM_31
+ + 2 z_ikt_4_BELEM_31 + 3 z_ikt_5_BELEM_31 <= 5
+_C571: c_j_1 - s_j_1 - 9 x_ik_1_BELEM - 17 x_ik_1_QUITO >= 0
+_C572: c_j_2 - s_j_2 - 10 x_ik_2_BELEM - 19 x_ik_2_QUITO >= 0
+_C573: c_j_3 - s_j_3 - 9 x_ik_3_BELEM - 22 x_ik_3_QUITO >= 0
+_C574: c_j_4 - s_j_4 - 7 x_ik_4_BELEM - 16 x_ik_4_QUITO >= 0
+_C575: c_j_5 - s_j_5 - 10 x_ik_5_BELEM - 19 x_ik_5_QUITO >= 0
 _C58: - c_j_1 + 17 z_ikt_1_BELEM_17 + 17 z_ikt_1_QUITO_17 <= 0
-_C580: - a_ij_4_3 - b_ij_2_4 - d_ijk_2_3_QUITO - d_ijk_2_4_QUITO
- + e_ijlk_2_3_4_QUITO >= -3
-_C581: d_ijk_2_3_BELEM - x_ik_2_BELEM - x_ik_3_BELEM >= -1
-_C582: - a_ij_1_3 - b_ij_2_1 - d_ijk_2_1_BELEM - d_ijk_2_3_BELEM
- + e_ijlk_2_3_1_BELEM >= -3
-_C583: - a_ij_2_3 - b_ij_2_2 - d_ijk_2_2_BELEM - d_ijk_2_3_BELEM
- + e_ijlk_2_3_2_BELEM >= -3
-_C584: - a_ij_3_3 - b_ij_2_3 - 2 d_ijk_2_3_BELEM + e_ijlk_2_3_3_BELEM >= -3
-_C585: - a_ij_4_3 - b_ij_2_4 - d_ijk_2_3_BELEM - d_ijk_2_4_BELEM
- + e_ijlk_2_3_4_BELEM >= -3
-_C586: a_ij_2_4 + 0.001 c_j_2 - 0.001 s_j_4 >= 0
-_C587: b_ij_2_4 + 0.001 c_j_2 - 0.001 c_j_4 >= 0
-_C588: d_ijk_2_4_QUITO - x_ik_2_QUITO - x_ik_4_QUITO >= -1
-_C589: - a_ij_1_4 - b_ij_2_1 - d_ijk_2_1_QUITO - d_ijk_2_4_QUITO
- + e_ijlk_2_4_1_QUITO >= -3
 _C59: z_ikt_1_BELEM_17 + z_ikt_1_QUITO_17 <= 1
-_C590: - a_ij_2_4 - b_ij_2_2 - d_ijk_2_2_QUITO - d_ijk_2_4_QUITO
- + e_ijlk_2_4_2_QUITO >= -3
-_C591: - a_ij_3_4 - b_ij_2_3 - d_ijk_2_3_QUITO - d_ijk_2_4_QUITO
- + e_ijlk_2_4_3_QUITO >= -3
-_C592: - a_ij_4_4 - b_ij_2_4 - 2 d_ijk_2_4_QUITO + e_ijlk_2_4_4_QUITO >= -3
-_C593: d_ijk_2_4_BELEM - x_ik_2_BELEM - x_ik_4_BELEM >= -1
-_C594: - a_ij_1_4 - b_ij_2_1 - d_ijk_2_1_BELEM - d_ijk_2_4_BELEM
- + e_ijlk_2_4_1_BELEM >= -3
-_C595: - a_ij_2_4 - b_ij_2_2 - d_ijk_2_2_BELEM - d_ijk_2_4_BELEM
- + e_ijlk_2_4_2_BELEM >= -3
-_C596: - a_ij_3_4 - b_ij_2_3 - d_ijk_2_3_BELEM - d_ijk_2_4_BELEM
- + e_ijlk_2_4_3_BELEM >= -3
-_C597: - a_ij_4_4 - b_ij_2_4 - 2 d_ijk_2_4_BELEM + e_ijlk_2_4_4_BELEM >= -3
-_C598: a_ij_3_1 + 0.001 c_j_3 - 0.001 s_j_1 >= 0
-_C599: b_ij_3_1 - 0.001 c_j_1 + 0.001 c_j_3 >= 0
 _C6: - 1000 x_ik_1_BELEM + z_ikt_1_BELEM_0 + z_ikt_1_BELEM_1
  + z_ikt_1_BELEM_10 + z_ikt_1_BELEM_11 + z_ikt_1_BELEM_12 + z_ikt_1_BELEM_13
  + z_ikt_1_BELEM_14 + z_ikt_1_BELEM_15 + z_ikt_1_BELEM_16 + z_ikt_1_BELEM_17
@@ -823,223 +759,17 @@ _C6: - 1000 x_ik_1_BELEM + z_ikt_1_BELEM_0 + z_ikt_1_BELEM_1
  + z_ikt_1_BELEM_4 + z_ikt_1_BELEM_5 + z_ikt_1_BELEM_6 + z_ikt_1_BELEM_7
  + z_ikt_1_BELEM_8 + z_ikt_1_BELEM_9 <= 0
 _C60: s_j_1 + 983 z_ikt_1_BELEM_17 + 983 z_ikt_1_QUITO_17 <= 1000
-_C600: d_ijk_3_1_QUITO - x_ik_1_QUITO - x_ik_3_QUITO >= -1
-_C601: - a_ij_1_1 - b_ij_3_1 - 2 d_ijk_3_1_QUITO + e_ijlk_3_1_1_QUITO >= -3
-_C602: - a_ij_2_1 - b_ij_3_2 - d_ijk_3_1_QUITO - d_ijk_3_2_QUITO
- + e_ijlk_3_1_2_QUITO >= -3
-_C603: - a_ij_3_1 - b_ij_3_3 - d_ijk_3_1_QUITO - d_ijk_3_3_QUITO
- + e_ijlk_3_1_3_QUITO >= -3
-_C604: - a_ij_4_1 - b_ij_3_4 - d_ijk_3_1_QUITO - d_ijk_3_4_QUITO
- + e_ijlk_3_1_4_QUITO >= -3
-_C605: d_ijk_3_1_BELEM - x_ik_1_BELEM - x_ik_3_BELEM >= -1
-_C606: - a_ij_1_1 - b_ij_3_1 - 2 d_ijk_3_1_BELEM + e_ijlk_3_1_1_BELEM >= -3
-_C607: - a_ij_2_1 - b_ij_3_2 - d_ijk_3_1_BELEM - d_ijk_3_2_BELEM
- + e_ijlk_3_1_2_BELEM >= -3
-_C608: - a_ij_3_1 - b_ij_3_3 - d_ijk_3_1_BELEM - d_ijk_3_3_BELEM
- + e_ijlk_3_1_3_BELEM >= -3
-_C609: - a_ij_4_1 - b_ij_3_4 - d_ijk_3_1_BELEM - d_ijk_3_4_BELEM
- + e_ijlk_3_1_4_BELEM >= -3
 _C61: - c_j_1 + 18 z_ikt_1_BELEM_18 + 18 z_ikt_1_QUITO_18 <= 0
-_C610: a_ij_3_2 + 0.001 c_j_3 - 0.001 s_j_2 >= 0
-_C611: b_ij_3_2 - 0.001 c_j_2 + 0.001 c_j_3 >= 0
-_C612: d_ijk_3_2_QUITO - x_ik_2_QUITO - x_ik_3_QUITO >= -1
-_C613: - a_ij_1_2 - b_ij_3_1 - d_ijk_3_1_QUITO - d_ijk_3_2_QUITO
- + e_ijlk_3_2_1_QUITO >= -3
-_C614: - a_ij_2_2 - b_ij_3_2 - 2 d_ijk_3_2_QUITO + e_ijlk_3_2_2_QUITO >= -3
-_C615: - a_ij_3_2 - b_ij_3_3 - d_ijk_3_2_QUITO - d_ijk_3_3_QUITO
- + e_ijlk_3_2_3_QUITO >= -3
-_C616: - a_ij_4_2 - b_ij_3_4 - d_ijk_3_2_QUITO - d_ijk_3_4_QUITO
- + e_ijlk_3_2_4_QUITO >= -3
-_C617: d_ijk_3_2_BELEM - x_ik_2_BELEM - x_ik_3_BELEM >= -1
-_C618: - a_ij_1_2 - b_ij_3_1 - d_ijk_3_1_BELEM - d_ijk_3_2_BELEM
- + e_ijlk_3_2_1_BELEM >= -3
-_C619: - a_ij_2_2 - b_ij_3_2 - 2 d_ijk_3_2_BELEM + e_ijlk_3_2_2_BELEM >= -3
 _C62: z_ikt_1_BELEM_18 + z_ikt_1_QUITO_18 <= 1
-_C620: - a_ij_3_2 - b_ij_3_3 - d_ijk_3_2_BELEM - d_ijk_3_3_BELEM
- + e_ijlk_3_2_3_BELEM >= -3
-_C621: - a_ij_4_2 - b_ij_3_4 - d_ijk_3_2_BELEM - d_ijk_3_4_BELEM
- + e_ijlk_3_2_4_BELEM >= -3
-_C622: a_ij_3_3 = 0
-_C623: b_ij_3_3 = 0
-_C624: a_ij_3_4 + 0.001 c_j_3 - 0.001 s_j_4 >= 0
-_C625: b_ij_3_4 + 0.001 c_j_3 - 0.001 c_j_4 >= 0
-_C626: d_ijk_3_4_QUITO - x_ik_3_QUITO - x_ik_4_QUITO >= -1
-_C627: - a_ij_1_4 - b_ij_3_1 - d_ijk_3_1_QUITO - d_ijk_3_4_QUITO
- + e_ijlk_3_4_1_QUITO >= -3
-_C628: - a_ij_2_4 - b_ij_3_2 - d_ijk_3_2_QUITO - d_ijk_3_4_QUITO
- + e_ijlk_3_4_2_QUITO >= -3
-_C629: - a_ij_3_4 - b_ij_3_3 - d_ijk_3_3_QUITO - d_ijk_3_4_QUITO
- + e_ijlk_3_4_3_QUITO >= -3
 _C63: s_j_1 + 982 z_ikt_1_BELEM_18 + 982 z_ikt_1_QUITO_18 <= 1000
-_C630: - a_ij_4_4 - b_ij_3_4 - 2 d_ijk_3_4_QUITO + e_ijlk_3_4_4_QUITO >= -3
-_C631: d_ijk_3_4_BELEM - x_ik_3_BELEM - x_ik_4_BELEM >= -1
-_C632: - a_ij_1_4 - b_ij_3_1 - d_ijk_3_1_BELEM - d_ijk_3_4_BELEM
- + e_ijlk_3_4_1_BELEM >= -3
-_C633: - a_ij_2_4 - b_ij_3_2 - d_ijk_3_2_BELEM - d_ijk_3_4_BELEM
- + e_ijlk_3_4_2_BELEM >= -3
-_C634: - a_ij_3_4 - b_ij_3_3 - d_ijk_3_3_BELEM - d_ijk_3_4_BELEM
- + e_ijlk_3_4_3_BELEM >= -3
-_C635: - a_ij_4_4 - b_ij_3_4 - 2 d_ijk_3_4_BELEM + e_ijlk_3_4_4_BELEM >= -3
-_C636: a_ij_4_1 + 0.001 c_j_4 - 0.001 s_j_1 >= 0
-_C637: b_ij_4_1 - 0.001 c_j_1 + 0.001 c_j_4 >= 0
-_C638: d_ijk_4_1_QUITO - x_ik_1_QUITO - x_ik_4_QUITO >= -1
-_C639: - a_ij_1_1 - b_ij_4_1 - 2 d_ijk_4_1_QUITO + e_ijlk_4_1_1_QUITO >= -3
 _C64: - c_j_1 + 19 z_ikt_1_BELEM_19 + 19 z_ikt_1_QUITO_19 <= 0
-_C640: - a_ij_2_1 - b_ij_4_2 - d_ijk_4_1_QUITO - d_ijk_4_2_QUITO
- + e_ijlk_4_1_2_QUITO >= -3
-_C641: - a_ij_3_1 - b_ij_4_3 - d_ijk_4_1_QUITO - d_ijk_4_3_QUITO
- + e_ijlk_4_1_3_QUITO >= -3
-_C642: - a_ij_4_1 - b_ij_4_4 - d_ijk_4_1_QUITO - d_ijk_4_4_QUITO
- + e_ijlk_4_1_4_QUITO >= -3
-_C643: d_ijk_4_1_BELEM - x_ik_1_BELEM - x_ik_4_BELEM >= -1
-_C644: - a_ij_1_1 - b_ij_4_1 - 2 d_ijk_4_1_BELEM + e_ijlk_4_1_1_BELEM >= -3
-_C645: - a_ij_2_1 - b_ij_4_2 - d_ijk_4_1_BELEM - d_ijk_4_2_BELEM
- + e_ijlk_4_1_2_BELEM >= -3
-_C646: - a_ij_3_1 - b_ij_4_3 - d_ijk_4_1_BELEM - d_ijk_4_3_BELEM
- + e_ijlk_4_1_3_BELEM >= -3
-_C647: - a_ij_4_1 - b_ij_4_4 - d_ijk_4_1_BELEM - d_ijk_4_4_BELEM
- + e_ijlk_4_1_4_BELEM >= -3
-_C648: a_ij_4_2 + 0.001 c_j_4 - 0.001 s_j_2 >= 0
-_C649: b_ij_4_2 - 0.001 c_j_2 + 0.001 c_j_4 >= 0
 _C65: z_ikt_1_BELEM_19 + z_ikt_1_QUITO_19 <= 1
-_C650: d_ijk_4_2_QUITO - x_ik_2_QUITO - x_ik_4_QUITO >= -1
-_C651: - a_ij_1_2 - b_ij_4_1 - d_ijk_4_1_QUITO - d_ijk_4_2_QUITO
- + e_ijlk_4_2_1_QUITO >= -3
-_C652: - a_ij_2_2 - b_ij_4_2 - 2 d_ijk_4_2_QUITO + e_ijlk_4_2_2_QUITO >= -3
-_C653: - a_ij_3_2 - b_ij_4_3 - d_ijk_4_2_QUITO - d_ijk_4_3_QUITO
- + e_ijlk_4_2_3_QUITO >= -3
-_C654: - a_ij_4_2 - b_ij_4_4 - d_ijk_4_2_QUITO - d_ijk_4_4_QUITO
- + e_ijlk_4_2_4_QUITO >= -3
-_C655: d_ijk_4_2_BELEM - x_ik_2_BELEM - x_ik_4_BELEM >= -1
-_C656: - a_ij_1_2 - b_ij_4_1 - d_ijk_4_1_BELEM - d_ijk_4_2_BELEM
- + e_ijlk_4_2_1_BELEM >= -3
-_C657: - a_ij_2_2 - b_ij_4_2 - 2 d_ijk_4_2_BELEM + e_ijlk_4_2_2_BELEM >= -3
-_C658: - a_ij_3_2 - b_ij_4_3 - d_ijk_4_2_BELEM - d_ijk_4_3_BELEM
- + e_ijlk_4_2_3_BELEM >= -3
-_C659: - a_ij_4_2 - b_ij_4_4 - d_ijk_4_2_BELEM - d_ijk_4_4_BELEM
- + e_ijlk_4_2_4_BELEM >= -3
 _C66: s_j_1 + 981 z_ikt_1_BELEM_19 + 981 z_ikt_1_QUITO_19 <= 1000
-_C660: a_ij_4_3 + 0.001 c_j_4 - 0.001 s_j_3 >= 0
-_C661: b_ij_4_3 - 0.001 c_j_3 + 0.001 c_j_4 >= 0
-_C662: d_ijk_4_3_QUITO - x_ik_3_QUITO - x_ik_4_QUITO >= -1
-_C663: - a_ij_1_3 - b_ij_4_1 - d_ijk_4_1_QUITO - d_ijk_4_3_QUITO
- + e_ijlk_4_3_1_QUITO >= -3
-_C664: - a_ij_2_3 - b_ij_4_2 - d_ijk_4_2_QUITO - d_ijk_4_3_QUITO
- + e_ijlk_4_3_2_QUITO >= -3
-_C665: - a_ij_3_3 - b_ij_4_3 - 2 d_ijk_4_3_QUITO + e_ijlk_4_3_3_QUITO >= -3
-_C666: - a_ij_4_3 - b_ij_4_4 - d_ijk_4_3_QUITO - d_ijk_4_4_QUITO
- + e_ijlk_4_3_4_QUITO >= -3
-_C667: d_ijk_4_3_BELEM - x_ik_3_BELEM - x_ik_4_BELEM >= -1
-_C668: - a_ij_1_3 - b_ij_4_1 - d_ijk_4_1_BELEM - d_ijk_4_3_BELEM
- + e_ijlk_4_3_1_BELEM >= -3
-_C669: - a_ij_2_3 - b_ij_4_2 - d_ijk_4_2_BELEM - d_ijk_4_3_BELEM
- + e_ijlk_4_3_2_BELEM >= -3
 _C67: - c_j_1 + 20 z_ikt_1_BELEM_20 + 20 z_ikt_1_QUITO_20 <= 0
-_C670: - a_ij_3_3 - b_ij_4_3 - 2 d_ijk_4_3_BELEM + e_ijlk_4_3_3_BELEM >= -3
-_C671: - a_ij_4_3 - b_ij_4_4 - d_ijk_4_3_BELEM - d_ijk_4_4_BELEM
- + e_ijlk_4_3_4_BELEM >= -3
-_C672: a_ij_4_4 = 0
-_C673: b_ij_4_4 = 0
-_C674: - a_ij_1_1 - d_ijk_1_1_QUITO - 0.001 e_ijlk_1_1_1_QUITO
- - 0.001 e_ijlk_1_1_2_QUITO - 0.001 e_ijlk_1_1_3_QUITO
- - 0.001 e_ijlk_1_1_4_QUITO + y_ijk_1_1_QUITO >= -2
-_C675: - a_ij_1_1 - d_ijk_1_1_BELEM - 0.001 e_ijlk_1_1_1_BELEM
- - 0.001 e_ijlk_1_1_2_BELEM - 0.001 e_ijlk_1_1_3_BELEM
- - 0.001 e_ijlk_1_1_4_BELEM + y_ijk_1_1_BELEM >= -2
-_C676: - a_ij_1_2 - d_ijk_1_2_QUITO - 0.001 e_ijlk_1_2_1_QUITO
- - 0.001 e_ijlk_1_2_2_QUITO - 0.001 e_ijlk_1_2_3_QUITO
- - 0.001 e_ijlk_1_2_4_QUITO + y_ijk_1_2_QUITO >= -2
-_C677: - a_ij_1_2 - d_ijk_1_2_BELEM - 0.001 e_ijlk_1_2_1_BELEM
- - 0.001 e_ijlk_1_2_2_BELEM - 0.001 e_ijlk_1_2_3_BELEM
- - 0.001 e_ijlk_1_2_4_BELEM + y_ijk_1_2_BELEM >= -2
-_C678: - a_ij_1_3 - d_ijk_1_3_QUITO - 0.001 e_ijlk_1_3_1_QUITO
- - 0.001 e_ijlk_1_3_2_QUITO - 0.001 e_ijlk_1_3_3_QUITO
- - 0.001 e_ijlk_1_3_4_QUITO + y_ijk_1_3_QUITO >= -2
-_C679: - a_ij_1_3 - d_ijk_1_3_BELEM - 0.001 e_ijlk_1_3_1_BELEM
- - 0.001 e_ijlk_1_3_2_BELEM - 0.001 e_ijlk_1_3_3_BELEM
- - 0.001 e_ijlk_1_3_4_BELEM + y_ijk_1_3_BELEM >= -2
 _C68: z_ikt_1_BELEM_20 + z_ikt_1_QUITO_20 <= 1
-_C680: - a_ij_1_4 - d_ijk_1_4_QUITO - 0.001 e_ijlk_1_4_1_QUITO
- - 0.001 e_ijlk_1_4_2_QUITO - 0.001 e_ijlk_1_4_3_QUITO
- - 0.001 e_ijlk_1_4_4_QUITO + y_ijk_1_4_QUITO >= -2
-_C681: - a_ij_1_4 - d_ijk_1_4_BELEM - 0.001 e_ijlk_1_4_1_BELEM
- - 0.001 e_ijlk_1_4_2_BELEM - 0.001 e_ijlk_1_4_3_BELEM
- - 0.001 e_ijlk_1_4_4_BELEM + y_ijk_1_4_BELEM >= -2
-_C682: - a_ij_2_1 - d_ijk_2_1_QUITO - 0.001 e_ijlk_2_1_1_QUITO
- - 0.001 e_ijlk_2_1_2_QUITO - 0.001 e_ijlk_2_1_3_QUITO
- - 0.001 e_ijlk_2_1_4_QUITO + y_ijk_2_1_QUITO >= -2
-_C683: - a_ij_2_1 - d_ijk_2_1_BELEM - 0.001 e_ijlk_2_1_1_BELEM
- - 0.001 e_ijlk_2_1_2_BELEM - 0.001 e_ijlk_2_1_3_BELEM
- - 0.001 e_ijlk_2_1_4_BELEM + y_ijk_2_1_BELEM >= -2
-_C684: - a_ij_2_2 - d_ijk_2_2_QUITO - 0.001 e_ijlk_2_2_1_QUITO
- - 0.001 e_ijlk_2_2_2_QUITO - 0.001 e_ijlk_2_2_3_QUITO
- - 0.001 e_ijlk_2_2_4_QUITO + y_ijk_2_2_QUITO >= -2
-_C685: - a_ij_2_2 - d_ijk_2_2_BELEM - 0.001 e_ijlk_2_2_1_BELEM
- - 0.001 e_ijlk_2_2_2_BELEM - 0.001 e_ijlk_2_2_3_BELEM
- - 0.001 e_ijlk_2_2_4_BELEM + y_ijk_2_2_BELEM >= -2
-_C686: - a_ij_2_3 - d_ijk_2_3_QUITO - 0.001 e_ijlk_2_3_1_QUITO
- - 0.001 e_ijlk_2_3_2_QUITO - 0.001 e_ijlk_2_3_3_QUITO
- - 0.001 e_ijlk_2_3_4_QUITO + y_ijk_2_3_QUITO >= -2
-_C687: - a_ij_2_3 - d_ijk_2_3_BELEM - 0.001 e_ijlk_2_3_1_BELEM
- - 0.001 e_ijlk_2_3_2_BELEM - 0.001 e_ijlk_2_3_3_BELEM
- - 0.001 e_ijlk_2_3_4_BELEM + y_ijk_2_3_BELEM >= -2
-_C688: - a_ij_2_4 - d_ijk_2_4_QUITO - 0.001 e_ijlk_2_4_1_QUITO
- - 0.001 e_ijlk_2_4_2_QUITO - 0.001 e_ijlk_2_4_3_QUITO
- - 0.001 e_ijlk_2_4_4_QUITO + y_ijk_2_4_QUITO >= -2
-_C689: - a_ij_2_4 - d_ijk_2_4_BELEM - 0.001 e_ijlk_2_4_1_BELEM
- - 0.001 e_ijlk_2_4_2_BELEM - 0.001 e_ijlk_2_4_3_BELEM
- - 0.001 e_ijlk_2_4_4_BELEM + y_ijk_2_4_BELEM >= -2
 _C69: s_j_1 + 980 z_ikt_1_BELEM_20 + 980 z_ikt_1_QUITO_20 <= 1000
-_C690: - a_ij_3_1 - d_ijk_3_1_QUITO - 0.001 e_ijlk_3_1_1_QUITO
- - 0.001 e_ijlk_3_1_2_QUITO - 0.001 e_ijlk_3_1_3_QUITO
- - 0.001 e_ijlk_3_1_4_QUITO + y_ijk_3_1_QUITO >= -2
-_C691: - a_ij_3_1 - d_ijk_3_1_BELEM - 0.001 e_ijlk_3_1_1_BELEM
- - 0.001 e_ijlk_3_1_2_BELEM - 0.001 e_ijlk_3_1_3_BELEM
- - 0.001 e_ijlk_3_1_4_BELEM + y_ijk_3_1_BELEM >= -2
-_C692: - a_ij_3_2 - d_ijk_3_2_QUITO - 0.001 e_ijlk_3_2_1_QUITO
- - 0.001 e_ijlk_3_2_2_QUITO - 0.001 e_ijlk_3_2_3_QUITO
- - 0.001 e_ijlk_3_2_4_QUITO + y_ijk_3_2_QUITO >= -2
-_C693: - a_ij_3_2 - d_ijk_3_2_BELEM - 0.001 e_ijlk_3_2_1_BELEM
- - 0.001 e_ijlk_3_2_2_BELEM - 0.001 e_ijlk_3_2_3_BELEM
- - 0.001 e_ijlk_3_2_4_BELEM + y_ijk_3_2_BELEM >= -2
-_C694: - a_ij_3_3 - d_ijk_3_3_QUITO - 0.001 e_ijlk_3_3_1_QUITO
- - 0.001 e_ijlk_3_3_2_QUITO - 0.001 e_ijlk_3_3_3_QUITO
- - 0.001 e_ijlk_3_3_4_QUITO + y_ijk_3_3_QUITO >= -2
-_C695: - a_ij_3_3 - d_ijk_3_3_BELEM - 0.001 e_ijlk_3_3_1_BELEM
- - 0.001 e_ijlk_3_3_2_BELEM - 0.001 e_ijlk_3_3_3_BELEM
- - 0.001 e_ijlk_3_3_4_BELEM + y_ijk_3_3_BELEM >= -2
-_C696: - a_ij_3_4 - d_ijk_3_4_QUITO - 0.001 e_ijlk_3_4_1_QUITO
- - 0.001 e_ijlk_3_4_2_QUITO - 0.001 e_ijlk_3_4_3_QUITO
- - 0.001 e_ijlk_3_4_4_QUITO + y_ijk_3_4_QUITO >= -2
-_C697: - a_ij_3_4 - d_ijk_3_4_BELEM - 0.001 e_ijlk_3_4_1_BELEM
- - 0.001 e_ijlk_3_4_2_BELEM - 0.001 e_ijlk_3_4_3_BELEM
- - 0.001 e_ijlk_3_4_4_BELEM + y_ijk_3_4_BELEM >= -2
-_C698: - a_ij_4_1 - d_ijk_4_1_QUITO - 0.001 e_ijlk_4_1_1_QUITO
- - 0.001 e_ijlk_4_1_2_QUITO - 0.001 e_ijlk_4_1_3_QUITO
- - 0.001 e_ijlk_4_1_4_QUITO + y_ijk_4_1_QUITO >= -2
-_C699: - a_ij_4_1 - d_ijk_4_1_BELEM - 0.001 e_ijlk_4_1_1_BELEM
- - 0.001 e_ijlk_4_1_2_BELEM - 0.001 e_ijlk_4_1_3_BELEM
- - 0.001 e_ijlk_4_1_4_BELEM + y_ijk_4_1_BELEM >= -2
 _C7: - c_j_1 <= 0
 _C70: - c_j_1 + 21 z_ikt_1_BELEM_21 + 21 z_ikt_1_QUITO_21 <= 0
-_C700: - a_ij_4_2 - d_ijk_4_2_QUITO - 0.001 e_ijlk_4_2_1_QUITO
- - 0.001 e_ijlk_4_2_2_QUITO - 0.001 e_ijlk_4_2_3_QUITO
- - 0.001 e_ijlk_4_2_4_QUITO + y_ijk_4_2_QUITO >= -2
-_C701: - a_ij_4_2 - d_ijk_4_2_BELEM - 0.001 e_ijlk_4_2_1_BELEM
- - 0.001 e_ijlk_4_2_2_BELEM - 0.001 e_ijlk_4_2_3_BELEM
- - 0.001 e_ijlk_4_2_4_BELEM + y_ijk_4_2_BELEM >= -2
-_C702: - a_ij_4_3 - d_ijk_4_3_QUITO - 0.001 e_ijlk_4_3_1_QUITO
- - 0.001 e_ijlk_4_3_2_QUITO - 0.001 e_ijlk_4_3_3_QUITO
- - 0.001 e_ijlk_4_3_4_QUITO + y_ijk_4_3_QUITO >= -2
-_C703: - a_ij_4_3 - d_ijk_4_3_BELEM - 0.001 e_ijlk_4_3_1_BELEM
- - 0.001 e_ijlk_4_3_2_BELEM - 0.001 e_ijlk_4_3_3_BELEM
- - 0.001 e_ijlk_4_3_4_BELEM + y_ijk_4_3_BELEM >= -2
-_C704: - a_ij_4_4 - d_ijk_4_4_QUITO - 0.001 e_ijlk_4_4_1_QUITO
- - 0.001 e_ijlk_4_4_2_QUITO - 0.001 e_ijlk_4_4_3_QUITO
- - 0.001 e_ijlk_4_4_4_QUITO + y_ijk_4_4_QUITO >= -2
-_C705: - a_ij_4_4 - d_ijk_4_4_BELEM - 0.001 e_ijlk_4_4_1_BELEM
- - 0.001 e_ijlk_4_4_2_BELEM - 0.001 e_ijlk_4_4_3_BELEM
- - 0.001 e_ijlk_4_4_4_BELEM + y_ijk_4_4_BELEM >= -2
 _C71: z_ikt_1_BELEM_21 + z_ikt_1_QUITO_21 <= 1
 _C72: s_j_1 + 979 z_ikt_1_BELEM_21 + 979 z_ikt_1_QUITO_21 <= 1000
 _C73: - c_j_1 + 22 z_ikt_1_BELEM_22 + 22 z_ikt_1_QUITO_22 <= 0
@@ -1072,198 +802,6 @@ _C97: - c_j_1 + 30 z_ikt_1_BELEM_30 + 30 z_ikt_1_QUITO_30 <= 0
 _C98: z_ikt_1_BELEM_30 + z_ikt_1_QUITO_30 <= 1
 _C99: s_j_1 + 970 z_ikt_1_BELEM_30 + 970 z_ikt_1_QUITO_30 <= 1000
 Binaries
-a_ij_1_1
-a_ij_1_2
-a_ij_1_3
-a_ij_1_4
-a_ij_2_1
-a_ij_2_2
-a_ij_2_3
-a_ij_2_4
-a_ij_3_1
-a_ij_3_2
-a_ij_3_3
-a_ij_3_4
-a_ij_4_1
-a_ij_4_2
-a_ij_4_3
-a_ij_4_4
-b_ij_1_1
-b_ij_1_2
-b_ij_1_3
-b_ij_1_4
-b_ij_2_1
-b_ij_2_2
-b_ij_2_3
-b_ij_2_4
-b_ij_3_1
-b_ij_3_2
-b_ij_3_3
-b_ij_3_4
-b_ij_4_1
-b_ij_4_2
-b_ij_4_3
-b_ij_4_4
-d_ijk_1_1_BELEM
-d_ijk_1_1_QUITO
-d_ijk_1_2_BELEM
-d_ijk_1_2_QUITO
-d_ijk_1_3_BELEM
-d_ijk_1_3_QUITO
-d_ijk_1_4_BELEM
-d_ijk_1_4_QUITO
-d_ijk_2_1_BELEM
-d_ijk_2_1_QUITO
-d_ijk_2_2_BELEM
-d_ijk_2_2_QUITO
-d_ijk_2_3_BELEM
-d_ijk_2_3_QUITO
-d_ijk_2_4_BELEM
-d_ijk_2_4_QUITO
-d_ijk_3_1_BELEM
-d_ijk_3_1_QUITO
-d_ijk_3_2_BELEM
-d_ijk_3_2_QUITO
-d_ijk_3_3_BELEM
-d_ijk_3_3_QUITO
-d_ijk_3_4_BELEM
-d_ijk_3_4_QUITO
-d_ijk_4_1_BELEM
-d_ijk_4_1_QUITO
-d_ijk_4_2_BELEM
-d_ijk_4_2_QUITO
-d_ijk_4_3_BELEM
-d_ijk_4_3_QUITO
-d_ijk_4_4_BELEM
-d_ijk_4_4_QUITO
-e_ijlk_1_1_1_BELEM
-e_ijlk_1_1_1_QUITO
-e_ijlk_1_1_2_BELEM
-e_ijlk_1_1_2_QUITO
-e_ijlk_1_1_3_BELEM
-e_ijlk_1_1_3_QUITO
-e_ijlk_1_1_4_BELEM
-e_ijlk_1_1_4_QUITO
-e_ijlk_1_2_1_BELEM
-e_ijlk_1_2_1_QUITO
-e_ijlk_1_2_2_BELEM
-e_ijlk_1_2_2_QUITO
-e_ijlk_1_2_3_BELEM
-e_ijlk_1_2_3_QUITO
-e_ijlk_1_2_4_BELEM
-e_ijlk_1_2_4_QUITO
-e_ijlk_1_3_1_BELEM
-e_ijlk_1_3_1_QUITO
-e_ijlk_1_3_2_BELEM
-e_ijlk_1_3_2_QUITO
-e_ijlk_1_3_3_BELEM
-e_ijlk_1_3_3_QUITO
-e_ijlk_1_3_4_BELEM
-e_ijlk_1_3_4_QUITO
-e_ijlk_1_4_1_BELEM
-e_ijlk_1_4_1_QUITO
-e_ijlk_1_4_2_BELEM
-e_ijlk_1_4_2_QUITO
-e_ijlk_1_4_3_BELEM
-e_ijlk_1_4_3_QUITO
-e_ijlk_1_4_4_BELEM
-e_ijlk_1_4_4_QUITO
-e_ijlk_2_1_1_BELEM
-e_ijlk_2_1_1_QUITO
-e_ijlk_2_1_2_BELEM
-e_ijlk_2_1_2_QUITO
-e_ijlk_2_1_3_BELEM
-e_ijlk_2_1_3_QUITO
-e_ijlk_2_1_4_BELEM
-e_ijlk_2_1_4_QUITO
-e_ijlk_2_2_1_BELEM
-e_ijlk_2_2_1_QUITO
-e_ijlk_2_2_2_BELEM
-e_ijlk_2_2_2_QUITO
-e_ijlk_2_2_3_BELEM
-e_ijlk_2_2_3_QUITO
-e_ijlk_2_2_4_BELEM
-e_ijlk_2_2_4_QUITO
-e_ijlk_2_3_1_BELEM
-e_ijlk_2_3_1_QUITO
-e_ijlk_2_3_2_BELEM
-e_ijlk_2_3_2_QUITO
-e_ijlk_2_3_3_BELEM
-e_ijlk_2_3_3_QUITO
-e_ijlk_2_3_4_BELEM
-e_ijlk_2_3_4_QUITO
-e_ijlk_2_4_1_BELEM
-e_ijlk_2_4_1_QUITO
-e_ijlk_2_4_2_BELEM
-e_ijlk_2_4_2_QUITO
-e_ijlk_2_4_3_BELEM
-e_ijlk_2_4_3_QUITO
-e_ijlk_2_4_4_BELEM
-e_ijlk_2_4_4_QUITO
-e_ijlk_3_1_1_BELEM
-e_ijlk_3_1_1_QUITO
-e_ijlk_3_1_2_BELEM
-e_ijlk_3_1_2_QUITO
-e_ijlk_3_1_3_BELEM
-e_ijlk_3_1_3_QUITO
-e_ijlk_3_1_4_BELEM
-e_ijlk_3_1_4_QUITO
-e_ijlk_3_2_1_BELEM
-e_ijlk_3_2_1_QUITO
-e_ijlk_3_2_2_BELEM
-e_ijlk_3_2_2_QUITO
-e_ijlk_3_2_3_BELEM
-e_ijlk_3_2_3_QUITO
-e_ijlk_3_2_4_BELEM
-e_ijlk_3_2_4_QUITO
-e_ijlk_3_3_1_BELEM
-e_ijlk_3_3_1_QUITO
-e_ijlk_3_3_2_BELEM
-e_ijlk_3_3_2_QUITO
-e_ijlk_3_3_3_BELEM
-e_ijlk_3_3_3_QUITO
-e_ijlk_3_3_4_BELEM
-e_ijlk_3_3_4_QUITO
-e_ijlk_3_4_1_BELEM
-e_ijlk_3_4_1_QUITO
-e_ijlk_3_4_2_BELEM
-e_ijlk_3_4_2_QUITO
-e_ijlk_3_4_3_BELEM
-e_ijlk_3_4_3_QUITO
-e_ijlk_3_4_4_BELEM
-e_ijlk_3_4_4_QUITO
-e_ijlk_4_1_1_BELEM
-e_ijlk_4_1_1_QUITO
-e_ijlk_4_1_2_BELEM
-e_ijlk_4_1_2_QUITO
-e_ijlk_4_1_3_BELEM
-e_ijlk_4_1_3_QUITO
-e_ijlk_4_1_4_BELEM
-e_ijlk_4_1_4_QUITO
-e_ijlk_4_2_1_BELEM
-e_ijlk_4_2_1_QUITO
-e_ijlk_4_2_2_BELEM
-e_ijlk_4_2_2_QUITO
-e_ijlk_4_2_3_BELEM
-e_ijlk_4_2_3_QUITO
-e_ijlk_4_2_4_BELEM
-e_ijlk_4_2_4_QUITO
-e_ijlk_4_3_1_BELEM
-e_ijlk_4_3_1_QUITO
-e_ijlk_4_3_2_BELEM
-e_ijlk_4_3_2_QUITO
-e_ijlk_4_3_3_BELEM
-e_ijlk_4_3_3_QUITO
-e_ijlk_4_3_4_BELEM
-e_ijlk_4_3_4_QUITO
-e_ijlk_4_4_1_BELEM
-e_ijlk_4_4_1_QUITO
-e_ijlk_4_4_2_BELEM
-e_ijlk_4_4_2_QUITO
-e_ijlk_4_4_3_BELEM
-e_ijlk_4_4_3_QUITO
-e_ijlk_4_4_4_BELEM
-e_ijlk_4_4_4_QUITO
 x_ik_1_BELEM
 x_ik_1_QUITO
 x_ik_2_BELEM
@@ -1272,54 +810,8 @@ x_ik_3_BELEM
 x_ik_3_QUITO
 x_ik_4_BELEM
 x_ik_4_QUITO
-y_ijk_0_1_BELEM
-y_ijk_0_1_QUITO
-y_ijk_0_2_BELEM
-y_ijk_0_2_QUITO
-y_ijk_0_3_BELEM
-y_ijk_0_3_QUITO
-y_ijk_0_4_BELEM
-y_ijk_0_4_QUITO
-y_ijk_1_0_BELEM
-y_ijk_1_0_QUITO
-y_ijk_1_1_BELEM
-y_ijk_1_1_QUITO
-y_ijk_1_2_BELEM
-y_ijk_1_2_QUITO
-y_ijk_1_3_BELEM
-y_ijk_1_3_QUITO
-y_ijk_1_4_BELEM
-y_ijk_1_4_QUITO
-y_ijk_2_0_BELEM
-y_ijk_2_0_QUITO
-y_ijk_2_1_BELEM
-y_ijk_2_1_QUITO
-y_ijk_2_2_BELEM
-y_ijk_2_2_QUITO
-y_ijk_2_3_BELEM
-y_ijk_2_3_QUITO
-y_ijk_2_4_BELEM
-y_ijk_2_4_QUITO
-y_ijk_3_0_BELEM
-y_ijk_3_0_QUITO
-y_ijk_3_1_BELEM
-y_ijk_3_1_QUITO
-y_ijk_3_2_BELEM
-y_ijk_3_2_QUITO
-y_ijk_3_3_BELEM
-y_ijk_3_3_QUITO
-y_ijk_3_4_BELEM
-y_ijk_3_4_QUITO
-y_ijk_4_0_BELEM
-y_ijk_4_0_QUITO
-y_ijk_4_1_BELEM
-y_ijk_4_1_QUITO
-y_ijk_4_2_BELEM
-y_ijk_4_2_QUITO
-y_ijk_4_3_BELEM
-y_ijk_4_3_QUITO
-y_ijk_4_4_BELEM
-y_ijk_4_4_QUITO
+x_ik_5_BELEM
+x_ik_5_QUITO
 z_ikt_1_BELEM_0
 z_ikt_1_BELEM_1
 z_ikt_1_BELEM_10
@@ -1576,4 +1068,68 @@ z_ikt_4_QUITO_6
 z_ikt_4_QUITO_7
 z_ikt_4_QUITO_8
 z_ikt_4_QUITO_9
+z_ikt_5_BELEM_0
+z_ikt_5_BELEM_1
+z_ikt_5_BELEM_10
+z_ikt_5_BELEM_11
+z_ikt_5_BELEM_12
+z_ikt_5_BELEM_13
+z_ikt_5_BELEM_14
+z_ikt_5_BELEM_15
+z_ikt_5_BELEM_16
+z_ikt_5_BELEM_17
+z_ikt_5_BELEM_18
+z_ikt_5_BELEM_19
+z_ikt_5_BELEM_2
+z_ikt_5_BELEM_20
+z_ikt_5_BELEM_21
+z_ikt_5_BELEM_22
+z_ikt_5_BELEM_23
+z_ikt_5_BELEM_24
+z_ikt_5_BELEM_25
+z_ikt_5_BELEM_26
+z_ikt_5_BELEM_27
+z_ikt_5_BELEM_28
+z_ikt_5_BELEM_29
+z_ikt_5_BELEM_3
+z_ikt_5_BELEM_30
+z_ikt_5_BELEM_31
+z_ikt_5_BELEM_4
+z_ikt_5_BELEM_5
+z_ikt_5_BELEM_6
+z_ikt_5_BELEM_7
+z_ikt_5_BELEM_8
+z_ikt_5_BELEM_9
+z_ikt_5_QUITO_0
+z_ikt_5_QUITO_1
+z_ikt_5_QUITO_10
+z_ikt_5_QUITO_11
+z_ikt_5_QUITO_12
+z_ikt_5_QUITO_13
+z_ikt_5_QUITO_14
+z_ikt_5_QUITO_15
+z_ikt_5_QUITO_16
+z_ikt_5_QUITO_17
+z_ikt_5_QUITO_18
+z_ikt_5_QUITO_19
+z_ikt_5_QUITO_2
+z_ikt_5_QUITO_20
+z_ikt_5_QUITO_21
+z_ikt_5_QUITO_22
+z_ikt_5_QUITO_23
+z_ikt_5_QUITO_24
+z_ikt_5_QUITO_25
+z_ikt_5_QUITO_26
+z_ikt_5_QUITO_27
+z_ikt_5_QUITO_28
+z_ikt_5_QUITO_29
+z_ikt_5_QUITO_3
+z_ikt_5_QUITO_30
+z_ikt_5_QUITO_31
+z_ikt_5_QUITO_4
+z_ikt_5_QUITO_5
+z_ikt_5_QUITO_6
+z_ikt_5_QUITO_7
+z_ikt_5_QUITO_8
+z_ikt_5_QUITO_9
 End
