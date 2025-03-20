@@ -33,55 +33,53 @@ def set_up_base_lp(
     Raises:
         NotImplementedError: If the input types are not supported.
     """
-    # if isinstance(accelerators, list):
-    #     print("accelerators is a list")
-    #     return _set_up_base_lp_exec(base_jobs, accelerators, big_m, timesteps)
+    if isinstance(accelerators, list):
+        return _set_up_base_lp_exec(base_jobs, accelerators, big_m, timesteps)
     if isinstance(accelerators, dict):
-        print("accelerators is a dict")
         return _set_up_base_lp_info(base_jobs, accelerators, big_m, timesteps)
 
     raise NotImplementedError
 
 
-# def _set_up_base_lp_exec(
-#     base_jobs: list[CircuitJob],
-#     accelerators: list[Accelerator],
-#     big_m: int,
-#     timesteps: int,
-# ) -> LPInstance:
-#     """Sets up the base LP instance for use in the provider.
+def _set_up_base_lp_exec(
+    base_jobs: list[CircuitJob],
+    accelerators: list[Accelerator],
+    big_m: int,
+    timesteps: int,
+) -> LPInstance:
+    """Sets up the base LP instance for use in the provider.
 
-#     Generates a base LP instance with the given jobs and accelerators.
-#     It contains all the default constraints and variables.
-#     Does not contain the constraints regarding the successor relationship.
+    Generates a base LP instance with the given jobs and accelerators.
+    It contains all the default constraints and variables.
+    Does not contain the constraints regarding the successor relationship.
 
-#     Args:
-#         base_jobs (list[CircuitJob]): The list of quantum cirucits (jobs).
-#         accelerators (list[Accelerator]): The list of available accelerators (machines).
-#         big_m (int): Metavariable for the LP.
-#         timesteps (int): Meta variable for the LP, big enough to cover largest makespan.
+    Args:
+        base_jobs (list[CircuitJob]): The list of quantum cirucits (jobs).
+        accelerators (list[Accelerator]): The list of available accelerators (machines).
+        big_m (int): Metavariable for the LP.
+        timesteps (int): Meta variable for the LP, big enough to cover largest makespan.
 
-#     Returns:
-#         LPInstance: The LP instance object.
-#     """
-#     # Set up input params
-#     job_capacities = {
-#         str(job.uuid): job.circuit.num_qubits
-#         for job in base_jobs
-#         if job.circuit is not None
-#     }
-#     job_capacities = {"0": 0} | job_capacities
-#     machine_capacities = {str(qpu.uuid): qpu.qubits for qpu in accelerators}
+    Returns:
+        LPInstance: The LP instance object.
+    """
+    # Set up input params
+    job_capacities = {
+        str(job.uuid): job.circuit.num_qubits
+        for job in base_jobs
+        if job.circuit is not None
+    }
+    job_capacities = {"0": 0} | job_capacities
+    machine_capacities = {str(qpu.uuid): qpu.qubits for qpu in accelerators}
 
-#     lp_instance = _define_lp(
-#         job_capacities, machine_capacities, list(range(timesteps)), big_m
-#     )
-#     lp_instance.named_circuits = [JobHelper("0", None)] + [
-#         JobHelper(str(job.uuid), job.circuit)
-#         for job in base_jobs
-#         if job.circuit is not None
-#     ]
-#     return lp_instance
+    lp_instance = _define_lp(
+        job_capacities, machine_capacities, list(range(timesteps)), big_m
+    )
+    lp_instance.named_circuits = [JobHelper("0", None)] + [
+        JobHelper(str(job.uuid), job.circuit)
+        for job in base_jobs
+        if job.circuit is not None
+    ]
+    return lp_instance
 
 
 def _set_up_base_lp_info(

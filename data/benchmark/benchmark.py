@@ -70,9 +70,6 @@ def run_experiments(
             s_times = _get_benchmark_setup_times(
                 benchmark, setting, default_value=2**5, get_integers=get_integers
             )
-            print("Benchmark")
-            print(p_times)
-            print(s_times)
             problem = InfoProblem(
                 base_jobs=benchmark,
                 accelerators=setting,
@@ -98,20 +95,13 @@ def run_experiments(
             with Timer() as t2:
                 makespan, jobs, _ = generate_schedule(problem, SchedulerType.EXTENDED)
             result["extended"] = Result(makespan, jobs, t2.elapsed)
-            
-            
-            # To add another algorithm to the scheduler
-            # with Timer() as t3:
-            #     makespan, jobs, _ = generate_schedule(problem, SchedulerType.SomeOtherAlgorithm)
-            # result["SomeOtherAlgorithm"] = Result(makespan, jobs, t3.elapsed)
 
             # Store results
             benchmark_results.append(
                 {"results": result, "s_times": s_times, "p_times": p_times}
             )
 
-        results.append({"setting": setting,
-                        "benchmarks": benchmark_results})
+        results.append({"setting": setting, "benchmarks": benchmark_results})
     return results
 
 
