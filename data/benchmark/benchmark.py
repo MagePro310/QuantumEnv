@@ -70,6 +70,8 @@ def run_experiments(
             s_times = _get_benchmark_setup_times(
                 benchmark, setting, default_value=2**5, get_integers=get_integers
             )
+            print(f"Processing times: {p_times}")
+            print(f"Setup times: {s_times}")
             problem = InfoProblem(
                 base_jobs=benchmark,
                 accelerators=setting,

@@ -177,10 +177,6 @@ def _define_lp(
                 )
                 <= machine_capacities[machine]
             )
-    # Print job in LPInstance
-    print("Jobs in define_lp:")
-    for job in jobs:
-        print(job_capacities[job])
     return LPInstance(
         problem=problem,
         jobs=jobs,
@@ -212,7 +208,7 @@ def set_up_simple_lp(
     """
     p_times = pulp.makeDict(
         [lp_instance.jobs[1:], lp_instance.machines],
-        process_times[1:],
+        process_times,
         0,
     )
     s_times = pulp.makeDict(
