@@ -1,1 +1,266 @@
-[{"setting": {"A": 5, "B": 5}, "benchmarks": [{"results": {"baseline": {"makespan": 4.0, "jobs": [{"name": "d66d84c0-b800-4b12-a29a-100d2bed1cd4", "machine": "B", "start_time": 0.0, "completion_time": 3.0, "capacity": 5}, {"name": "31ffac0b-6064-4af9-923b-9e2322922d32", "machine": "A", "start_time": 0.0, "completion_time": 4.0, "capacity": 3}], "time": 0.00010168800008614198}, "simple": {"makespan": 4.0, "jobs": [{"name": "1", "machine": "A", "start_time": 0.0, "completion_time": 3.0, "capacity": 3}, {"name": "2", "machine": "B", "start_time": 0.0, "completion_time": 4.0, "capacity": 5}], "time": 0.40812735199961026}, "extended": {"makespan": 4.0, "jobs": [{"name": "1", "machine": "B", "start_time": 0.0, "completion_time": 3.0, "capacity": 3}, {"name": "2", "machine": "A", "start_time": 0.0, "completion_time": 4.0, "capacity": 5}], "time": 0.4377538749999985}}, "s_times": [[[32, 32], [0, 0], [0, 0]], [[32, 32], [32, 32], [1, 1]], [[32, 32], [1, 1], [32, 32]]], "p_times": [[3, 3], [4, 4]]}]}, {"setting": {"A": 5, "B": 6, "C": 20}, "benchmarks": [{"results": {"baseline": {"makespan": 11.0, "jobs": [{"name": "a69fbcf4-b4c2-4fbc-a5e2-719483b4d4bd", "machine": "C", "start_time": 0.0, "completion_time": 2.0, "capacity": 20}, {"name": "0f83e803-abee-4b43-81e5-a1607f8b9cf2", "machine": "A", "start_time": 0.0, "completion_time": 11.0, "capacity": 3}], "time": 0.00025469000001976383}, "simple": {"makespan": 11.0, "jobs": [{"name": "1", "machine": "A", "start_time": 0.0, "completion_time": 2.0, "capacity": 3}, {"name": "2", "machine": "C", "start_time": 0.0, "completion_time": 11.0, "capacity": 20}], "time": 0.4556357179999395}, "extended": {"makespan": 11.0, "jobs": [{"name": "1", "machine": "B", "start_time": 0.0, "completion_time": 1.0, "capacity": 3}, {"name": "2", "machine": "C", "start_time": 0.0, "completion_time": 11.0, "capacity": 20}], "time": 0.20702353500018944}}, "s_times": [[[32, 32, 32], [0, 0, 0], [0, 0, 0]], [[32, 32, 32], [32, 32, 32], [3, 2, 3]], [[32, 32, 32], [2, 3, 2], [32, 32, 32]]], "p_times": [[2, 1, 2], [11, 11, 11]]}]}]
+[
+  {
+    "setting": {
+      "A": 5,
+      "B": 5
+    },
+    "benchmarks": [
+      {
+        "results": {
+          "baseline": {
+            "makespan": 3.0,
+            "jobs": [
+              {
+                "name": "697a5be9-f975-4b5e-bb6e-c57f123c22bf",
+                "machine": "B",
+                "start_time": 0.0,
+                "completion_time": 1.0,
+                "capacity": 5
+              },
+              {
+                "name": "697591d1-1e50-441c-a096-25d49a1919f7",
+                "machine": "A",
+                "start_time": 0.0,
+                "completion_time": 3.0,
+                "capacity": 2
+              }
+            ],
+            "time": 0.00010032299906015396
+          },
+          "simple": {
+            "makespan": 3.0,
+            "jobs": [
+              {
+                "name": "1",
+                "machine": "A",
+                "start_time": 0.0,
+                "completion_time": 3.0,
+                "capacity": 2
+              },
+              {
+                "name": "2",
+                "machine": "B",
+                "start_time": 0.0,
+                "completion_time": 2.0,
+                "capacity": 5
+              }
+            ],
+            "time": 6.01512596700195
+          },
+          "extended": {
+            "makespan": 3.0,
+            "jobs": [
+              {
+                "name": "1",
+                "machine": "A",
+                "start_time": 0.0,
+                "completion_time": 3.0,
+                "capacity": 2
+              },
+              {
+                "name": "2",
+                "machine": "B",
+                "start_time": 0.0,
+                "completion_time": 2.0,
+                "capacity": 5
+              }
+            ],
+            "time": 2.867420899005083
+          }
+        },
+        "s_times": [
+          [
+            [
+              32,
+              32
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              32,
+              32
+            ],
+            [
+              32,
+              32
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              32,
+              32
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              32,
+              32
+            ]
+          ]
+        ],
+        "p_times": [
+          [
+            3,
+            1
+          ],
+          [
+            3,
+            2
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "setting": {
+      "A": 5,
+      "B": 6,
+      "C": 20
+    },
+    "benchmarks": [
+      {
+        "results": {
+          "baseline": {
+            "makespan": 5.0,
+            "jobs": [
+              {
+                "name": "69f37113-060f-4550-8d62-c9cd007e6270",
+                "machine": "C",
+                "start_time": 0.0,
+                "completion_time": 3.0,
+                "capacity": 7
+              },
+              {
+                "name": "ad6b4937-0598-427d-ae82-8571ab08c573",
+                "machine": "C",
+                "start_time": 0.0,
+                "completion_time": 5.0,
+                "capacity": 9
+              }
+            ],
+            "time": 0.0003335859946673736
+          },
+          "simple": {
+            "makespan": 5.0,
+            "jobs": [
+              {
+                "name": "1",
+                "machine": "C",
+                "start_time": 0.0,
+                "completion_time": 3.0,
+                "capacity": 7
+              },
+              {
+                "name": "2",
+                "machine": "C",
+                "start_time": 0.0,
+                "completion_time": 5.0,
+                "capacity": 9
+              }
+            ],
+            "time": 0.13942160599981435
+          },
+          "extended": {
+            "makespan": 5.0,
+            "jobs": [
+              {
+                "name": "1",
+                "machine": "C",
+                "start_time": 0.0,
+                "completion_time": 3.0,
+                "capacity": 7
+              },
+              {
+                "name": "2",
+                "machine": "C",
+                "start_time": 0.0,
+                "completion_time": 5.0,
+                "capacity": 9
+              }
+            ],
+            "time": 0.24389840599906165
+          }
+        },
+        "s_times": [
+          [
+            [
+              32,
+              32,
+              32
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              32,
+              32,
+              32
+            ],
+            [
+              32,
+              32,
+              32
+            ],
+            [
+              2,
+              3,
+              3
+            ]
+          ],
+          [
+            [
+              32,
+              32,
+              32
+            ],
+            [
+              3,
+              3,
+              3
+            ],
+            [
+              32,
+              32,
+              32
+            ]
+          ]
+        ],
+        "p_times": [
+          [
+            3,
+            5,
+            3
+          ],
+          [
+            6,
+            4,
+            5
+          ]
+        ]
+      }
+    ]
+  }
+]

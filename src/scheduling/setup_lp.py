@@ -282,7 +282,7 @@ def set_up_extended_lp(
     print(process_times)
     p_times = pulp.makeDict(
         [lp_instance.jobs[1:], lp_instance.machines],
-        process_times[1:],
+        process_times,
         0,
     )
     # Print the process times

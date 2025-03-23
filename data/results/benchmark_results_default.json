@@ -1,1 +1,266 @@
-[{"setting": {"A": 5, "B": 5}, "benchmarks": [{"results": {"baseline": {"makespan": 10.38668394735653, "jobs": [{"name": "385e374c-e590-475e-89ef-73e1ac61a14e", "machine": "A", "start_time": 0.0, "completion_time": 10.38668394735653, "capacity": 4}, {"name": "8395e9ad-330b-4dc2-93cc-252603dd13dc", "machine": "B", "start_time": 0.0, "completion_time": 5.11743918316032, "capacity": 3}], "time": 0.00011685600020427955}, "simple": {"makespan": 4.100206898776377, "jobs": [{"name": "1", "machine": "B", "start_time": 0.0, "completion_time": 4.100206898776377, "capacity": 4}, {"name": "2", "machine": "A", "start_time": 0.0, "completion_time": 2.060113101799625, "capacity": 3}], "time": 2.533174915000018}, "extended": {"makespan": 4.100206898776377, "jobs": [{"name": "1", "machine": "B", "start_time": 0.0, "completion_time": 4.100206898776377, "capacity": 4}, {"name": "2", "machine": "A", "start_time": 0.0, "completion_time": 2.060113101799625, "capacity": 3}], "time": 2.0727231380001285}}, "s_times": [[[32, 32], [0, 0], [0, 0]], [[32, 32], [32, 32], [8.630938939980275, 2.4638611553906125]], [[32, 32], [1.4176618531305556, 2.2248034193952164], [32, 32]]], "p_times": [[10.38668394735653, 4.100206898776377], [2.060113101799625, 5.11743918316032]]}]}, {"setting": {"A": 5, "B": 6, "C": 20}, "benchmarks": [{"results": {"baseline": {"makespan": 8.33753071989839, "jobs": [{"name": "74973af1-5e69-4fbe-abc1-1933bbe6475e", "machine": "B", "start_time": 0.0, "completion_time": 3.644192026210521, "capacity": 6}, {"name": "e8ec1595-07b0-4ace-8978-bbb6d5cfe082", "machine": "A", "start_time": 0.0, "completion_time": 8.33753071989839, "capacity": 2}], "time": 0.00027179099970453535}, "simple": {"makespan": 5.351206442317077, "jobs": [{"name": "1", "machine": "B", "start_time": 0.0, "completion_time": 3.644192026210521, "capacity": 6}, {"name": "2", "machine": "C", "start_time": 0.0, "completion_time": 5.351206442317077, "capacity": 2}], "time": 7.776272275999872}, "extended": {"makespan": 5.351206442317077, "jobs": [{"name": "1", "machine": "B", "start_time": 0.0, "completion_time": 3.644192026210521, "capacity": 6}, {"name": "2", "machine": "C", "start_time": 0.0, "completion_time": 5.351206442317077, "capacity": 2}], "time": 2.113505880000048}}, "s_times": [[[32, 32, 32], [0, 0, 0], [0, 0, 0]], [[32, 32, 32], [32, 32, 32], [5.631969568885538, 9.48134094102032, 4.400345690768181]], [[32, 32, 32], [6.814057536945923, 2.2745451084688364, 3.7214758279042304], [32, 32, 32]]], "p_times": [[1.3405975075899101, 3.644192026210521, 9.935441121145322], [8.33753071989839, 6.438232341208901, 5.351206442317077]]}]}]
+[
+  {
+    "setting": {
+      "A": 5,
+      "B": 5
+    },
+    "benchmarks": [
+      {
+        "results": {
+          "baseline": {
+            "makespan": 10.294311156453382,
+            "jobs": [
+              {
+                "name": "200245c7-c1d9-4f9b-8417-58291ae107cd",
+                "machine": "B",
+                "start_time": 0.0,
+                "completion_time": 9.208831054019194,
+                "capacity": 5
+              },
+              {
+                "name": "1acecc4b-b4c5-4e0d-ae01-335518e3871b",
+                "machine": "A",
+                "start_time": 0.0,
+                "completion_time": 10.294311156453382,
+                "capacity": 2
+              }
+            ],
+            "time": 0.0001223560029757209
+          },
+          "simple": {
+            "makespan": 10.294311156453382,
+            "jobs": [
+              {
+                "name": "1",
+                "machine": "B",
+                "start_time": 0.0,
+                "completion_time": 9.208831054019194,
+                "capacity": 2
+              },
+              {
+                "name": "2",
+                "machine": "A",
+                "start_time": 0.0,
+                "completion_time": 10.294311156453382,
+                "capacity": 5
+              }
+            ],
+            "time": 4.475012418006372
+          },
+          "extended": {
+            "makespan": 5.898539610917877,
+            "jobs": [
+              {
+                "name": "1",
+                "machine": "A",
+                "start_time": 0.0,
+                "completion_time": 5.898539610917877,
+                "capacity": 2
+              },
+              {
+                "name": "2",
+                "machine": "B",
+                "start_time": 0.0,
+                "completion_time": 3.1901585395461067,
+                "capacity": 5
+              }
+            ],
+            "time": 1.6657376410003053
+          }
+        },
+        "s_times": [
+          [
+            [
+              32,
+              32
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              32,
+              32
+            ],
+            [
+              32,
+              32
+            ],
+            [
+              8.621295566039747,
+              8.322162043200903
+            ]
+          ],
+          [
+            [
+              32,
+              32
+            ],
+            [
+              3.1905144907810783,
+              0.8083586729190366
+            ],
+            [
+              32,
+              32
+            ]
+          ]
+        ],
+        "p_times": [
+          [
+            5.898539610917877,
+            9.208831054019194
+          ],
+          [
+            10.294311156453382,
+            3.1901585395461067
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "setting": {
+      "A": 5,
+      "B": 6,
+      "C": 20
+    },
+    "benchmarks": [
+      {
+        "results": {
+          "baseline": {
+            "makespan": 31.99875838343079,
+            "jobs": [
+              {
+                "name": "f60d42b7-9d05-4cb2-8ad4-d5ba6a5ee255",
+                "machine": "C",
+                "start_time": 0.0,
+                "completion_time": 11.557306987762242,
+                "capacity": 8
+              },
+              {
+                "name": "1037d13f-d7e6-46db-a098-b31ae259013a",
+                "machine": "C",
+                "start_time": 11.557306987762242,
+                "completion_time": 31.99875838343079,
+                "capacity": 16
+              }
+            ],
+            "time": 0.00036454200017033145
+          },
+          "simple": {
+            "makespan": 31.962921690807104,
+            "jobs": [
+              {
+                "name": "1",
+                "machine": "C",
+                "start_time": 8.749624347230759,
+                "completion_time": 31.962921690807104,
+                "capacity": 8
+              },
+              {
+                "name": "2",
+                "machine": "C",
+                "start_time": 0.0,
+                "completion_time": 8.749624347230759,
+                "capacity": 16
+              }
+            ],
+            "time": 3.932357352001418
+          },
+          "extended": {
+            "makespan": 31.962921690807104,
+            "jobs": [
+              {
+                "name": "1",
+                "machine": "C",
+                "start_time": 8.749624347230759,
+                "completion_time": 31.962921690807104,
+                "capacity": 8
+              },
+              {
+                "name": "2",
+                "machine": "C",
+                "start_time": 0.0,
+                "completion_time": 8.749624347230759,
+                "capacity": 16
+              }
+            ],
+            "time": 5.47258751100162
+          }
+        },
+        "s_times": [
+          [
+            [
+              32,
+              32,
+              32
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              32,
+              32,
+              32
+            ],
+            [
+              32,
+              32,
+              32
+            ],
+            [
+              5.153491064747737,
+              4.370707569779848,
+              11.691827048437785
+            ]
+          ],
+          [
+            [
+              32,
+              32,
+              32
+            ],
+            [
+              9.892061109472744,
+              5.425356878513745,
+              11.405614703044861
+            ],
+            [
+              32,
+              32,
+              32
+            ]
+          ]
+        ],
+        "p_times": [
+          [
+            9.201276489696589,
+            3.0721265615818716,
+            11.557306987762242
+          ],
+          [
+            3.706159895171469,
+            3.4714050694464245,
+            8.749624347230759
+          ]
+        ]
+      }
+    ]
+  }
+]

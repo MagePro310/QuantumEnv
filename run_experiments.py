@@ -35,7 +35,7 @@ if __name__ == "__main__":
     with open(
         "./data/results/benchmark_results_default.json", "w+", encoding="utf-8"
     ) as f:
-        json.dump(experiment_results, f, cls=DataclassJSONEncoder)
+        json.dump(experiment_results, f, cls=DataclassJSONEncoder, indent= 2)
 
     experiment_results = run_experiments(
         CIRCUITS_PER_BATCH, SETTINGS, T_MAX, NUM_BATCHES, get_integers=True
@@ -43,7 +43,7 @@ if __name__ == "__main__":
     with open(
         "./data/results/benchmark_results_integer.json", "w+", encoding="utf-8"
     ) as f:
-        json.dump(experiment_results, f, cls=DataclassJSONEncoder)
+        json.dump(experiment_results, f, cls=DataclassJSONEncoder, indent = 2)
 
     numbers = analyze_benchmarks("./data/results/benchmark_results_default.json")
     for setting, result in numbers.items():
