@@ -23,11 +23,12 @@ def _calculate_example_setup_times(job_i, job_j_, machine_k) -> float:
 
 def _generate_problem(big_m: int, timesteps: int) -> tuple[InfoProblem, dict[str, int]]:
     # Inputs
-    jobs = ["0", "A", "B"]
+    jobs = ["0", "A", "B", "C"]
     job_capacities = {
         "0": 0,  # dummy job
         "A": 2,
         "B": 3,
+        "C": 5,
     }
     machines = ["QUITO", "BELEM"]
     machine_capacities = {"QUITO": 5, "BELEM": 5}
