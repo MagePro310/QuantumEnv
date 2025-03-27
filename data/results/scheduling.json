@@ -2,7 +2,8 @@
     "params": {
         "jobs": [
             "A",
-            "B"
+            "B",
+            "C"
         ],
         "machines": [
             "QUITO",
@@ -10,7 +11,8 @@
         ],
         "job_capcities": {
             "A": 2,
-            "B": 3
+            "B": 3,
+            "C": 5
         },
         "machine_capacities": {
             "QUITO": 5,
@@ -29,6 +31,10 @@
             [
                 8,
                 10
+            ],
+            [
+                12,
+                9
             ]
         ],
         "setup_times": [
@@ -44,6 +50,10 @@
                 [
                     0,
                     0
+                ],
+                [
+                    0,
+                    0
                 ]
             ],
             [
@@ -51,16 +61,6 @@
                     50,
                     50
                 ],
-                [
-                    50,
-                    50
-                ],
-                [
-                    9,
-                    6
-                ]
-            ],
-            [
                 [
                     50,
                     50
@@ -68,6 +68,42 @@
                 [
                     7,
                     7
+                ],
+                [
+                    8,
+                    10
+                ]
+            ],
+            [
+                [
+                    50,
+                    50
+                ],
+                [
+                    8,
+                    7
+                ],
+                [
+                    50,
+                    50
+                ],
+                [
+                    11,
+                    8
+                ]
+            ],
+            [
+                [
+                    50,
+                    50
+                ],
+                [
+                    9,
+                    7
+                ],
+                [
+                    10,
+                    11
                 ],
                 [
                     50,
@@ -78,15 +114,19 @@
     },
     "variables": {
         "c_j_0": 0.0,
-        "c_j_1": 8.0,
-        "c_j_2": 8.0,
-        "s_j_1": 0.0,
+        "c_j_1": 9.0,
+        "c_j_2": 9.0,
+        "c_j_3": 9.0,
+        "s_j_1": 9.0,
         "s_j_2": 0.0,
-        "x_ik_1_BELEM": 0.0,
-        "x_ik_1_QUITO": 1.0,
-        "x_ik_2_BELEM": 0.0,
-        "x_ik_2_QUITO": 1.0,
-        "z_ikt_1_BELEM_0": 0.0,
+        "s_j_3": 1.0,
+        "x_ik_1_BELEM": 1.0,
+        "x_ik_1_QUITO": 0.0,
+        "x_ik_2_BELEM": 1.0,
+        "x_ik_2_QUITO": 0.0,
+        "x_ik_3_BELEM": 0.0,
+        "x_ik_3_QUITO": 1.0,
+        "z_ikt_1_BELEM_0": 1.0,
         "z_ikt_1_BELEM_1": 0.0,
         "z_ikt_1_BELEM_10": 0.0,
         "z_ikt_1_BELEM_11": 0.0,
@@ -118,8 +158,8 @@
         "z_ikt_1_BELEM_7": 0.0,
         "z_ikt_1_BELEM_8": 0.0,
         "z_ikt_1_BELEM_9": 0.0,
-        "z_ikt_1_QUITO_0": 1.0,
-        "z_ikt_1_QUITO_1": 1.0,
+        "z_ikt_1_QUITO_0": 0.0,
+        "z_ikt_1_QUITO_1": 0.0,
         "z_ikt_1_QUITO_10": 0.0,
         "z_ikt_1_QUITO_11": 0.0,
         "z_ikt_1_QUITO_12": 0.0,
@@ -130,7 +170,7 @@
         "z_ikt_1_QUITO_17": 0.0,
         "z_ikt_1_QUITO_18": 0.0,
         "z_ikt_1_QUITO_19": 0.0,
-        "z_ikt_1_QUITO_2": 1.0,
+        "z_ikt_1_QUITO_2": 0.0,
         "z_ikt_1_QUITO_20": 0.0,
         "z_ikt_1_QUITO_21": 0.0,
         "z_ikt_1_QUITO_22": 0.0,
@@ -141,17 +181,17 @@
         "z_ikt_1_QUITO_27": 0.0,
         "z_ikt_1_QUITO_28": 0.0,
         "z_ikt_1_QUITO_29": 0.0,
-        "z_ikt_1_QUITO_3": 1.0,
+        "z_ikt_1_QUITO_3": 0.0,
         "z_ikt_1_QUITO_30": 0.0,
         "z_ikt_1_QUITO_31": 0.0,
-        "z_ikt_1_QUITO_4": 1.0,
-        "z_ikt_1_QUITO_5": 1.0,
-        "z_ikt_1_QUITO_6": 1.0,
-        "z_ikt_1_QUITO_7": 1.0,
-        "z_ikt_1_QUITO_8": 1.0,
+        "z_ikt_1_QUITO_4": 0.0,
+        "z_ikt_1_QUITO_5": 0.0,
+        "z_ikt_1_QUITO_6": 0.0,
+        "z_ikt_1_QUITO_7": 0.0,
+        "z_ikt_1_QUITO_8": 0.0,
         "z_ikt_1_QUITO_9": 0.0,
-        "z_ikt_2_BELEM_0": 0.0,
-        "z_ikt_2_BELEM_1": 0.0,
+        "z_ikt_2_BELEM_0": 1.0,
+        "z_ikt_2_BELEM_1": 1.0,
         "z_ikt_2_BELEM_10": 0.0,
         "z_ikt_2_BELEM_11": 0.0,
         "z_ikt_2_BELEM_12": 0.0,
@@ -162,7 +202,7 @@
         "z_ikt_2_BELEM_17": 0.0,
         "z_ikt_2_BELEM_18": 0.0,
         "z_ikt_2_BELEM_19": 0.0,
-        "z_ikt_2_BELEM_2": 0.0,
+        "z_ikt_2_BELEM_2": 1.0,
         "z_ikt_2_BELEM_20": 0.0,
         "z_ikt_2_BELEM_21": 0.0,
         "z_ikt_2_BELEM_22": 0.0,
@@ -173,17 +213,17 @@
         "z_ikt_2_BELEM_27": 0.0,
         "z_ikt_2_BELEM_28": 0.0,
         "z_ikt_2_BELEM_29": 0.0,
-        "z_ikt_2_BELEM_3": 0.0,
+        "z_ikt_2_BELEM_3": 1.0,
         "z_ikt_2_BELEM_30": 0.0,
         "z_ikt_2_BELEM_31": 0.0,
-        "z_ikt_2_BELEM_4": 0.0,
-        "z_ikt_2_BELEM_5": 0.0,
-        "z_ikt_2_BELEM_6": 0.0,
-        "z_ikt_2_BELEM_7": 0.0,
-        "z_ikt_2_BELEM_8": 0.0,
-        "z_ikt_2_BELEM_9": 0.0,
-        "z_ikt_2_QUITO_0": 1.0,
-        "z_ikt_2_QUITO_1": 1.0,
+        "z_ikt_2_BELEM_4": 1.0,
+        "z_ikt_2_BELEM_5": 1.0,
+        "z_ikt_2_BELEM_6": 1.0,
+        "z_ikt_2_BELEM_7": 1.0,
+        "z_ikt_2_BELEM_8": 1.0,
+        "z_ikt_2_BELEM_9": 1.0,
+        "z_ikt_2_QUITO_0": 0.0,
+        "z_ikt_2_QUITO_1": 0.0,
         "z_ikt_2_QUITO_10": 0.0,
         "z_ikt_2_QUITO_11": 0.0,
         "z_ikt_2_QUITO_12": 0.0,
@@ -194,7 +234,7 @@
         "z_ikt_2_QUITO_17": 0.0,
         "z_ikt_2_QUITO_18": 0.0,
         "z_ikt_2_QUITO_19": 0.0,
-        "z_ikt_2_QUITO_2": 1.0,
+        "z_ikt_2_QUITO_2": 0.0,
         "z_ikt_2_QUITO_20": 0.0,
         "z_ikt_2_QUITO_21": 0.0,
         "z_ikt_2_QUITO_22": 0.0,
@@ -205,14 +245,78 @@
         "z_ikt_2_QUITO_27": 0.0,
         "z_ikt_2_QUITO_28": 0.0,
         "z_ikt_2_QUITO_29": 0.0,
-        "z_ikt_2_QUITO_3": 1.0,
+        "z_ikt_2_QUITO_3": 0.0,
         "z_ikt_2_QUITO_30": 0.0,
         "z_ikt_2_QUITO_31": 0.0,
-        "z_ikt_2_QUITO_4": 1.0,
-        "z_ikt_2_QUITO_5": 1.0,
-        "z_ikt_2_QUITO_6": 1.0,
-        "z_ikt_2_QUITO_7": 1.0,
-        "z_ikt_2_QUITO_8": 1.0,
-        "z_ikt_2_QUITO_9": 0.0
+        "z_ikt_2_QUITO_4": 0.0,
+        "z_ikt_2_QUITO_5": 0.0,
+        "z_ikt_2_QUITO_6": 0.0,
+        "z_ikt_2_QUITO_7": 0.0,
+        "z_ikt_2_QUITO_8": 0.0,
+        "z_ikt_2_QUITO_9": 0.0,
+        "z_ikt_3_BELEM_0": 0.0,
+        "z_ikt_3_BELEM_1": 0.0,
+        "z_ikt_3_BELEM_10": 0.0,
+        "z_ikt_3_BELEM_11": 0.0,
+        "z_ikt_3_BELEM_12": 0.0,
+        "z_ikt_3_BELEM_13": 0.0,
+        "z_ikt_3_BELEM_14": 0.0,
+        "z_ikt_3_BELEM_15": 0.0,
+        "z_ikt_3_BELEM_16": 0.0,
+        "z_ikt_3_BELEM_17": 0.0,
+        "z_ikt_3_BELEM_18": 0.0,
+        "z_ikt_3_BELEM_19": 0.0,
+        "z_ikt_3_BELEM_2": 0.0,
+        "z_ikt_3_BELEM_20": 0.0,
+        "z_ikt_3_BELEM_21": 0.0,
+        "z_ikt_3_BELEM_22": 0.0,
+        "z_ikt_3_BELEM_23": 0.0,
+        "z_ikt_3_BELEM_24": 0.0,
+        "z_ikt_3_BELEM_25": 0.0,
+        "z_ikt_3_BELEM_26": 0.0,
+        "z_ikt_3_BELEM_27": 0.0,
+        "z_ikt_3_BELEM_28": 0.0,
+        "z_ikt_3_BELEM_29": 0.0,
+        "z_ikt_3_BELEM_3": 0.0,
+        "z_ikt_3_BELEM_30": 0.0,
+        "z_ikt_3_BELEM_31": 0.0,
+        "z_ikt_3_BELEM_4": 0.0,
+        "z_ikt_3_BELEM_5": 0.0,
+        "z_ikt_3_BELEM_6": 0.0,
+        "z_ikt_3_BELEM_7": 0.0,
+        "z_ikt_3_BELEM_8": 0.0,
+        "z_ikt_3_BELEM_9": 0.0,
+        "z_ikt_3_QUITO_0": 1.0,
+        "z_ikt_3_QUITO_1": 1.0,
+        "z_ikt_3_QUITO_10": 0.0,
+        "z_ikt_3_QUITO_11": 0.0,
+        "z_ikt_3_QUITO_12": 0.0,
+        "z_ikt_3_QUITO_13": 0.0,
+        "z_ikt_3_QUITO_14": 0.0,
+        "z_ikt_3_QUITO_15": 0.0,
+        "z_ikt_3_QUITO_16": 0.0,
+        "z_ikt_3_QUITO_17": 0.0,
+        "z_ikt_3_QUITO_18": 0.0,
+        "z_ikt_3_QUITO_19": 0.0,
+        "z_ikt_3_QUITO_2": 1.0,
+        "z_ikt_3_QUITO_20": 0.0,
+        "z_ikt_3_QUITO_21": 0.0,
+        "z_ikt_3_QUITO_22": 0.0,
+        "z_ikt_3_QUITO_23": 0.0,
+        "z_ikt_3_QUITO_24": 0.0,
+        "z_ikt_3_QUITO_25": 0.0,
+        "z_ikt_3_QUITO_26": 0.0,
+        "z_ikt_3_QUITO_27": 0.0,
+        "z_ikt_3_QUITO_28": 0.0,
+        "z_ikt_3_QUITO_29": 0.0,
+        "z_ikt_3_QUITO_3": 1.0,
+        "z_ikt_3_QUITO_30": 0.0,
+        "z_ikt_3_QUITO_31": 0.0,
+        "z_ikt_3_QUITO_4": 1.0,
+        "z_ikt_3_QUITO_5": 0.0,
+        "z_ikt_3_QUITO_6": 1.0,
+        "z_ikt_3_QUITO_7": 1.0,
+        "z_ikt_3_QUITO_8": 1.0,
+        "z_ikt_3_QUITO_9": 1.0
     }
 }

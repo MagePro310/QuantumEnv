@@ -32,7 +32,6 @@ def _generate_problem(big_m: int, timesteps: int) -> tuple[InfoProblem, dict[str
     }
     machines = ["QUITO", "BELEM"]
     machine_capacities = {"QUITO": 5, "BELEM": 5}
-
     processing_times = [
         [
             _calculate_exmaple_process_times(

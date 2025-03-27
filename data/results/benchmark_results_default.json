@@ -8,64 +8,64 @@
       {
         "results": {
           "baseline": {
-            "makespan": 10.294311156453382,
+            "makespan": 8.684077549197855,
             "jobs": [
               {
-                "name": "200245c7-c1d9-4f9b-8417-58291ae107cd",
-                "machine": "B",
+                "name": "42c709b3-30c8-4f79-858a-e29b6e0f647b",
+                "machine": "A",
                 "start_time": 0.0,
-                "completion_time": 9.208831054019194,
+                "completion_time": 2.534362921154553,
                 "capacity": 5
               },
               {
-                "name": "1acecc4b-b4c5-4e0d-ae01-335518e3871b",
-                "machine": "A",
+                "name": "9dfc54d9-9040-4aaa-9a97-789a2ca00da3",
+                "machine": "B",
                 "start_time": 0.0,
-                "completion_time": 10.294311156453382,
-                "capacity": 2
+                "completion_time": 8.684077549197855,
+                "capacity": 4
               }
             ],
-            "time": 0.0001223560029757209
+            "time": 0.00014259399995353306
           },
           "simple": {
-            "makespan": 10.294311156453382,
+            "makespan": 8.684077549197855,
             "jobs": [
               {
                 "name": "1",
-                "machine": "B",
+                "machine": "A",
                 "start_time": 0.0,
-                "completion_time": 9.208831054019194,
-                "capacity": 2
+                "completion_time": 2.534362921154553,
+                "capacity": 5
               },
               {
                 "name": "2",
-                "machine": "A",
+                "machine": "B",
                 "start_time": 0.0,
-                "completion_time": 10.294311156453382,
-                "capacity": 5
+                "completion_time": 8.684077549197855,
+                "capacity": 4
               }
             ],
-            "time": 4.475012418006372
+            "time": 17.63978080800007
           },
           "extended": {
-            "makespan": 5.898539610917877,
+            "makespan": 8.684077549197855,
             "jobs": [
               {
                 "name": "1",
                 "machine": "A",
                 "start_time": 0.0,
-                "completion_time": 5.898539610917877,
-                "capacity": 2
+                "completion_time": 2.534362921154553,
+                "capacity": 5
               },
               {
                 "name": "2",
                 "machine": "B",
                 "start_time": 0.0,
-                "completion_time": 3.1901585395461067,
-                "capacity": 5
+                "completion_time": 8.684077549197855,
+                "capacity": 4
               }
             ],
-            "time": 1.6657376410003053
+            "time": 1.031417216000591
           }
         },
         "s_times": [
@@ -93,8 +93,8 @@
               32
             ],
             [
-              8.621295566039747,
-              8.322162043200903
+              8.397055990351305,
+              9.538129661931793
             ]
           ],
           [
@@ -103,8 +103,8 @@
               32
             ],
             [
-              3.1905144907810783,
-              0.8083586729190366
+              1.247247821568989,
+              6.58439114528315
             ],
             [
               32,
@@ -114,101 +114,89 @@
         ],
         "p_times": [
           [
-            5.898539610917877,
-            9.208831054019194
+            2.534362921154553,
+            8.154299515530385
           ],
           [
-            10.294311156453382,
-            3.1901585395461067
+            10.307719430285626,
+            8.684077549197855
           ]
         ]
-      }
-    ]
-  },
-  {
-    "setting": {
-      "A": 5,
-      "B": 6,
-      "C": 20
-    },
-    "benchmarks": [
+      },
       {
         "results": {
           "baseline": {
-            "makespan": 31.99875838343079,
+            "makespan": 9.471476950281945,
             "jobs": [
               {
-                "name": "f60d42b7-9d05-4cb2-8ad4-d5ba6a5ee255",
-                "machine": "C",
+                "name": "ba3262e4-ef3c-4ec9-892c-38db4d7490af",
+                "machine": "A",
                 "start_time": 0.0,
-                "completion_time": 11.557306987762242,
-                "capacity": 8
+                "completion_time": 4.6144505191080105,
+                "capacity": 4
               },
               {
-                "name": "1037d13f-d7e6-46db-a098-b31ae259013a",
-                "machine": "C",
-                "start_time": 11.557306987762242,
-                "completion_time": 31.99875838343079,
-                "capacity": 16
+                "name": "a1863ec6-2912-4b90-81c1-72b28f81ae13",
+                "machine": "B",
+                "start_time": 0.0,
+                "completion_time": 9.471476950281945,
+                "capacity": 4
               }
             ],
-            "time": 0.00036454200017033145
+            "time": 0.0003012490005858126
           },
           "simple": {
-            "makespan": 31.962921690807104,
+            "makespan": 6.88166803571989,
             "jobs": [
               {
                 "name": "1",
-                "machine": "C",
-                "start_time": 8.749624347230759,
-                "completion_time": 31.962921690807104,
-                "capacity": 8
+                "machine": "B",
+                "start_time": 0.0,
+                "completion_time": 6.88166803571989,
+                "capacity": 4
               },
               {
                 "name": "2",
-                "machine": "C",
+                "machine": "A",
                 "start_time": 0.0,
-                "completion_time": 8.749624347230759,
-                "capacity": 16
+                "completion_time": 2.456863877649769,
+                "capacity": 4
               }
             ],
-            "time": 3.932357352001418
+            "time": 2.5317512219999116
           },
           "extended": {
-            "makespan": 31.962921690807104,
+            "makespan": 6.88166803571989,
             "jobs": [
               {
                 "name": "1",
-                "machine": "C",
-                "start_time": 8.749624347230759,
-                "completion_time": 31.962921690807104,
-                "capacity": 8
+                "machine": "B",
+                "start_time": 0.0,
+                "completion_time": 6.88166803571989,
+                "capacity": 4
               },
               {
                 "name": "2",
-                "machine": "C",
+                "machine": "A",
                 "start_time": 0.0,
-                "completion_time": 8.749624347230759,
-                "capacity": 16
+                "completion_time": 2.456863877649769,
+                "capacity": 4
               }
             ],
-            "time": 5.47258751100162
+            "time": 1.6998244359992896
           }
         },
         "s_times": [
           [
             [
               32,
-              32,
               32
             ],
             [
               0,
-              0,
               0
             ],
             [
-              0,
               0,
               0
             ]
@@ -216,33 +204,27 @@
           [
             [
               32,
-              32,
               32
             ],
             [
               32,
-              32,
               32
             ],
             [
-              5.153491064747737,
-              4.370707569779848,
-              11.691827048437785
+              10.589077247914046,
+              9.682201074468429
             ]
           ],
           [
             [
               32,
-              32,
               32
             ],
             [
-              9.892061109472744,
-              5.425356878513745,
-              11.405614703044861
+              8.413171184217967,
+              5.709553527347964
             ],
             [
-              32,
               32,
               32
             ]
@@ -250,14 +232,130 @@
         ],
         "p_times": [
           [
-            9.201276489696589,
-            3.0721265615818716,
-            11.557306987762242
+            4.6144505191080105,
+            6.88166803571989
           ],
           [
-            3.706159895171469,
-            3.4714050694464245,
-            8.749624347230759
+            2.456863877649769,
+            9.471476950281945
+          ]
+        ]
+      },
+      {
+        "results": {
+          "baseline": {
+            "makespan": 3.60059079494578,
+            "jobs": [
+              {
+                "name": "5508bbb5-ff1e-462d-83ec-f5fca95d8dc1",
+                "machine": "A",
+                "start_time": 0.0,
+                "completion_time": 3.60059079494578,
+                "capacity": 5
+              },
+              {
+                "name": "5c2dbf46-3598-49b6-a909-eadfe90f9e11",
+                "machine": "B",
+                "start_time": 0.0,
+                "completion_time": 1.4382483985183065,
+                "capacity": 3
+              }
+            ],
+            "time": 0.00018953100061480654
+          },
+          "simple": {
+            "makespan": 8.111504027900425,
+            "jobs": [
+              {
+                "name": "1",
+                "machine": "B",
+                "start_time": 0.0,
+                "completion_time": 8.111504027900425,
+                "capacity": 5
+              },
+              {
+                "name": "2",
+                "machine": "A",
+                "start_time": 0.0,
+                "completion_time": 3.7086395983538374,
+                "capacity": 3
+              }
+            ],
+            "time": 15.386683226999594
+          },
+          "extended": {
+            "makespan": 3.60059079494578,
+            "jobs": [
+              {
+                "name": "1",
+                "machine": "A",
+                "start_time": 0.0,
+                "completion_time": 3.60059079494578,
+                "capacity": 5
+              },
+              {
+                "name": "2",
+                "machine": "B",
+                "start_time": 0.0,
+                "completion_time": 1.4382483985183065,
+                "capacity": 3
+              }
+            ],
+            "time": 1.7221877820002192
+          }
+        },
+        "s_times": [
+          [
+            [
+              32,
+              32
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              32,
+              32
+            ],
+            [
+              32,
+              32
+            ],
+            [
+              7.393585424408027,
+              9.447737506234112
+            ]
+          ],
+          [
+            [
+              32,
+              32
+            ],
+            [
+              10.243344525429494,
+              4.918726597576346
+            ],
+            [
+              32,
+              32
+            ]
+          ]
+        ],
+        "p_times": [
+          [
+            3.60059079494578,
+            8.111504027900425
+          ],
+          [
+            3.7086395983538374,
+            1.4382483985183065
           ]
         ]
       }

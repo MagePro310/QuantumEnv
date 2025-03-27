@@ -183,7 +183,7 @@ if __name__ == "__main__":
         type=str,
         help="The solution file to visualize",
         nargs="?",
-        default="scheduling.sol",
+        default="data/results/scheduling.json",
     )
     parser.add_argument(
         "--pdf",
@@ -194,4 +194,5 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
     print(args)
+    
     generate_schedule_plot(args.solution, args.pdf)
